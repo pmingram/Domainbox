@@ -31,7 +31,7 @@ class Domainbox
      * @param $password
      * @param sandbox
      */
-    public function __construct($reseller, $username, $password, $sandbox)
+    public function __construct($reseller, $username, $password, $sandbox = false)
     {
         $this->reseller = $reseller;
         $this->username = $username;

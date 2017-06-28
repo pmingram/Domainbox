@@ -21,23 +21,70 @@ class Domain
     /**
      * Construct Domainbox.
      *
-     * @param $reseller
-     * @param $username
-     * @param $password
-     * @param sandbox
+     * @param $domainbox
      */
     public function __construct($domainbox)
     {
         $this->domainbox = $domainbox;
     }
 
-    public function checkDomainAvailability($domainname, $launchPhase = 'GA')
+    /**
+     * checkDomainAvailability
+     *
+     * @param $domainname  The domainname the check
+     * @param $launchPhase
+     * @param $allowOfflineLookups
+     * @param $numberOfRetries
+     */
+    public function checkDomainAvailability($domainname, $launchPhase = 'GA', $allowOfflineLookups = false, $numberOfRetries = 1)
     {
         $response = $this->domainbox->call('CheckDomainAvailability', [
             'DomainName'  => $domainname,
             'LaunchPhase' => $launchPhase,
+            'AdditionalOptions' => [
+                'AllowOfflineLookups' => $allowOfflineLookups,
+                'NumberOfRetries' => $numberOfRetries,
+            ]
         ]);
 
-        return new DomainAvailable($response);
+        return new DomainAvailable('CheckDomainAvailability', $response);
+    }
+
+    /**
+     * checkDomainAvailability
+     *
+     * @param $domainname  The domainname the check
+     * @param $limit The maximum number of Domains to return for each domain check parameter. If CheckAtRegistry is set to true then the maximum value for Limit is 64. If CheckAtRegistry is set to false then the maximum value for Limit is 100. The Default value for the Limit is 10.
+     * @param $checkAtRegistry
+     * @param $numberOfRetries
+     * @param $domainCheck
+     * @param $nameSuggestions
+     * @param $typoSuggestions
+     * @param $prefixSuffixSuggestions
+     * @param $prefix
+     * @param $suffix
+     * @param $premiumDomains
+     */
+    public function checkDomainAvailabilityPlus($domainname, $tlds = ['.com', '.be', '.nl', '.fr'], $limit = 10, $checkAtRegistry = true, $registryTimeout = 1000, $domainCheck = true, $nameSuggestions = true, $typoSuggestions = true, $prefixSuffixSuggestions = false, $prefix = "", $suffix = "", $premiumDomains = true)
+    {
+        $response = $this->domainbox->call('CheckDomainAvailabilityPlus', [
+            'DomainName'  => $domainname,
+            'TLDs' => $tlds,
+            'Limit' => $limit,
+            'CheckAtRegistry' => $checkAtRegistry,
+            'RegistryTimeout' => $registryTimeout,
+            'DomainCheck' => ['Include' => $domainCheck],
+            'NameSuggestions' => ['Include' => $nameSuggestions],
+            'TypoSuggestions' => ['Include' => $typoSuggestions],
+            'PrefixSuffixSuggestions' => ['Include' => $prefixSuffixSuggestions, 'Suffixes' => $suffix, 'Prefixes' => $prefix],
+            'PremiumDomains' => ['Include' => $premiumDomains],
+        ]);
+        
+        $list = [];
+        foreach($response['d']['DomainCheck']['Domains'] as $domain) {
+            $list[] = new DomainAvailable('CheckDomainAvailabilityPlus', $domain);
+        }
+
+        return $list;
     }
 }

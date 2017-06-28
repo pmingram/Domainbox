@@ -13,27 +13,40 @@ namespace MadeITBelgium\Domainbox\Response;
  */
 class DomainAvailable
 {
-    const Available = 0;
-    const Unavailable = 1;
-    const InvalidDomainSupplied = 2;
-    const ErrorOccurred = 3;
-    const ExceededLimit = 4;
-    const AvailableOfflineLookup = 7;
-    const UnavailableOfflineLookup = 8;
-    const AvailableRegistryTimeout = 9;
-    const UnavailableRegistryTimeout = 9;
-    const AvailableWithProvidedDomainId = 11;
+    private $statusMessages = [
+        0 => 'Available', 
+        1 => 'Unavailable', 
+        2 => 'InvalidDomainSupplied', 
+        3 => 'ErrorOccurred', 
+        4 => 'ExceededLimit', 
+        5 => 'NotChecked',
+        6 => 'TimedOut',
+        7 => 'AvailableOfflineLookup', 
+        8 => 'UnavailableOfflineLookup', 
+        9 => 'AvailableRegistryTimeout', 
+        10 => 'UnavailableRegistryTimeout', 
+        11 => 'AvailableWithProvidedDomainId'
+    ];
 
     private $status;
     private $available;
     private $launchPhase;
     private $dropDate;
     private $backOrderAvailable;
+    private $domainName;
 
-    public function __construct($data)
+    public function __construct($command, $data)
     {
-        $constants = array_flip((new \ReflectionClass(__CLASS__))->getConstants());
-        $this->status = $constants[$data['d']['AvailabilityStatus']];
+        if($command == "CheckDomainAvailability") {
+            $this->loadCheckDomainAvailability($data);
+        }
+        elseif($command == "CheckDomainAvailabilityPlus") {
+            $this->loadCheckDomainAvailabilityPlus($data);
+        }
+    }
+    
+    private function loadCheckDomainAvailability($data) {
+        $this->status = $this->statusMessages[$data['d']['AvailabilityStatus']];
 
         $this->available = false;
         if (in_array($this->status, ['Available', 'AvailableOfflineLookup', 'AvailableRegistryTimeout', 'AvailableWithProvidedDomainId'])) {
@@ -42,6 +55,19 @@ class DomainAvailable
         $this->launchPhase = $data['d']['LaunchPhase'];
         $this->dropDate = $data['d']['DropDate'];
         $this->backOrderAvailable = $data['d']['BackOrderAvailable'];
+    }
+    
+    private function loadCheckDomainAvailabilityPlus($data) {
+        $this->status = $this->statusMessages[$data['AvailabilityStatus']];
+
+        $this->available = false;
+        if (in_array($this->status, ['Available', 'AvailableOfflineLookup', 'AvailableRegistryTimeout', 'AvailableWithProvidedDomainId'])) {
+            $this->available = true;
+        }
+        $this->launchPhase = $data['LaunchPhase'];
+        $this->dropDate = $data['DropDate'];
+        $this->backOrderAvailable = $data['BackOrderAvailable'];
+        $this->domainName = $data['DomainName'];
     }
 
     public function getStatus()
@@ -67,5 +93,9 @@ class DomainAvailable
     public function canBackOrder()
     {
         return $this->backOrderAvailable;
+    }
+    
+    public function getDomainName() {
+        return $this->domainName;
     }
 }

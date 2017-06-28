@@ -32,7 +32,19 @@ You can use the facade for shorter code. Add this to your aliases:
 ## Usage
 ```php
 
+use MadeITBelgium\Domainbox\Domainbox;
 
+$domainbox = new Domainbox($reseller, $username, $password, $sandbox); //Sandbox by default false
+
+```
+
+In laravel you can use the Facade
+```php
+$checkDomainAvailability = Domainbox::domain()->checkDomainAvailability($domainname, $launchPhase = 'GA', $allowOfflineLookups = false, $numberOfRetries = 1); // \MadeITBelgium\Domainbox\Response\DomainAvailable
+$checkDomainAvailability->isAvailable();
+
+$checkDomainAvailability = Domainbox::domain()->checkDomainAvailabilityPlus($domainname, $tlds); // Array of \MadeITBelgium\Domainbox\Response\DomainAvailable
+$checkDomainAvailability[0]->isAvailable();
 ```
 
 ## Laraval validator
