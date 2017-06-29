@@ -24,7 +24,7 @@
         <exclude>
             <file>./src/DomainboxFacade.php</file>
             <file>./src/DomainboxServiceProvider.php</file>
-        <file>.src/config/domainbox.php</file>
+            <file>.src/config/domainbox.php</file>
         </exclude>
     </whitelist>
 </filter>
