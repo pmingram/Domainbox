@@ -1,4 +1,5 @@
 <?php
+
 namespace MadeITBelgium\Domainbox\Response;
 
 /**
@@ -22,43 +23,49 @@ class DomainAvailable
     const AvailableRegistryTimeout = 9;
     const UnavailableRegistryTimeout = 9;
     const AvailableWithProvidedDomainId = 11;
-    
+
     private $status;
     private $available;
     private $launchPhase;
     private $dropDate;
     private $backOrderAvailable;
-    
-    function __construct($data) {
+
+    public function __construct($data)
+    {
         $constants = array_flip((new \ReflectionClass(__CLASS__))->getConstants());
         $this->status = $constants[$data['d']['AvailabilityStatus']];
-        
+
         $this->available = false;
-        if(in_array($this->status, ['Available', 'AvailableOfflineLookup', 'AvailableRegistryTimeout', 'AvailableWithProvidedDomainId'])) {
+        if (in_array($this->status, ['Available', 'AvailableOfflineLookup', 'AvailableRegistryTimeout', 'AvailableWithProvidedDomainId'])) {
             $this->available = true;
         }
         $this->launchPhase = $data['d']['LaunchPhase'];
         $this->dropDate = $data['d']['DropDate'];
         $this->backOrderAvailable = $data['d']['BackOrderAvailable'];
     }
-    
-    public function getStatus() {
+
+    public function getStatus()
+    {
         return $this->status;
     }
-    
-    public function isAvailable() {
+
+    public function isAvailable()
+    {
         return $this->available;
     }
-    
-    public function getLauchPhase() {
+
+    public function getLauchPhase()
+    {
         return $this->launchPhase;
     }
-    
-    public function getDropDate() {
+
+    public function getDropDate()
+    {
         return $this->dropDate;
     }
-    
-    public function canBackOrder() {
+
+    public function canBackOrder()
+    {
         return $this->backOrderAvailable;
     }
 }
