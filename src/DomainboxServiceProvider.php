@@ -25,7 +25,7 @@ class DomainboxServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/config/domainbox.php' => config_path('domainbox.php'),
+            __DIR__.'/config/domainbox.php' => config_path('domainbox.php'),
         ]);
     }
 

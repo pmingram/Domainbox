@@ -1,7 +1,9 @@
 <?php
+
 namespace MadeITBelgium\Domainbox\Command;
 
 use MadeITBelgium\Domainbox\Response\DomainAvailable;
+
 /**
  * Domainbox API.
  *
@@ -18,7 +20,7 @@ class Domain
 
     /**
      * Construct Domainbox.
-     * 
+     *
      * @param $reseller
      * @param $username
      * @param $password
@@ -28,14 +30,14 @@ class Domain
     {
         $this->domainbox = $domainbox;
     }
-    
-    public function checkDomainAvailability($domainname, $launchPhase = "GA")
+
+    public function checkDomainAvailability($domainname, $launchPhase = 'GA')
     {
         $response = $this->domainbox->call('CheckDomainAvailability', [
-            'DomainName' => $domainname,
-            'LaunchPhase' => $launchPhase
+            'DomainName'  => $domainname,
+            'LaunchPhase' => $launchPhase,
         ]);
-        
+
         return new DomainAvailable($response);
     }
 }
