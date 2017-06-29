@@ -24,7 +24,9 @@ class DomainboxServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
+        $this->publishes([
+            __DIR__ . '/config/domainbox.php' => config_path('domainbox.php'),
+        ]);
     }
 
     /**
@@ -34,8 +36,8 @@ class DomainboxServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('domainbox', function () {
-            return new Domainbox;
+        $this->app->singleton('domainbox', function ($app) {
+            return new Domainbox($config['domainbox.reseller'], $config['domainbox.username'], $config['domainbox.password'], $config['domainbox.sandbox']);
         });
     }
 

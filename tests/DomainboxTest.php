@@ -11,6 +11,6 @@ class DomainboxTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructor()
     {
-        $domainbox = new Domainbox();
+        $domainbox = new Domainbox('reseller', 'username', 'password', false);
     }
 }
