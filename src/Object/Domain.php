@@ -93,43 +93,45 @@ class Domain
             $this->loadCheckDomainAvailability($data);
         } elseif ($command == 'CheckDomainAvailabilityPlus') {
             $this->loadCheckDomainAvailabilityPlus($data);
+        } elseif ($command == 'RegisterDomain') {
+            $this->loadFromRegistration($data);
         }
     }
 
     private function loadCheckDomainAvailability($data)
     {
-        $this->status = $this->statusMessages[$data['d']['AvailabilityStatus']];
+        $this->setStatus($this->statusMessages[$data['d']['AvailabilityStatus']]);
 
-        $this->available = false;
-        if (in_array($this->status, ['Available', 'AvailableOfflineLookup', 'AvailableRegistryTimeout', 'AvailableWithProvidedDomainId'])) {
-            $this->available = true;
+        $this->setAvailable(false);
+        if (in_array($this->getStatus(), ['Available', 'AvailableOfflineLookup', 'AvailableRegistryTimeout', 'AvailableWithProvidedDomainId'])) {
+            $this->setAvailable(true);
         }
-        $this->launchPhase = $data['d']['LaunchPhase'];
-        $this->dropDate = $data['d']['DropDate'];
-        $this->backOrderAvailable = $data['d']['BackOrderAvailable'];
+        $this->setLaunchPhase($data['d']['LaunchPhase']);
+        $this->setDropDate($data['d']['DropDate']);
+        $this->setBackOrderAvailable($data['d']['BackOrderAvailable']);
     }
 
     private function loadCheckDomainAvailabilityPlus($data)
     {
-        $this->status = $this->statusMessages[$data['AvailabilityStatus']];
+        $this->setStatus($this->statusMessages[$data['AvailabilityStatus']]);
 
-        $this->available = false;
-        if (in_array($this->status, ['Available', 'AvailableOfflineLookup', 'AvailableRegistryTimeout', 'AvailableWithProvidedDomainId'])) {
-            $this->available = true;
+        $this->setAvailable(false);
+        if (in_array($this->getStatus(), ['Available', 'AvailableOfflineLookup', 'AvailableRegistryTimeout', 'AvailableWithProvidedDomainId'])) {
+            $this->setAvailable(true);
         }
-        $this->launchPhase = $data['LaunchPhase'];
-        $this->dropDate = $data['DropDate'];
-        $this->backOrderAvailable = $data['BackOrderAvailable'];
-        $this->domainName = $data['DomainName'];
+        $this->setLaunchPhase($data['LaunchPhase']);
+        $this->setDropDate($data['DropDate']);
+        $this->setBackOrderAvailable($data['BackOrderAvailable']);
+        $this->setDomainName($data['DomainName']);
     }
     
     private function loadFromRegistration($data) {
-        $this->setOrderId($data['OrderId']);
-        $this->setDomainId($data['DomainId']);
-        $this->setRegistrantContactId($data['RegistrantContactId']);
-        $this->setAdminContactId($data['AdminContactId']);
-        $this->setTechContactId($data['TechContactId']);
-        $this->setBillingContactId($data['BillingContactId']);
+        $this->setOrderId($data['d']['OrderId']);
+        $this->setDomainId($data['d']['DomainId']);
+        $this->setRegistrantContactId($data['d']['RegistrantContactId']);
+        $this->setAdminContactId($data['d']['AdminContactId']);
+        $this->setTechContactId($data['d']['TechContactId']);
+        $this->setBillingContactId($data['d']['BillingContactId']);
     }
 
     public function getDomainName()
@@ -350,6 +352,54 @@ class Domain
     public function setCommandOptions($commandOptions)
     {
         $this->commandOptions = $commandOptions;
+    }
+    
+    public function getOrderId(){
+        return $this->orderId;
+    }
+
+    public function setOrderId($orderId){
+        $this->orderId = $orderId;
+    }
+
+    public function getDomainId(){
+        return $this->domainId;
+    }
+
+    public function setDomainId($domainId){
+        $this->domainId = $domainId;
+    }
+
+    public function getRegistrantContactId(){
+        return $this->registrantContactId;
+    }
+
+    public function setRegistrantContactId($registrantContactId){
+        $this->registrantContactId = $registrantContactId;
+    }
+
+    public function getAdminContactId(){
+        return $this->adminContactId;
+    }
+
+    public function setAdminContactId($adminContactId){
+        $this->adminContactId = $adminContactId;
+    }
+
+    public function getTechContactId(){
+        return $this->techContactId;
+    }
+
+    public function setTechContactId($techContactId){
+        $this->techContactId = $techContactId;
+    }
+
+    public function getBillingContactId(){
+        return $this->billingContactId;
+    }
+
+    public function setBillingContactId($billingContactId){
+        $this->billingContactId = $billingContactId;
     }
 
     public function generateDomainboxCommand()

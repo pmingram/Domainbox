@@ -514,4 +514,53 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
+    public function testRegisterCommand()
+    {
+        $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
+
+        $registerDomain = new Domain();
+        $domainName = 'maideit.be';
+        $launchPhase = 'GA';
+        $period = 1;
+        $applyLock = false;
+        $autoRenew = true;
+        $autoRenewDays = 7;
+        $applyPrivacy = false;
+        $acceptTerms = true;
+        $nameServers = ['ns1.madeit.be', 'ns2.madeit.be'];
+        $glueRecords = [];
+        $registrant = $contact;
+        $admin = $contact;
+        $tech = $contact;
+        $billing = $contact;
+        $trademark = null;
+        $extension = null;
+        $sunriseData = null;
+        $commandOptions = null;
+        $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
+
+        
+        $domainbox = new Domainbox('reseller', 'username', 'password', false);
+
+        // Create a mock and queue two responses.
+
+        $stream = Psr7\stream_for('{"d": {"OrderId": 13477, "DomainId":24957, "RegistrantContactId": 12187, "AdminContactId": 12190, "TechContactId": 12190, "BillingContactId": 12187, "ResultCode": 100, "ResultMsg": "Command Successful", "TxID": "1b68172f-ca79-4fc4-9a04-f15a17b6abfc"}}');
+        $mock = new MockHandler([
+            new Response(200, ['Content-Type' => 'application/json'], $stream),
+        ]);
+
+        $handler = HandlerStack::create($mock);
+        $client = new Client(['handler' => $handler]);
+
+        $domainbox->setClient($client);
+        $domain = $domainbox->domain();
+        $response = $domain->registerDomain($registerDomain);
+        
+        $this->assertEquals(13477, $response->getOrderId());
+        $this->assertEquals(24957, $response->getDomainId());
+        $this->assertEquals(12187, $response->getRegistrantContactId());
+        $this->assertEquals(12190, $response->getAdminContactId());
+        $this->assertEquals(12190, $response->getTechContactId());
+        $this->assertEquals(12187, $response->getBillingContactId());
+    }
 }
