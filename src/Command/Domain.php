@@ -47,8 +47,9 @@ class Domain
             ],
         ]);
 
-        $domain = new ObjectDomain;
+        $domain = new ObjectDomain();
         $domain->loadData('CheckDomainAvailability', $response);
+
         return $domain;
     }
 
@@ -84,14 +85,14 @@ class Domain
 
         $list = [];
         foreach ($response['d']['DomainCheck']['Domains'] as $data) {
-            $domain = new ObjectDomain;
+            $domain = new ObjectDomain();
             $domain->loadData('CheckDomainAvailabilityPlus', $data);
             $list[] = $domain;
         }
 
         return $list;
     }
-    
+
     /**
      * Register domainname.
      *
@@ -104,6 +105,7 @@ class Domain
         $response = $this->domainbox->call('RegisterDomain', $domain->generateDomainboxCommand());
 
         $domain->loadData('RegisterDomain', $response);
+
         return $domain;
     }
 }

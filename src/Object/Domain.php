@@ -52,8 +52,7 @@ class Domain
     private $extension;
     private $sunriseData;
     private $commandOptions;
-    
-    
+
     private $orderId;
     private $domainId;
     private $registrantContactId;
@@ -124,8 +123,9 @@ class Domain
         $this->setBackOrderAvailable($data['BackOrderAvailable']);
         $this->setDomainName($data['DomainName']);
     }
-    
-    private function loadFromRegistration($data) {
+
+    private function loadFromRegistration($data)
+    {
         $this->setOrderId($data['d']['OrderId']);
         $this->setDomainId($data['d']['DomainId']);
         $this->setRegistrantContactId($data['d']['RegistrantContactId']);
@@ -353,52 +353,64 @@ class Domain
     {
         $this->commandOptions = $commandOptions;
     }
-    
-    public function getOrderId(){
+
+    public function getOrderId()
+    {
         return $this->orderId;
     }
 
-    public function setOrderId($orderId){
+    public function setOrderId($orderId)
+    {
         $this->orderId = $orderId;
     }
 
-    public function getDomainId(){
+    public function getDomainId()
+    {
         return $this->domainId;
     }
 
-    public function setDomainId($domainId){
+    public function setDomainId($domainId)
+    {
         $this->domainId = $domainId;
     }
 
-    public function getRegistrantContactId(){
+    public function getRegistrantContactId()
+    {
         return $this->registrantContactId;
     }
 
-    public function setRegistrantContactId($registrantContactId){
+    public function setRegistrantContactId($registrantContactId)
+    {
         $this->registrantContactId = $registrantContactId;
     }
 
-    public function getAdminContactId(){
+    public function getAdminContactId()
+    {
         return $this->adminContactId;
     }
 
-    public function setAdminContactId($adminContactId){
+    public function setAdminContactId($adminContactId)
+    {
         $this->adminContactId = $adminContactId;
     }
 
-    public function getTechContactId(){
+    public function getTechContactId()
+    {
         return $this->techContactId;
     }
 
-    public function setTechContactId($techContactId){
+    public function setTechContactId($techContactId)
+    {
         $this->techContactId = $techContactId;
     }
 
-    public function getBillingContactId(){
+    public function getBillingContactId()
+    {
         return $this->billingContactId;
     }
 
-    public function setBillingContactId($billingContactId){
+    public function setBillingContactId($billingContactId)
+    {
         $this->billingContactId = $billingContactId;
     }
 

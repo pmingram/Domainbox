@@ -514,6 +514,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
+
     public function testRegisterCommand()
     {
         $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
@@ -539,7 +540,6 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $commandOptions = null;
         $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
 
-        
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
         // Create a mock and queue two responses.
@@ -555,7 +555,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $domainbox->setClient($client);
         $domain = $domainbox->domain();
         $response = $domain->registerDomain($registerDomain);
-        
+
         $this->assertEquals(13477, $response->getOrderId());
         $this->assertEquals(24957, $response->getDomainId());
         $this->assertEquals(12187, $response->getRegistrantContactId());
