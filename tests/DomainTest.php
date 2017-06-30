@@ -36,8 +36,8 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Unavailable', $response->getStatus());
         $this->assertEquals(false, $response->isAvailable());
         $this->assertEquals(false, $response->canBackOrder());
-        $this->assertEquals("2017-01-01", $response->getDropDate());
-        $this->assertEquals("GA", $response->getLauchPhase());
+        $this->assertEquals('2017-01-01', $response->getDropDate());
+        $this->assertEquals('GA', $response->getLauchPhase());
     }
 
     public function testUnavailableBackOrderDomain()
@@ -131,7 +131,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(true, $response->isAvailable());
         $this->assertEquals(false, $response->canBackOrder());
     }
-    
+
     //checkDomainAvailabilityPlus
     public function testUnavailableDomainPlus()
     {
@@ -266,24 +266,22 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $domainbox->setClient($client);
         $domain = $domainbox->domain();
         $response = $domain->checkDomainAvailabilityPlus('madeit.be');
-        
+
         $this->assertEquals(3, count($response));
-        
+
         $this->assertEquals('madeit.be', $response[0]->getDomainName());
         $this->assertEquals('Unavailable', $response[0]->getStatus());
         $this->assertEquals(false, $response[0]->isAvailable());
         $this->assertEquals(false, $response[0]->canBackOrder());
-        
+
         $this->assertEquals('madeit.com', $response[1]->getDomainName());
         $this->assertEquals('Unavailable', $response[1]->getStatus());
         $this->assertEquals(false, $response[1]->isAvailable());
         $this->assertEquals(true, $response[1]->canBackOrder());
-        
+
         $this->assertEquals('madeit.nl', $response[2]->getDomainName());
         $this->assertEquals('Available', $response[2]->getStatus());
         $this->assertEquals(true, $response[2]->isAvailable());
         $this->assertEquals(false, $response[2]->canBackOrder());
-        
-        
     }
 }

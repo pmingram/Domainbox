@@ -14,18 +14,18 @@ namespace MadeITBelgium\Domainbox\Response;
 class DomainAvailable
 {
     private $statusMessages = [
-        0 => 'Available', 
-        1 => 'Unavailable', 
-        2 => 'InvalidDomainSupplied', 
-        3 => 'ErrorOccurred', 
-        4 => 'ExceededLimit', 
-        5 => 'NotChecked',
-        6 => 'TimedOut',
-        7 => 'AvailableOfflineLookup', 
-        8 => 'UnavailableOfflineLookup', 
-        9 => 'AvailableRegistryTimeout', 
-        10 => 'UnavailableRegistryTimeout', 
-        11 => 'AvailableWithProvidedDomainId'
+        0  => 'Available',
+        1  => 'Unavailable',
+        2  => 'InvalidDomainSupplied',
+        3  => 'ErrorOccurred',
+        4  => 'ExceededLimit',
+        5  => 'NotChecked',
+        6  => 'TimedOut',
+        7  => 'AvailableOfflineLookup',
+        8  => 'UnavailableOfflineLookup',
+        9  => 'AvailableRegistryTimeout',
+        10 => 'UnavailableRegistryTimeout',
+        11 => 'AvailableWithProvidedDomainId',
     ];
 
     private $status;
@@ -37,15 +37,15 @@ class DomainAvailable
 
     public function __construct($command, $data)
     {
-        if($command == "CheckDomainAvailability") {
+        if ($command == 'CheckDomainAvailability') {
             $this->loadCheckDomainAvailability($data);
-        }
-        elseif($command == "CheckDomainAvailabilityPlus") {
+        } elseif ($command == 'CheckDomainAvailabilityPlus') {
             $this->loadCheckDomainAvailabilityPlus($data);
         }
     }
-    
-    private function loadCheckDomainAvailability($data) {
+
+    private function loadCheckDomainAvailability($data)
+    {
         $this->status = $this->statusMessages[$data['d']['AvailabilityStatus']];
 
         $this->available = false;
@@ -56,8 +56,9 @@ class DomainAvailable
         $this->dropDate = $data['d']['DropDate'];
         $this->backOrderAvailable = $data['d']['BackOrderAvailable'];
     }
-    
-    private function loadCheckDomainAvailabilityPlus($data) {
+
+    private function loadCheckDomainAvailabilityPlus($data)
+    {
         $this->status = $this->statusMessages[$data['AvailabilityStatus']];
 
         $this->available = false;
@@ -94,8 +95,9 @@ class DomainAvailable
     {
         return $this->backOrderAvailable;
     }
-    
-    public function getDomainName() {
+
+    public function getDomainName()
+    {
         return $this->domainName;
     }
 }
