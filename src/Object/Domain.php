@@ -430,6 +430,7 @@ class Domain
         }
 
         $nameservers = $this->getNameServers();
+        $glueRecords = $this->getGlueRecords();
         $command['Nameservers'] = [
             'NS1'         => isset($nameservers[0]) ? $nameservers[0] : '',
             'NS2'         => isset($nameservers[1]) ? $nameservers[1] : '',
@@ -444,8 +445,23 @@ class Domain
             'NS11'        => isset($nameservers[10]) ? $nameservers[10] : '',
             'NS12'        => isset($nameservers[11]) ? $nameservers[11] : '',
             'NS13'        => isset($nameservers[12]) ? $nameservers[12] : '',
-            'GlueRecords' => [],
+            'GlueRecords' => $glueRecords,
         ];
+        
+        $trademark = $this->getTrademark();
+        if($trademark != null) {
+            //TODO
+        }
+        
+        $sunriseData = $this->getSunriseData();
+        if($sunriseData != null) {
+            //TODO
+        }
+        
+        $commandOptions = $this->getCommandOptions();
+        if($commandOptions != null) {
+            //TODO
+        }
 
         if (in_array($tld, ['.co.uk', '.org.uk', '.me.uk', '.ltd.uk', '.plc.uk', '.net.uk'])) {
             $command['ApplyLock'] = false;
