@@ -52,6 +52,14 @@ class Domain
     private $extension;
     private $sunriseData;
     private $commandOptions;
+    
+    
+    private $orderId;
+    private $domainId;
+    private $registrantContactId;
+    private $adminContactId;
+    private $techContactId;
+    private $billingContactId;
 
     public function __construct() {
         
@@ -113,6 +121,15 @@ class Domain
         $this->dropDate = $data['DropDate'];
         $this->backOrderAvailable = $data['BackOrderAvailable'];
         $this->domainName = $data['DomainName'];
+    }
+    
+    private function loadFromRegistration($data) {
+        $this->setOrderId($data['OrderId']);
+        $this->setDomainId($data['DomainId']);
+        $this->setRegistrantContactId($data['RegistrantContactId']);
+        $this->setAdminContactId($data['AdminContactId']);
+        $this->setTechContactId($data['TechContactId']);
+        $this->setBillingContactId($data['BillingContactId']);
     }
 
     public function getDomainName(){
