@@ -1091,7 +1091,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     //register
     public function testRegisterGenerateDomainboxCommand_AF()
     {
@@ -1207,7 +1207,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     //register
     public function testRegisterGenerateDomainboxCommand_TEL()
     {
@@ -1307,7 +1307,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     //register
     public function testRegisterGenerateDomainboxCommand_AT()
     {
@@ -1418,7 +1418,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     //register
     public function testRegisterGenerateDomainboxCommand_NL()
     {
@@ -1534,7 +1534,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     //register
     public function testRegisterGenerateDomainboxCommand_TK()
     {
@@ -1645,7 +1645,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     //register
     public function testRegisterGenerateDomainboxCommand_qA()
     {
@@ -1761,7 +1761,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     //register
     public function testRegisterGenerateDomainboxCommand_FR()
     {
@@ -1872,7 +1872,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     //register
     public function testRegisterGenerateDomainboxCommand_DE()
     {
@@ -1989,7 +1989,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     //register
     public function testRegisterGenerateDomainboxCommand_MX()
     {
@@ -2096,7 +2096,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     //register
     public function testRegisterGenerateDomainboxCommand_IT()
     {
@@ -2205,7 +2205,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     //register
     public function testRegisterGenerateDomainboxCommand_CO_ZA()
     {
@@ -2312,7 +2312,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     //register
     public function testRegisterGenerateDomainboxCommand_FM()
     {
@@ -2428,7 +2428,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     //register
     public function testRegisterGenerateDomainboxCommand_PL()
     {
@@ -2541,7 +2541,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     //register
     public function testRegisterGenerateDomainboxCommand_IO()
     {
@@ -2657,7 +2657,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     //register
     public function testRegisterGenerateDomainboxCommand_JP()
     {
@@ -2774,6 +2774,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
+
     //register
     public function testRegisterGenerateDomainboxCommand_LV()
     {
@@ -2881,6 +2882,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
+
     /*
     //register
     public function testRegisterGenerateDomainboxCommand_()

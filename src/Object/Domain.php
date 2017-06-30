@@ -459,19 +459,19 @@ class Domain
             'NS13'        => isset($nameservers[12]) ? $nameservers[12] : '',
             'GlueRecords' => $glueRecords,
         ];
-        
+
         $trademark = $this->getTrademark();
-        if($trademark != null) {
+        if ($trademark != null) {
             //TODO
         }
-        
+
         $sunriseData = $this->getSunriseData();
-        if($sunriseData != null) {
+        if ($sunriseData != null) {
             //TODO
         }
-        
+
         $commandOptions = $this->getCommandOptions();
-        if($commandOptions != null) {
+        if ($commandOptions != null) {
             //TODO
         }
 
