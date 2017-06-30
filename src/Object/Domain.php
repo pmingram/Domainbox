@@ -486,7 +486,7 @@ class Domain
         }
         if (in_array($tld, ['.im'])) {
             if (!in_array($command['Period'], [1, 2])) {
-                $command['Period'] = 2;
+                $command['Period'] = 1;
             }
         }
         if (in_array($tld, ['.in'])) {
@@ -498,6 +498,7 @@ class Domain
             unset($command['Nameservers']['NS10']);
             unset($command['Nameservers']['NS11']);
             unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
         }
         if (in_array($tld, ['.be'])) {
             $command['Period'] = 1;
@@ -517,6 +518,7 @@ class Domain
             unset($command['Nameservers']['NS10']);
             unset($command['Nameservers']['NS11']);
             unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
         }
         if (in_array($tld, ['.af', '.com.af', '.net.af', '.org.af', '.com.cc', '.edu.cc', '.net.cc', '.org.cc', '.cx', '.gs', '.ht', '.art.ht', '.org.ht', '.com.ht', '.net.ht', '.pro.ht', '.firm.ht', '.info.ht', '.shop.ht', '.adult.ht', '.pol.ht', '.rel.ht', '.asso.ht', '.perso.ht', '.ki', '.biz.ki', '.com.ki', '.net.ki', '.org.ki', '.tel.ki', '.info.ki', '.mobi.ki', '.phone.ki', '.mu', '.ac.mu', '.co.mu', '.net.mu', '.com.mu', '.org.mu', '.nf', '.com.nf', '.net.nf', '.per.nf', '.web.nf', '.arts.nf', '.firm.nf', '.info.nf', '.store.nf', '.rec.nf', '.other.nf', '.com.sb', '.net.sb', '.org.sb', '.tl'])) {
             if (!in_array($command['Period'], [1, 2, 3, 4, 5])) {
@@ -529,7 +531,7 @@ class Domain
         if (in_array($tld, ['.at', '.or.at', '.co.at'])) {
             $command['AutoRenew'] = true;
             if (!in_array($command['AutoRenewDays'], [30, 45, 60, 90])) {
-                $command['AutoRenewDays'] = 45;
+                $command['AutoRenewDays'] = 30;
             }
             $command['ApplyLock'] = false;
             $command['ApplyPrivacy'] = false;
@@ -539,6 +541,7 @@ class Domain
             unset($command['Nameservers']['NS10']);
             unset($command['Nameservers']['NS11']);
             unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
         }
         if (in_array($tld, ['.nl'])) {
             $command['Period'] = 1;
@@ -554,6 +557,7 @@ class Domain
             unset($command['Nameservers']['NS10']);
             unset($command['Nameservers']['NS11']);
             unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
         }
         if (in_array($tld, ['.qa'])) {
             if (!in_array($command['Period'], [1, 2, 3, 4, 5])) {
@@ -568,6 +572,7 @@ class Domain
             unset($command['Nameservers']['NS10']);
             unset($command['Nameservers']['NS11']);
             unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
         }
         if (in_array($tld, ['.de'])) {
             $command['Period'] = 1;
@@ -588,6 +593,7 @@ class Domain
             unset($command['Nameservers']['NS10']);
             unset($command['Nameservers']['NS11']);
             unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
         }
         if (in_array($tld, ['.it'])) {
             $command['Period'] = 1;
@@ -597,6 +603,7 @@ class Domain
             unset($command['Nameservers']['NS10']);
             unset($command['Nameservers']['NS11']);
             unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
         }
         if (in_array($tld, ['.co.za'])) {
             $command['Period'] = 1;
@@ -610,6 +617,7 @@ class Domain
             unset($command['Nameservers']['NS10']);
             unset($command['Nameservers']['NS11']);
             unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
         }
         if (in_array($tld, ['.fm'])) {
             if (!in_array($command['Period'], [1, 2, 3, 4, 5])) {
@@ -622,6 +630,7 @@ class Domain
             $command['ApplyPrivacy'] = false;
             unset($command['Nameservers']['NS11']);
             unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
         }
         if (in_array($tld, ['.io', '.sh', '.ac'])) {
             $command['Period'] = 1;
@@ -642,6 +651,7 @@ class Domain
             unset($command['Nameservers']['NS10']);
             unset($command['Nameservers']['NS11']);
             unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
         }
         if (in_array($tld, ['.gg', '.je'])) {
             if (!in_array($command['Period'], [1, 2])) {
