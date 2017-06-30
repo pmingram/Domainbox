@@ -6,6 +6,8 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Psr7\Response;
 use MadeITBelgium\Domainbox\Domainbox;
+use MadeITBelgium\Domainbox\Object\Contact;
+use MadeITBelgium\Domainbox\Object\Domain;
 
 class DomainTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,7 +39,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(false, $response->isAvailable());
         $this->assertEquals(false, $response->canBackOrder());
         $this->assertEquals('2017-01-01', $response->getDropDate());
-        $this->assertEquals('GA', $response->getLauchPhase());
+        $this->assertEquals('GA', $response->getLaunchPhase());
     }
 
     public function testUnavailableBackOrderDomain()
@@ -283,5 +285,237 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Available', $response[2]->getStatus());
         $this->assertEquals(true, $response[2]->isAvailable());
         $this->assertEquals(false, $response[2]->canBackOrder());
+    }
+    
+    //register
+    public function testRegisterGenerateDomainboxCommand() {
+        //UK Domains
+        $contact = new Contact("Tjebbe Lievens", "Made I.T.", "Somewhere in belgium", null, null, "Geel", "Antwerp", "2440", "BE", "+32.123456789", null, null, "info@madeit.be");
+        
+        $registerDomain = new Domain();
+        $domainName = "maideit.co.uk";
+        $launchPhase = "GA";
+        $period = 1;
+        $applyLock = true;
+        $autoRenew = true;
+        $autoRenewDays = 7;
+        $applyPrivacy = false;
+        $acceptTerms = true;
+        $nameServers = ['ns1.madeit.be', 'ns2.madeit.be'];
+        $glueRecords = [];
+        $registrant = $contact;
+        $admin = $contact;
+        $tech = $contact;
+        $billing = $contact;
+        $trademark = null;
+        $extension = null;
+        $sunriseData = null;
+        $commandOptions = null;
+        $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
+        
+        $this->assertEquals([
+            'DomainName' => 'maideit.co.uk',
+            'LaunchPhase' => "GA",
+            'Period' => 1,
+            'ApplyLock' => false,
+            'AutoRenew' => true,
+            'AutoRenewDays' => 7,
+            'AcceptTerms' => true,
+            'ApplyPrivacy' => false,
+            'Contacts' => [
+                'Registrant' => [
+                    'Name' => 'Tjebbe Lievens',
+                    'Organisation' => 'Made I.T.',
+                    'Street1' => 'Somewhere in belgium',
+                    'Street2' => "",
+                    'Street3' => "",
+                    'City' => 'Geel',
+                    'State' => 'Antwerp',
+                    'Postcode' => '2440',
+                    'CountryCode' => 'BE',
+                    'Telephone' => '+32.123456789',
+                    'TelephoneExtension' => "",
+                    'Fax' => "",
+                    'Email' => 'info@madeit.be',
+                    'AdditionalData' => ['UKAdditionalData' => ''],
+                ],
+                'Admin' => [
+                    'Name' => 'Tjebbe Lievens',
+                    'Organisation' => 'Made I.T.',
+                    'Street1' => 'Somewhere in belgium',
+                    'Street2' => "",
+                    'Street3' => "",
+                    'City' => 'Geel',
+                    'State' => 'Antwerp',
+                    'Postcode' => '2440',
+                    'CountryCode' => 'BE',
+                    'Telephone' => '+32.123456789',
+                    'TelephoneExtension' => "",
+                    'Fax' => "",
+                    'Email' => 'info@madeit.be'
+                ],
+                'Billing' => [
+                    'Name' => 'Tjebbe Lievens',
+                    'Organisation' => 'Made I.T.',
+                    'Street1' => 'Somewhere in belgium',
+                    'Street2' => "",
+                    'Street3' => "",
+                    'City' => 'Geel',
+                    'State' => 'Antwerp',
+                    'Postcode' => '2440',
+                    'CountryCode' => 'BE',
+                    'Telephone' => '+32.123456789',
+                    'TelephoneExtension' => "",
+                    'Fax' => "",
+                    'Email' => 'info@madeit.be'
+                ],
+                'Tech' => [
+                    'Name' => 'Tjebbe Lievens',
+                    'Organisation' => 'Made I.T.',
+                    'Street1' => 'Somewhere in belgium',
+                    'Street2' => "",
+                    'Street3' => "",
+                    'City' => 'Geel',
+                    'State' => 'Antwerp',
+                    'Postcode' => '2440',
+                    'CountryCode' => 'BE',
+                    'Telephone' => '+32.123456789',
+                    'TelephoneExtension' => "",
+                    'Fax' => "",
+                    'Email' => 'info@madeit.be'
+                ],
+            ],
+            'Extension' => ['UKDirectData' => ['RelatedDomainId' => 0]],
+            'Nameservers' => [
+                'NS1' => 'ns1.madeit.be',
+                'NS2' => 'ns2.madeit.be',
+                'NS3' => '',
+                'NS4' => '',
+                'NS5' => '',
+                'NS6' => '', 
+                'NS7' => '',
+                'NS8' => '',
+                'NS9' => '',
+                'NS10' => '',
+                'NS11' => '',
+                'NS12' => '',
+                'NS13' => '',
+                'GlueRecords' =>[]
+            ]
+        ], $registerDomain->generateDomainboxCommand());
+        
+        
+        
+        
+        
+        $contact = new Contact("Tjebbe Lievens", "Made I.T.", "Somewhere in belgium", null, null, "Geel", "Antwerp", "2440", "BE", "+32.123456789", null, null, "info@madeit.be");
+        
+        $registerDomain = new Domain();
+        $domainName = "maideit.be";
+        $launchPhase = "GA";
+        $period = 1;
+        $applyLock = false;
+        $autoRenew = true;
+        $autoRenewDays = 7;
+        $applyPrivacy = false;
+        $acceptTerms = true;
+        $nameServers = ['ns1.madeit.be', 'ns2.madeit.be'];
+        $glueRecords = [];
+        $registrant = $contact;
+        $admin = $contact;
+        $tech = $contact;
+        $billing = $contact;
+        $trademark = null;
+        $extension = null;
+        $sunriseData = null;
+        $commandOptions = null;
+        $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
+        
+        $this->assertEquals([
+            'DomainName' => 'maideit.be',
+            'LaunchPhase' => "GA",
+            'Period' => 1,
+            'ApplyLock' => false,
+            'AutoRenew' => true,
+            'AutoRenewDays' => 7,
+            'AcceptTerms' => true,
+            'ApplyPrivacy' => false,
+            'Contacts' => [
+                'Registrant' => [
+                    'Name' => 'Tjebbe Lievens',
+                    'Organisation' => 'Made I.T.',
+                    'Street1' => 'Somewhere in belgium',
+                    'Street2' => "",
+                    'Street3' => "",
+                    'City' => 'Geel',
+                    'State' => 'Antwerp',
+                    'Postcode' => '2440',
+                    'CountryCode' => 'BE',
+                    'Telephone' => '+32.123456789',
+                    'TelephoneExtension' => "",
+                    'Fax' => "",
+                    'Email' => 'info@madeit.be',
+                ],
+                'Admin' => [
+                    'Name' => 'Tjebbe Lievens',
+                    'Organisation' => 'Made I.T.',
+                    'Street1' => 'Somewhere in belgium',
+                    'Street2' => "",
+                    'Street3' => "",
+                    'City' => 'Geel',
+                    'State' => 'Antwerp',
+                    'Postcode' => '2440',
+                    'CountryCode' => 'BE',
+                    'Telephone' => '+32.123456789',
+                    'TelephoneExtension' => "",
+                    'Fax' => "",
+                    'Email' => 'info@madeit.be'
+                ],
+                'Billing' => [
+                    'Name' => 'Tjebbe Lievens',
+                    'Organisation' => 'Made I.T.',
+                    'Street1' => 'Somewhere in belgium',
+                    'Street2' => "",
+                    'Street3' => "",
+                    'City' => 'Geel',
+                    'State' => 'Antwerp',
+                    'Postcode' => '2440',
+                    'CountryCode' => 'BE',
+                    'Telephone' => '+32.123456789',
+                    'TelephoneExtension' => "",
+                    'Fax' => "",
+                    'Email' => 'info@madeit.be'
+                ],
+                'Tech' => [
+                    'Name' => 'Tjebbe Lievens',
+                    'Organisation' => 'Made I.T.',
+                    'Street1' => 'Somewhere in belgium',
+                    'Street2' => "",
+                    'Street3' => "",
+                    'City' => 'Geel',
+                    'State' => 'Antwerp',
+                    'Postcode' => '2440',
+                    'CountryCode' => 'BE',
+                    'Telephone' => '+32.123456789',
+                    'TelephoneExtension' => "",
+                    'Fax' => "",
+                    'Email' => 'info@madeit.be'
+                ],
+            ],
+            //'Extension' => null,
+            'Nameservers' => [
+                'NS1' => 'ns1.madeit.be',
+                'NS2' => 'ns2.madeit.be',
+                'NS3' => '',
+                'NS4' => '',
+                'NS5' => '',
+                'NS6' => '', 
+                'NS7' => '',
+                'NS8' => '',
+                'NS9' => '',
+                'GlueRecords' => []
+            ]
+        ], $registerDomain->generateDomainboxCommand());
+    
     }
 }

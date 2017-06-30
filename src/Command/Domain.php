@@ -2,7 +2,7 @@
 
 namespace MadeITBelgium\Domainbox\Command;
 
-use MadeITBelgium\Domainbox\Response\DomainAvailable;
+use MadeITBelgium\Domainbox\Object\Domain as ObjectDomain;
 
 /**
  * Domainbox API.
@@ -47,7 +47,9 @@ class Domain
             ],
         ]);
 
-        return new DomainAvailable('CheckDomainAvailability', $response);
+        $domain = new ObjectDomain;
+        $domain->loadData('CheckDomainAvailability', $response);
+        return $domain;
     }
 
     /**
@@ -81,10 +83,28 @@ class Domain
         ]);
 
         $list = [];
-        foreach ($response['d']['DomainCheck']['Domains'] as $domain) {
-            $list[] = new DomainAvailable('CheckDomainAvailabilityPlus', $domain);
+        foreach ($response['d']['DomainCheck']['Domains'] as $data) {
+            $domain = new ObjectDomain;
+            $domain->loadData('CheckDomainAvailabilityPlus', $data);
+            $list[] = $domain;
         }
 
         return $list;
+    }
+    
+    /**
+     * Register domainname.
+     *
+     * @param $domainname  The domainname the check
+     * @param $launchPhase
+     * @param $period
+     */
+    public function registerDomain($domain)
+    {
+        $response = $this->domainbox->call('RegisterDomain', $domain->generateDomainboxCommand());
+
+        $domain = new ObjectDomain;
+        $domain->loadData('RegisterDomain', $response);
+        return $domain;
     }
 }
