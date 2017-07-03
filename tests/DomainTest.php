@@ -2882,7 +2882,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     public function testRegisterGenerateDomainboxCommand_GG()
     {
         $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
@@ -2997,7 +2997,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     public function testRegisterGenerateDomainboxCommand_CH()
     {
         $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
@@ -3227,7 +3227,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     public function testRegisterGenerateDomainboxCommand_CO_NZ()
     {
         $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
@@ -3339,7 +3339,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     public function testRegisterGenerateDomainboxCommand_SX()
     {
         $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
@@ -3451,7 +3451,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     public function testRegisterGenerateDomainboxCommand_PRO()
     {
         $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
@@ -3566,7 +3566,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     public function testRegisterGenerateDomainboxCommand_CAT()
     {
         $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
@@ -3682,7 +3682,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     public function testRegisterGenerateDomainboxCommand_ACADEMY()
     {
         $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
@@ -3798,7 +3798,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     public function testRegisterGenerateDomainboxCommand_AUDIO()
     {
         $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
@@ -3914,7 +3914,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     public function testRegisterGenerateDomainboxCommand_ACTOR()
     {
         $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
@@ -4030,7 +4030,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     public function testRegisterGenerateDomainboxCommand_ARCHI()
     {
         $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
@@ -4145,7 +4145,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     public function testRegisterGenerateDomainboxCommand_SCOT()
     {
         $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
@@ -4261,7 +4261,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
-    
+
     /*
     //register
     public function testRegisterGenerateDomainboxCommand_()
