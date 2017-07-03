@@ -672,10 +672,12 @@ class Domain
             $command['AcceptTerms'] = true;
             unset($command['Nameservers']['NS11']);
             unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
         }
         if (in_array($tld, ['.sx'])) {
             unset($command['Nameservers']['NS11']);
             unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
         }
         if (in_array($tld, ['.pro'])) {
             $command['ApplyPrivacy'] = false;
@@ -687,7 +689,7 @@ class Domain
             $command['Extension']['DonutsPriceCategoryData']['PriceCategory'] = '';
         }
         if (in_array($tld, ['.audio', '.blackfriday', '.christmas', '.click', '.diet', '.gift', '.guitars', '.help', '.hiphop', '.hosting', '.juegos', '.link', '.photo', '.pics', '.property', '.sexy', '.tattoo'])) {
-            $command['Extension']['ChallengeParameters']['Challenges'] = $extension;
+            $command['Extension']['ChallengeParameters']['Challenges'] = $tld;
         }
         if (in_array($tld, ['.actor', '.dance', '.democrat', '.futbol', '.immobilien', '.kaufen', '.pub', '.moda', '.ninja', '.reviews', '.social'])) {
             $command['Extension']['PremiumPriceCategory']['PriceCategory'] = 'Category16';

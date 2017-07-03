@@ -2882,7 +2882,1386 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ], $registerDomain->generateDomainboxCommand());
     }
+    
+    public function testRegisterGenerateDomainboxCommand_GG()
+    {
+        $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
 
+        $registerDomain = new Domain();
+        $domainName = 'maideit.gg';
+        $launchPhase = 'GA';
+        $period = 3;
+        $applyLock = false;
+        $autoRenew = true;
+        $autoRenewDays = 7;
+        $applyPrivacy = false;
+        $acceptTerms = true;
+        $nameServers = ['ns1.madeit.be', 'ns2.madeit.be'];
+        $glueRecords = [];
+        $registrant = $contact;
+        $admin = $contact;
+        $tech = $contact;
+        $billing = $contact;
+        $trademark = null;
+        $extension = null;
+        $sunriseData = null;
+        $commandOptions = null;
+        $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
+
+        $this->assertEquals([
+            'DomainName'    => 'maideit.gg',
+            'LaunchPhase'   => 'GA',
+            'Period'        => 1,
+            'ApplyLock'     => false,
+            'AutoRenew'     => true,
+            'AutoRenewDays' => 7,
+            'AcceptTerms'   => true,
+            'ApplyPrivacy'  => false,
+            'Contacts'      => [
+                'Registrant' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Admin' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Billing' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Tech' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+            ],
+            'Nameservers' => [
+                'NS1'         => 'ns1.madeit.be',
+                'NS2'         => 'ns2.madeit.be',
+                'NS3'         => '',
+                'NS4'         => '',
+                'NS5'         => '',
+                'NS6'         => '',
+                'NS7'         => '',
+                'NS8'         => '',
+                'NS9'         => '',
+                'NS10'        => '',
+                'NS11'        => '',
+                'NS12'        => '',
+                'NS13'        => '',
+                'GlueRecords' => [],
+            ],
+        ], $registerDomain->generateDomainboxCommand());
+    }
+    
+    public function testRegisterGenerateDomainboxCommand_CH()
+    {
+        $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
+
+        $registerDomain = new Domain();
+        $domainName = 'maideit.ch';
+        $launchPhase = 'GA';
+        $period = 2;
+        $applyLock = true;
+        $autoRenew = true;
+        $autoRenewDays = 7;
+        $applyPrivacy = false;
+        $acceptTerms = true;
+        $nameServers = ['ns1.madeit.be', 'ns2.madeit.be'];
+        $glueRecords = [];
+        $registrant = $contact;
+        $admin = $contact;
+        $tech = $contact;
+        $billing = $contact;
+        $trademark = null;
+        $extension = null;
+        $sunriseData = null;
+        $commandOptions = null;
+        $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
+
+        $this->assertEquals([
+            'DomainName'    => 'maideit.ch',
+            'LaunchPhase'   => 'GA',
+            'Period'        => 1,
+            'ApplyLock'     => false,
+            'AutoRenew'     => true,
+            'AutoRenewDays' => 7,
+            'AcceptTerms'   => true,
+            'ApplyPrivacy'  => false,
+            'Contacts'      => [
+                'Registrant' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Admin' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Billing' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Tech' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+            ],
+            'Nameservers' => [
+                'NS1'         => 'ns1.madeit.be',
+                'NS2'         => 'ns2.madeit.be',
+                'NS3'         => '',
+                'NS4'         => '',
+                'NS5'         => '',
+                'NS6'         => '',
+                'NS7'         => '',
+                'NS8'         => '',
+                'NS9'         => '',
+                'NS10'        => '',
+                'NS11'        => '',
+                'NS12'        => '',
+                'NS13'        => '',
+                'GlueRecords' => [],
+            ],
+        ], $registerDomain->generateDomainboxCommand());
+    }
+
+    public function testRegisterGenerateDomainboxCommand_DM()
+    {
+        $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
+
+        $registerDomain = new Domain();
+        $domainName = 'maideit.dm';
+        $launchPhase = 'GA';
+        $period = 1;
+        $applyLock = false;
+        $autoRenew = true;
+        $autoRenewDays = 7;
+        $applyPrivacy = true;
+        $acceptTerms = true;
+        $nameServers = ['ns1.madeit.be', 'ns2.madeit.be'];
+        $glueRecords = [];
+        $registrant = $contact;
+        $admin = $contact;
+        $tech = $contact;
+        $billing = $contact;
+        $trademark = null;
+        $extension = null;
+        $sunriseData = null;
+        $commandOptions = null;
+        $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
+
+        $this->assertEquals([
+            'DomainName'    => 'maideit.dm',
+            'LaunchPhase'   => 'GA',
+            'Period'        => 1,
+            'ApplyLock'     => false,
+            'AutoRenew'     => true,
+            'AutoRenewDays' => 7,
+            'AcceptTerms'   => true,
+            'ApplyPrivacy'  => false,
+            'Contacts'      => [
+                'Registrant' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Admin' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Billing' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Tech' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+            ],
+            'Nameservers' => [
+                'NS1'         => 'ns1.madeit.be',
+                'NS2'         => 'ns2.madeit.be',
+                'NS3'         => '',
+                'NS4'         => '',
+                'NS5'         => '',
+                'NS6'         => '',
+                'NS7'         => '',
+                'NS8'         => '',
+                'NS9'         => '',
+                'NS10'        => '',
+                'NS11'        => '',
+                'NS12'        => '',
+                'NS13'        => '',
+                'GlueRecords' => [],
+            ],
+        ], $registerDomain->generateDomainboxCommand());
+    }
+    
+    public function testRegisterGenerateDomainboxCommand_CO_NZ()
+    {
+        $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
+
+        $registerDomain = new Domain();
+        $domainName = 'maideit.co.nz';
+        $launchPhase = 'GA';
+        $period = 2;
+        $applyLock = true;
+        $autoRenew = true;
+        $autoRenewDays = 7;
+        $applyPrivacy = true;
+        $acceptTerms = true;
+        $nameServers = ['ns1.madeit.be', 'ns2.madeit.be'];
+        $glueRecords = [];
+        $registrant = $contact;
+        $admin = $contact;
+        $tech = $contact;
+        $billing = $contact;
+        $trademark = null;
+        $extension = null;
+        $sunriseData = null;
+        $commandOptions = null;
+        $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
+
+        $this->assertEquals([
+            'DomainName'    => 'maideit.co.nz',
+            'LaunchPhase'   => 'GA',
+            'Period'        => 1,
+            'ApplyLock'     => false,
+            'AutoRenew'     => true,
+            'AutoRenewDays' => 7,
+            'AcceptTerms'   => true,
+            'ApplyPrivacy'  => false,
+            'Contacts'      => [
+                'Registrant' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Admin' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Billing' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Tech' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+            ],
+            'Nameservers' => [
+                'NS1'         => 'ns1.madeit.be',
+                'NS2'         => 'ns2.madeit.be',
+                'NS3'         => '',
+                'NS4'         => '',
+                'NS5'         => '',
+                'NS6'         => '',
+                'NS7'         => '',
+                'NS8'         => '',
+                'NS9'         => '',
+                'NS10'        => '',
+                'GlueRecords' => [],
+            ],
+        ], $registerDomain->generateDomainboxCommand());
+    }
+    
+    public function testRegisterGenerateDomainboxCommand_SX()
+    {
+        $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
+
+        $registerDomain = new Domain();
+        $domainName = 'maideit.sx';
+        $launchPhase = 'GA';
+        $period = 1;
+        $applyLock = false;
+        $autoRenew = true;
+        $autoRenewDays = 7;
+        $applyPrivacy = false;
+        $acceptTerms = true;
+        $nameServers = ['ns1.madeit.be', 'ns2.madeit.be'];
+        $glueRecords = [];
+        $registrant = $contact;
+        $admin = $contact;
+        $tech = $contact;
+        $billing = $contact;
+        $trademark = null;
+        $extension = null;
+        $sunriseData = null;
+        $commandOptions = null;
+        $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
+
+        $this->assertEquals([
+            'DomainName'    => 'maideit.sx',
+            'LaunchPhase'   => 'GA',
+            'Period'        => 1,
+            'ApplyLock'     => false,
+            'AutoRenew'     => true,
+            'AutoRenewDays' => 7,
+            'AcceptTerms'   => true,
+            'ApplyPrivacy'  => false,
+            'Contacts'      => [
+                'Registrant' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Admin' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Billing' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Tech' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+            ],
+            'Nameservers' => [
+                'NS1'         => 'ns1.madeit.be',
+                'NS2'         => 'ns2.madeit.be',
+                'NS3'         => '',
+                'NS4'         => '',
+                'NS5'         => '',
+                'NS6'         => '',
+                'NS7'         => '',
+                'NS8'         => '',
+                'NS9'         => '',
+                'NS10'        => '',
+                'GlueRecords' => [],
+            ],
+        ], $registerDomain->generateDomainboxCommand());
+    }
+    
+    public function testRegisterGenerateDomainboxCommand_PRO()
+    {
+        $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
+
+        $registerDomain = new Domain();
+        $domainName = 'maideit.pro';
+        $launchPhase = 'GA';
+        $period = 1;
+        $applyLock = false;
+        $autoRenew = true;
+        $autoRenewDays = 7;
+        $applyPrivacy = true;
+        $acceptTerms = true;
+        $nameServers = ['ns1.madeit.be', 'ns2.madeit.be'];
+        $glueRecords = [];
+        $registrant = $contact;
+        $admin = $contact;
+        $tech = $contact;
+        $billing = $contact;
+        $trademark = null;
+        $extension = null;
+        $sunriseData = null;
+        $commandOptions = null;
+        $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
+
+        $this->assertEquals([
+            'DomainName'    => 'maideit.pro',
+            'LaunchPhase'   => 'GA',
+            'Period'        => 1,
+            'ApplyLock'     => false,
+            'AutoRenew'     => true,
+            'AutoRenewDays' => 7,
+            'AcceptTerms'   => true,
+            'ApplyPrivacy'  => false,
+            'Contacts'      => [
+                'Registrant' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Admin' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Billing' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Tech' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+            ],
+            'Nameservers' => [
+                'NS1'         => 'ns1.madeit.be',
+                'NS2'         => 'ns2.madeit.be',
+                'NS3'         => '',
+                'NS4'         => '',
+                'NS5'         => '',
+                'NS6'         => '',
+                'NS7'         => '',
+                'NS8'         => '',
+                'NS9'         => '',
+                'NS10'        => '',
+                'NS11'        => '',
+                'NS12'        => '',
+                'NS13'        => '',
+                'GlueRecords' => [],
+            ],
+        ], $registerDomain->generateDomainboxCommand());
+    }
+    
+    public function testRegisterGenerateDomainboxCommand_CAT()
+    {
+        $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
+
+        $registerDomain = new Domain();
+        $domainName = 'maideit.cat';
+        $launchPhase = 'GA';
+        $period = 1;
+        $applyLock = false;
+        $autoRenew = true;
+        $autoRenewDays = 7;
+        $applyPrivacy = false;
+        $acceptTerms = true;
+        $nameServers = ['ns1.madeit.be', 'ns2.madeit.be'];
+        $glueRecords = [];
+        $registrant = $contact;
+        $admin = $contact;
+        $tech = $contact;
+        $billing = $contact;
+        $trademark = null;
+        $extension = null;
+        $sunriseData = null;
+        $commandOptions = null;
+        $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
+
+        $this->assertEquals([
+            'DomainName'    => 'maideit.cat',
+            'LaunchPhase'   => 'GA',
+            'Period'        => 1,
+            'ApplyLock'     => false,
+            'AutoRenew'     => true,
+            'AutoRenewDays' => 7,
+            'AcceptTerms'   => true,
+            'ApplyPrivacy'  => false,
+            'Contacts'      => [
+                'Registrant' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Admin' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Billing' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Tech' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+            ],
+            'Extension'   => ['CatParameterData' => ['Maintainer' => '', 'AuthId' => '', 'AuthKey' => '', 'IntendedUse' => '']],
+            'Nameservers' => [
+                'NS1'         => 'ns1.madeit.be',
+                'NS2'         => 'ns2.madeit.be',
+                'NS3'         => '',
+                'NS4'         => '',
+                'NS5'         => '',
+                'NS6'         => '',
+                'NS7'         => '',
+                'NS8'         => '',
+                'NS9'         => '',
+                'NS10'        => '',
+                'NS11'        => '',
+                'NS12'        => '',
+                'NS13'        => '',
+                'GlueRecords' => [],
+            ],
+        ], $registerDomain->generateDomainboxCommand());
+    }
+    
+    public function testRegisterGenerateDomainboxCommand_ACADEMY()
+    {
+        $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
+
+        $registerDomain = new Domain();
+        $domainName = 'maideit.academy';
+        $launchPhase = 'GA';
+        $period = 1;
+        $applyLock = false;
+        $autoRenew = true;
+        $autoRenewDays = 7;
+        $applyPrivacy = false;
+        $acceptTerms = true;
+        $nameServers = ['ns1.madeit.be', 'ns2.madeit.be'];
+        $glueRecords = [];
+        $registrant = $contact;
+        $admin = $contact;
+        $tech = $contact;
+        $billing = $contact;
+        $trademark = null;
+        $extension = null;
+        $sunriseData = null;
+        $commandOptions = null;
+        $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
+
+        $this->assertEquals([
+            'DomainName'    => 'maideit.academy',
+            'LaunchPhase'   => 'GA',
+            'Period'        => 1,
+            'ApplyLock'     => false,
+            'AutoRenew'     => true,
+            'AutoRenewDays' => 7,
+            'AcceptTerms'   => true,
+            'ApplyPrivacy'  => false,
+            'Contacts'      => [
+                'Registrant' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Admin' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Billing' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Tech' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+            ],
+            'Extension'   => ['DonutsPriceCategoryData' => ['PriceCategory' => '']],
+            'Nameservers' => [
+                'NS1'         => 'ns1.madeit.be',
+                'NS2'         => 'ns2.madeit.be',
+                'NS3'         => '',
+                'NS4'         => '',
+                'NS5'         => '',
+                'NS6'         => '',
+                'NS7'         => '',
+                'NS8'         => '',
+                'NS9'         => '',
+                'NS10'        => '',
+                'NS11'        => '',
+                'NS12'        => '',
+                'NS13'        => '',
+                'GlueRecords' => [],
+            ],
+        ], $registerDomain->generateDomainboxCommand());
+    }
+    
+    public function testRegisterGenerateDomainboxCommand_AUDIO()
+    {
+        $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
+
+        $registerDomain = new Domain();
+        $domainName = 'maideit.audio';
+        $launchPhase = 'GA';
+        $period = 1;
+        $applyLock = false;
+        $autoRenew = true;
+        $autoRenewDays = 7;
+        $applyPrivacy = false;
+        $acceptTerms = true;
+        $nameServers = ['ns1.madeit.be', 'ns2.madeit.be'];
+        $glueRecords = [];
+        $registrant = $contact;
+        $admin = $contact;
+        $tech = $contact;
+        $billing = $contact;
+        $trademark = null;
+        $extension = null;
+        $sunriseData = null;
+        $commandOptions = null;
+        $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
+
+        $this->assertEquals([
+            'DomainName'    => 'maideit.audio',
+            'LaunchPhase'   => 'GA',
+            'Period'        => 1,
+            'ApplyLock'     => false,
+            'AutoRenew'     => true,
+            'AutoRenewDays' => 7,
+            'AcceptTerms'   => true,
+            'ApplyPrivacy'  => false,
+            'Contacts'      => [
+                'Registrant' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Admin' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Billing' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Tech' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+            ],
+            'Extension'   => ['ChallengeParameters' => ['Challenges' => '.audio']],
+            'Nameservers' => [
+                'NS1'         => 'ns1.madeit.be',
+                'NS2'         => 'ns2.madeit.be',
+                'NS3'         => '',
+                'NS4'         => '',
+                'NS5'         => '',
+                'NS6'         => '',
+                'NS7'         => '',
+                'NS8'         => '',
+                'NS9'         => '',
+                'NS10'        => '',
+                'NS11'        => '',
+                'NS12'        => '',
+                'NS13'        => '',
+                'GlueRecords' => [],
+            ],
+        ], $registerDomain->generateDomainboxCommand());
+    }
+    
+    public function testRegisterGenerateDomainboxCommand_ACTOR()
+    {
+        $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
+
+        $registerDomain = new Domain();
+        $domainName = 'maideit.actor';
+        $launchPhase = 'GA';
+        $period = 1;
+        $applyLock = false;
+        $autoRenew = true;
+        $autoRenewDays = 7;
+        $applyPrivacy = false;
+        $acceptTerms = true;
+        $nameServers = ['ns1.madeit.be', 'ns2.madeit.be'];
+        $glueRecords = [];
+        $registrant = $contact;
+        $admin = $contact;
+        $tech = $contact;
+        $billing = $contact;
+        $trademark = null;
+        $extension = null;
+        $sunriseData = null;
+        $commandOptions = null;
+        $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
+
+        $this->assertEquals([
+            'DomainName'    => 'maideit.actor',
+            'LaunchPhase'   => 'GA',
+            'Period'        => 1,
+            'ApplyLock'     => false,
+            'AutoRenew'     => true,
+            'AutoRenewDays' => 7,
+            'AcceptTerms'   => true,
+            'ApplyPrivacy'  => false,
+            'Contacts'      => [
+                'Registrant' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Admin' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Billing' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Tech' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+            ],
+            'Extension'   => ['PremiumPriceCategory' => ['PriceCategory' => 'Category16']],
+            'Nameservers' => [
+                'NS1'         => 'ns1.madeit.be',
+                'NS2'         => 'ns2.madeit.be',
+                'NS3'         => '',
+                'NS4'         => '',
+                'NS5'         => '',
+                'NS6'         => '',
+                'NS7'         => '',
+                'NS8'         => '',
+                'NS9'         => '',
+                'NS10'        => '',
+                'NS11'        => '',
+                'NS12'        => '',
+                'NS13'        => '',
+                'GlueRecords' => [],
+            ],
+        ], $registerDomain->generateDomainboxCommand());
+    }
+    
+    public function testRegisterGenerateDomainboxCommand_ARCHI()
+    {
+        $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
+
+        $registerDomain = new Domain();
+        $domainName = 'maideit.archi';
+        $launchPhase = 'GA';
+        $period = 1;
+        $applyLock = false;
+        $autoRenew = true;
+        $autoRenewDays = 7;
+        $applyPrivacy = true;
+        $acceptTerms = true;
+        $nameServers = ['ns1.madeit.be', 'ns2.madeit.be'];
+        $glueRecords = [];
+        $registrant = $contact;
+        $admin = $contact;
+        $tech = $contact;
+        $billing = $contact;
+        $trademark = null;
+        $extension = null;
+        $sunriseData = null;
+        $commandOptions = null;
+        $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
+
+        $this->assertEquals([
+            'DomainName'    => 'maideit.archi',
+            'LaunchPhase'   => 'GA',
+            'Period'        => 1,
+            'ApplyLock'     => false,
+            'AutoRenew'     => true,
+            'AutoRenewDays' => 7,
+            'AcceptTerms'   => true,
+            'ApplyPrivacy'  => false,
+            'Contacts'      => [
+                'Registrant' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Admin' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Billing' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Tech' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+            ],
+            'Nameservers' => [
+                'NS1'         => 'ns1.madeit.be',
+                'NS2'         => 'ns2.madeit.be',
+                'NS3'         => '',
+                'NS4'         => '',
+                'NS5'         => '',
+                'NS6'         => '',
+                'NS7'         => '',
+                'NS8'         => '',
+                'NS9'         => '',
+                'NS10'        => '',
+                'NS11'        => '',
+                'NS12'        => '',
+                'NS13'        => '',
+                'GlueRecords' => [],
+            ],
+        ], $registerDomain->generateDomainboxCommand());
+    }
+    
+    public function testRegisterGenerateDomainboxCommand_SCOT()
+    {
+        $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
+
+        $registerDomain = new Domain();
+        $domainName = 'maideit.scot';
+        $launchPhase = 'GA';
+        $period = 1;
+        $applyLock = false;
+        $autoRenew = true;
+        $autoRenewDays = 7;
+        $applyPrivacy = false;
+        $acceptTerms = true;
+        $nameServers = ['ns1.madeit.be', 'ns2.madeit.be'];
+        $glueRecords = [];
+        $registrant = $contact;
+        $admin = $contact;
+        $tech = $contact;
+        $billing = $contact;
+        $trademark = null;
+        $extension = null;
+        $sunriseData = null;
+        $commandOptions = null;
+        $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
+
+        $this->assertEquals([
+            'DomainName'    => 'maideit.scot',
+            'LaunchPhase'   => 'GA',
+            'Period'        => 1,
+            'ApplyLock'     => false,
+            'AutoRenew'     => true,
+            'AutoRenewDays' => 7,
+            'AcceptTerms'   => true,
+            'ApplyPrivacy'  => false,
+            'Contacts'      => [
+                'Registrant' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Admin' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Billing' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+                'Tech' => [
+                    'Name'               => 'Tjebbe Lievens',
+                    'Organisation'       => 'Made I.T.',
+                    'Street1'            => 'Somewhere in belgium',
+                    'Street2'            => '',
+                    'Street3'            => '',
+                    'City'               => 'Geel',
+                    'State'              => 'Antwerp',
+                    'Postcode'           => '2440',
+                    'CountryCode'        => 'BE',
+                    'Telephone'          => '+32.123456789',
+                    'TelephoneExtension' => '',
+                    'Fax'                => '',
+                    'Email'              => 'info@madeit.be',
+                ],
+            ],
+            'Extension'   => ['IntendedUseParams' => ['IntendedUse' => '', 'ReferenceUrl' => '', 'TrademarkId' => '', 'TrademarkIssuer' => '']],
+            'Nameservers' => [
+                'NS1'         => 'ns1.madeit.be',
+                'NS2'         => 'ns2.madeit.be',
+                'NS3'         => '',
+                'NS4'         => '',
+                'NS5'         => '',
+                'NS6'         => '',
+                'NS7'         => '',
+                'NS8'         => '',
+                'NS9'         => '',
+                'NS10'        => '',
+                'NS11'        => '',
+                'NS12'        => '',
+                'NS13'        => '',
+                'GlueRecords' => [],
+            ],
+        ], $registerDomain->generateDomainboxCommand());
+    }
+    
     /*
     //register
     public function testRegisterGenerateDomainboxCommand_()
