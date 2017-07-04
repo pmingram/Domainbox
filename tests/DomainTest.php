@@ -4310,7 +4310,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(12190, $response->getTechContactId());
         $this->assertEquals(12187, $response->getBillingContactId());
     }
-    
+
     public function testRenewCommand()
     {
         $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
@@ -4335,7 +4335,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $registerDomain->setExpiryDate("2018-01-01");
+        $registerDomain->setExpiryDate('2018-01-01');
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
         // Create a mock and queue two responses.
@@ -4352,9 +4352,9 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $domain = $domainbox->domain();
         $response = $domain->renewDomain($registerDomain, 1);
 
-        $this->assertEquals("2019-01-01", $response->getExpiryDate());
+        $this->assertEquals('2019-01-01', $response->getExpiryDate());
     }
-    
+
     public function providerDeleteDomainTrue()
     {
         return [
@@ -4376,23 +4376,21 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             ],
         ];
     }
-    
-    
+
     /**
-    * This is kind of a smoke test
-    *
-    * @dataProvider providerDeleteDomainTrue
-    **/
-    public function testDeleteCommand($domainname, $createdDate) {
+     * This is kind of a smoke test.
+     *
+     * @dataProvider providerDeleteDomainTrue
+     **/
+    public function testDeleteCommand($domainname, $createdDate)
+    {
         $registerDomain = new Domain();
         $registerDomain->create($domainname);
         $registerDomain->setCreatedDate($createdDate);
-        
-        $this->assertEquals(true, $registerDomain->canDeleteDomain());
 
+        $this->assertEquals(true, $registerDomain->canDeleteDomain());
     }
-    
-    
+
     public function providerDeleteDomainFalse()
     {
         return [
@@ -4419,31 +4417,29 @@ class DomainTest extends \PHPUnit_Framework_TestCase
             [
                 'domain.com',
                 date('Y-m-d'),
-            ]
+            ],
         ];
     }
-    
-    
+
     /**
-    * This is kind of a smoke test
-    *
-    * @dataProvider providerDeleteDomainFalse
-    **/
-    public function testNotDeleteCommand($domainname, $createdDate) {
+     * This is kind of a smoke test.
+     *
+     * @dataProvider providerDeleteDomainFalse
+     **/
+    public function testNotDeleteCommand($domainname, $createdDate)
+    {
         $registerDomain = new Domain();
         $registerDomain->create($domainname);
         $registerDomain->setCreatedDate($createdDate);
-        
-        $this->assertEquals(false, $registerDomain->canDeleteDomain());
 
+        $this->assertEquals(false, $registerDomain->canDeleteDomain());
     }
-    
-    
+
     public function testDeleteOk()
     {
         $registerDomain = new Domain();
         $domainName = 'maideit.be';
-        
+
         $registerDomain->create($domainName);
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
@@ -4474,8 +4470,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $response = $domain->deleteDomain($registerDomain);
         $this->assertEquals(true, $response);
     }
-    
-    
+
     /**
      * @expectedException Exception
      */
@@ -4483,7 +4478,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
     {
         $registerDomain = new Domain();
         $domainName = 'maideit.be';
-        
+
         $registerDomain->create($domainName);
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
