@@ -16,7 +16,7 @@ class TLD
     private $tld;
     private $idnTLD;
     private $dnsName;
-    
+
     private $periods;
     private $fee_registry;
     private $fee_renew;
@@ -30,10 +30,10 @@ class TLD
     private $fee_backorder;
     private $numberOfCategories;
     private $categories;
-    
+
     private $type; //gTLD, ccTLD, pTLD
     private $launchPhase; //SR, LR, EAP, GA
-    
+
     private $applyLock;
     private $autoRenew;
     private $autoRenewDays;
@@ -43,12 +43,12 @@ class TLD
     private $numberOfNameServers;
 
     private $extension;
-    
+
     private $launchDate;
     private $dnssec;
     private $ipv6;
     private $ipv4;
-    
+
     private $canCHangeContact;
     private $canChangeContactOrganisation;
     private $canChangeContactName;
@@ -58,31 +58,31 @@ class TLD
     private $canChangeContactEntityType;
     private $canChangeContactNationality;
     private $canChangeContactRegCode;
-    
 
     public function __construct()
     {
-        
     }
-    
-    public static function getAllTLDs($type = 'object') {
+
+    public static function getAllTLDs($type = 'object')
+    {
         $tlds = [];
-        $phpFiles = scandir( __DIR__ );
-        foreach($phpFiles as $fileName) {
-            if(!in_array($fileName, ['.', '..', 'TLD.php'])) {
-                $class = "MadeITBelgium\\Domainbox\\TLDs\\" . substr($fileName, 0, strpos($fileName, "."));
-                if($type == "object") {
+        $phpFiles = scandir(__DIR__);
+        foreach ($phpFiles as $fileName) {
+            if (!in_array($fileName, ['.', '..', 'TLD.php'])) {
+                $class = 'MadeITBelgium\\Domainbox\\TLDs\\'.substr($fileName, 0, strpos($fileName, '.'));
+                if ($type == 'object') {
                     $tlds[] = (new $class());
-                }
-                else if($type == "array") {
+                } elseif ($type == 'array') {
                     $tlds[] = (new $class())->getTld();
                 }
             }
         }
+
         return $tlds;
     }
-    
-    public function getTld() {
+
+    public function getTld()
+    {
         return $this->tld;
     }
 }

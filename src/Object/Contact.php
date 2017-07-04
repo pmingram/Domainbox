@@ -45,14 +45,16 @@ class Contact
         $this->setEmail($email);
         $this->setContactId($contactId);
     }
-    
-    public function loadData($command, $response) {
-        if($command == "QueryContact") {
+
+    public function loadData($command, $response)
+    {
+        if ($command == 'QueryContact') {
             $this->loadDataQueryContact($response);
         }
     }
-    
-    private function loadDataQueryContact($response) {
+
+    private function loadDataQueryContact($response)
+    {
         $this->setName($response['d']['Contact']['Name']);
         $this->setOrganisation($response['d']['Contact']['Organisation']);
         $this->setStreet1($response['d']['Contact']['Street1']);

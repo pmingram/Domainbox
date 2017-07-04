@@ -61,13 +61,12 @@ class Domain
     private $adminContactId;
     private $techContactId;
     private $billingContactId;
-    
+
     private $expiryDate;
     private $createdDate;
 
     public function __construct()
     {
-        
     }
 
     public function create($domainName = null, $launchPhase = 'GA', $period = 1, $applyLock = false, $autoRenew = true, $autoRenewDays = 7, $applyPrivacy = false, $acceptTerms = true, $nameServers = [], $glueRecords = [], $registrant = null, $admin = null, $tech = null, $billing = null, $trademark = null, $extension = null, $sunriseData = null, $commandOptions = null)
@@ -100,8 +99,7 @@ class Domain
             $this->loadCheckDomainAvailabilityPlus($data);
         } elseif ($command == 'RegisterDomain') {
             $this->loadFromRegistration($data);
-        }
-        elseif ($command == "QueryDomain") {
+        } elseif ($command == 'QueryDomain') {
             $this->loadFromQueryDomain($data);
         }
     }
@@ -143,7 +141,8 @@ class Domain
         $this->setBillingContactId($data['d']['BillingContactId']);
     }
 
-    private function loadFromQueryDomain($data) {
+    private function loadFromQueryDomain($data)
+    {
         $this->setStatusDomain($data['d']['Status'][0]);
         $this->setDomainId($data['d']['DomainId']);
         $this->setExpiryDate($data['d']['ExpiryDate']);
@@ -152,41 +151,41 @@ class Domain
         $this->setAutoRenew($data['d']['AutoRenew']);
         $this->setAutoRenewDays($data['d']['AutoRenewDays']);
         $this->setApplyPrivacy($data['d']['ApplyPrivacy']);
-        
+
         $ns = [];
-        foreach($data['d']['Nameservers'] as $nameservers) {
+        foreach ($data['d']['Nameservers'] as $nameservers) {
             $ns[] = $nameservers;
         }
         $this->setNameServers($ns);
-        
-        if(isset($data['d']['Contacts']['Registrant'])) {
+
+        if (isset($data['d']['Contacts']['Registrant'])) {
             $this->setRegistrant(new \MadeITBelgium\Domainbox\Object\Contact($data['d']['Contacts']['Registrant']['Name'], $data['d']['Contacts']['Registrant']['Organisation'], $data['d']['Contacts']['Registrant']['Street1'], $data['d']['Contacts']['Registrant']['Street2'], $data['d']['Contacts']['Registrant']['Street3'], $data['d']['Contacts']['Registrant']['City'], $data['d']['Contacts']['Registrant']['State'], $data['d']['Contacts']['Registrant']['Postcode'], $data['d']['Contacts']['Registrant']['CountryCode'], $data['d']['Contacts']['Registrant']['Telephone'], $data['d']['Contacts']['Registrant']['TelephoneExtension'], $data['d']['Contacts']['Registrant']['Fax'], $data['d']['Contacts']['Registrant']['Email'], $data['d']['Contacts']['Registrant']['ContactId']));
             $this->setRegistrantContactId($data['d']['Contacts']['Registrant']['ContactId']);
         }
-        
-        if(isset($data['d']['Contacts']['Admin'])) {
+
+        if (isset($data['d']['Contacts']['Admin'])) {
             $this->setAdmin(new \MadeITBelgium\Domainbox\Object\Contact($data['d']['Contacts']['Admin']['Name'], $data['d']['Contacts']['Admin']['Organisation'], $data['d']['Contacts']['Admin']['Street1'], $data['d']['Contacts']['Admin']['Street2'], $data['d']['Contacts']['Admin']['Street3'], $data['d']['Contacts']['Admin']['City'], $data['d']['Contacts']['Admin']['State'], $data['d']['Contacts']['Admin']['Postcode'], $data['d']['Contacts']['Admin']['CountryCode'], $data['d']['Contacts']['Admin']['Telephone'], $data['d']['Contacts']['Admin']['TelephoneExtension'], $data['d']['Contacts']['Admin']['Fax'], $data['d']['Contacts']['Admin']['Email'], $data['d']['Contacts']['Admin']['ContactId']));
             $this->setAdminContactId($data['d']['Contacts']['Admin']['ContactId']);
         }
-        
-        if(isset($data['d']['Contacts']['Tech'])) {
+
+        if (isset($data['d']['Contacts']['Tech'])) {
             $this->setTech(new \MadeITBelgium\Domainbox\Object\Contact($data['d']['Contacts']['Tech']['Name'], $data['d']['Contacts']['Tech']['Organisation'], $data['d']['Contacts']['Tech']['Street1'], $data['d']['Contacts']['Tech']['Street2'], $data['d']['Contacts']['Tech']['Street3'], $data['d']['Contacts']['Tech']['City'], $data['d']['Contacts']['Tech']['State'], $data['d']['Contacts']['Tech']['Postcode'], $data['d']['Contacts']['Tech']['CountryCode'], $data['d']['Contacts']['Tech']['Telephone'], $data['d']['Contacts']['Tech']['TelephoneExtension'], $data['d']['Contacts']['Tech']['Fax'], $data['d']['Contacts']['Tech']['Email'], $data['d']['Contacts']['Tech']['ContactId']));
             $this->setTechContactId($data['d']['Contacts']['Tech']['ContactId']);
         }
-        
-        if(isset($data['d']['Contacts']['Billing'])) {
+
+        if (isset($data['d']['Contacts']['Billing'])) {
             $this->setBilling(new \MadeITBelgium\Domainbox\Object\Contact($data['d']['Contacts']['Billing']['Name'], $data['d']['Contacts']['Billing']['Organisation'], $data['d']['Contacts']['Billing']['Street1'], $data['d']['Contacts']['Billing']['Street2'], $data['d']['Contacts']['Billing']['Street3'], $data['d']['Contacts']['Billing']['City'], $data['d']['Contacts']['Billing']['State'], $data['d']['Contacts']['Billing']['Postcode'], $data['d']['Contacts']['Billing']['CountryCode'], $data['d']['Contacts']['Billing']['Telephone'], $data['d']['Contacts']['Billing']['TelephoneExtension'], $data['d']['Contacts']['Billing']['Fax'], $data['d']['Contacts']['Billing']['Email'], $data['d']['Contacts']['Billing']['ContactId']));
             $this->setBillingContactId($data['d']['Contacts']['Billing']['ContactId']);
         }
-        
+
         $this->setStatus($this->statusMessages[1]);
         $this->setAvailable(false);
-        
+
         $this->setLaunchPhase(null);
         $this->setDropDate(null);
         $this->setBackOrderAvailable(false);
     }
-    
+
     public function getDomainName()
     {
         return $this->domainName;
@@ -467,38 +466,46 @@ class Domain
         $this->billingContactId = $billingContactId;
     }
 
-    public function getStatusRegistration(){
+    public function getStatusRegistration()
+    {
         return $this->statusRegistration;
     }
 
-    public function setStatusRegistration($statusRegistration){
+    public function setStatusRegistration($statusRegistration)
+    {
         $this->statusRegistration = $statusRegistration;
     }
 
-    public function getStatusDomain(){
+    public function getStatusDomain()
+    {
         return $this->statusDomain;
     }
 
-    public function setStatusDomain($statusDomain){
+    public function setStatusDomain($statusDomain)
+    {
         $this->statusDomain = $statusDomain;
     }
-    
-    public function getExpiryDate(){
+
+    public function getExpiryDate()
+    {
         return $this->expiryDate;
     }
 
-    public function setExpiryDate($expiryDate){
+    public function setExpiryDate($expiryDate)
+    {
         $this->expiryDate = $expiryDate;
     }
 
-    public function getCreatedDate(){
+    public function getCreatedDate()
+    {
         return $this->createdDate;
     }
 
-    public function setCreatedDate($createdDate){
+    public function setCreatedDate($createdDate)
+    {
         $this->createdDate = $createdDate;
     }
-    
+
     public function generateDomainboxCommand()
     {
         $hostname = substr($this->getDomainName(), 0, strpos($this->getDomainName(), '.'));

@@ -6,7 +6,6 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Psr7\Response;
 use MadeITBelgium\Domainbox\Domainbox;
-use MadeITBelgium\Domainbox\Object\Contact;
 use MadeITBelgium\Domainbox\Object\Domain;
 
 class QueryDomainTest extends \PHPUnit_Framework_TestCase
@@ -137,16 +136,16 @@ class QueryDomainTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(false, $response->canBackOrder());
         $this->assertEquals(null, $response->getDropDate());
         $this->assertEquals(null, $response->getLaunchPhase());
-        
-        $this->assertEquals("57438421", $response->getDomainId());
-        $this->assertEquals("2017-10-04", $response->getExpiryDate());
-        $this->assertEquals("2014-10-04", $response->getCreatedDate());
+
+        $this->assertEquals('57438421', $response->getDomainId());
+        $this->assertEquals('2017-10-04', $response->getExpiryDate());
+        $this->assertEquals('2014-10-04', $response->getCreatedDate());
         $this->assertEquals(false, $response->getApplyLock());
         $this->assertEquals(false, $response->getAutoRenew());
         $this->assertEquals(14, $response->getAutoRenewDays());
         $this->assertEquals(true, $response->getApplyPrivacy());
     }
-    
+
     /**
      * @expectedException Exception
      */
@@ -184,8 +183,8 @@ class QueryDomainTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(false, $response->canBackOrder());
         $this->assertEquals(null, $response->getDropDate());
         $this->assertEquals(null, $response->getLaunchPhase());
-        
-        $this->assertEquals("0", $response->getDomainId());
+
+        $this->assertEquals('0', $response->getDomainId());
         $this->assertEquals(false, $response->getApplyLock());
         $this->assertEquals(false, $response->getAutoRenew());
         $this->assertEquals(0, $response->getAutoRenewDays());
