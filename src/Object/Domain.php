@@ -99,7 +99,7 @@ class Domain
             $this->loadCheckDomainAvailabilityPlus($data);
         } elseif ($command == 'RegisterDomain') {
             $this->loadFromRegistration($data);
-        } elseif ($command == 'RenewDomain') { 
+        } elseif ($command == 'RenewDomain') {
             $this->loadRenewDomain($data);
         } elseif ($command == 'QueryDomain') {
             $this->loadFromQueryDomain($data);
@@ -187,8 +187,9 @@ class Domain
         $this->setDropDate(null);
         $this->setBackOrderAvailable(false);
     }
-    
-    private function loadRenewDomain($data) {
+
+    private function loadRenewDomain($data)
+    {
         $this->setExpiryDate($data['d']['ExpiryDate']);
     }
 
@@ -801,52 +802,49 @@ class Domain
 
         return $command;
     }
-    
-    public function canDeleteDomain() {
+
+    public function canDeleteDomain()
+    {
         $hostname = substr($this->getDomainName(), 0, strpos($this->getDomainName(), '.'));
         $tld = substr($this->getDomainName(), strlen($hostname));
-        
+
         if (in_array($tld, ['.co.uk', '.org.uk', '.me.uk', '.ltd.uk', '.plc.uk', '.net.uk'])) {
-            if (($this->getCreatedDate() >= date('Y-m-01')) && ($this->getCreatedDate() < date('Y-m-01', strtotime('+ 1 month'))))
-            {
-               return true;
+            if (($this->getCreatedDate() >= date('Y-m-01')) && ($this->getCreatedDate() < date('Y-m-01', strtotime('+ 1 month')))) {
+                return true;
             }
+
             return false;
-        }
-        elseif (in_array($tld, ['.br.com', '.cn.com', '.eu.com', '.gb.com', '.gb.net', '.uk.com', '.uk.net', '.us.com', '.uy.com', 
-                                '.hu.com', '.no.com', '.qc.com', '.ru.com', '.sa.com', '.se.com', '.za.com', '.de.com', '.jpn.com', 
-                                '.ae.org', '.kr.com', '.ar.com', '.la', '.se.net', '.gr.com', '.com.de', '.pw'])) {
-            if (($this->getCreatedDate() >= date('Y-m-01')) && ($this->getCreatedDate() < date('Y-m-01', strtotime('+ 1 month'))))
-            {
-               return true;
+        } elseif (in_array($tld, ['.br.com', '.cn.com', '.eu.com', '.gb.com', '.gb.net', '.uk.com', '.uk.net', '.us.com', '.uy.com',
+                                '.hu.com', '.no.com', '.qc.com', '.ru.com', '.sa.com', '.se.com', '.za.com', '.de.com', '.jpn.com',
+                                '.ae.org', '.kr.com', '.ar.com', '.la', '.se.net', '.gr.com', '.com.de', '.pw', ])) {
+            if (($this->getCreatedDate() >= date('Y-m-01')) && ($this->getCreatedDate() < date('Y-m-01', strtotime('+ 1 month')))) {
+                return true;
             }
+
             return false;
-        }
-        elseif (in_array($tld, ['.com.de', '.eu', '.be', '.es', '.it', '.ws', '.pl', '.com.pl', '.net.pl', '.io', '.sh', '.ac', '.jp', 
-                                '.dm', '.co.dm', '.de', '.at', '.cat'])) {
+        } elseif (in_array($tld, ['.com.de', '.eu', '.be', '.es', '.it', '.ws', '.pl', '.com.pl', '.net.pl', '.io', '.sh', '.ac', '.jp',
+                                '.dm', '.co.dm', '.de', '.at', '.cat', ])) {
             return false;
-        }
-        elseif (in_array($tld, ['.af', '.com.af', '.net.af', '.org.af', '.com.cc', '.edu.cc', '.net.cc', '.org.cc', '.cx', 
-                                '.gs', '.ht', '.art.ht', '.org.ht', '.com.ht', '.net.ht', '.pro.ht', '.firm.ht', '.info.ht', 
-                                '.shop.ht', '.adult.ht', '.pol.ht', '.rel.ht', '.asso.ht', 'perso.ht', '.ki', '.biz.ki', 
+        } elseif (in_array($tld, ['.af', '.com.af', '.net.af', '.org.af', '.com.cc', '.edu.cc', '.net.cc', '.org.cc', '.cx',
+                                '.gs', '.ht', '.art.ht', '.org.ht', '.com.ht', '.net.ht', '.pro.ht', '.firm.ht', '.info.ht',
+                                '.shop.ht', '.adult.ht', '.pol.ht', '.rel.ht', '.asso.ht', 'perso.ht', '.ki', '.biz.ki',
                                 '.com.ki', '.net.ki', '.org.ki', '.tel.ki', '.info.ki', '.mobi.ki', '.phone.ki', '.mu', '.ac.mu',
-                                '.co.mu', '.net.mu', '.com.mu', '.org.mu', '.nf', '.com.nf', '.net.nf', '.per.nf', '.web.nf', 
-                                '.arts.nf', '.firm.nf', '.info.nf', '.store.nf', '.rec.nf', '.other.nf', '.com.sb', '.net.sb', 
-                                '.org.sb', '.tl'])) {
-            if ($this->getCreatedDate() >= date('Y-m-d', strtotime('- 1 day')))
-            {
-               return true;
+                                '.co.mu', '.net.mu', '.com.mu', '.org.mu', '.nf', '.com.nf', '.net.nf', '.per.nf', '.web.nf',
+                                '.arts.nf', '.firm.nf', '.info.nf', '.store.nf', '.rec.nf', '.other.nf', '.com.sb', '.net.sb',
+                                '.org.sb', '.tl', ])) {
+            if ($this->getCreatedDate() >= date('Y-m-d', strtotime('- 1 day'))) {
+                return true;
             }
+
+            return false;
+        } elseif (in_array($tld, ['.me'])) {
+            if ($this->getCreatedDate() >= date('Y-m-d', strtotime('- 2 day'))) {
+                return true;
+            }
+
             return false;
         }
-        elseif (in_array($tld, ['.me'])) {
-            if ($this->getCreatedDate() >= date('Y-m-d', strtotime('- 2 day')))
-            {
-               return true;
-            }
-            return false;
-        }
-        
+
         return false;
     }
 }

@@ -58,7 +58,7 @@ class TLD
     private $canChangeContactEntityType;
     private $canChangeContactNationality;
     private $canChangeContactRegCode;
-    
+
     private $domainRenewBeforeMin; //0days
     private $domainRenewBeforeMax; //6months
     private $renewPeriods; //array with values
