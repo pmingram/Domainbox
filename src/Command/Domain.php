@@ -107,7 +107,6 @@ class Domain
 
         return $domain;
     }
-    
 
     /**
      * Query a specific domainname.

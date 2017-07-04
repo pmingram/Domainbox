@@ -32,12 +32,12 @@ class Contact
      *
      * @param $contact
      */
-    public function createContact($contact, $tld, $launchPhase = "GA")
+    public function createContact($contact, $tld, $launchPhase = 'GA')
     {
         $response = $this->domainbox->call('CreateContact', [
-            'TLD'        => $tld,
+            'TLD'         => $tld,
             'LaunchPhase' => $launchPhase,
-            'Contact' => [
+            'Contact'     => [
                 'Name'               => $contact->getName(),
                 'Organisation'       => $contact->getOrganisation(),
                 'Street1'            => $contact->getStreet1(),
@@ -51,7 +51,7 @@ class Contact
                 'TelephoneExtension' => $contact->getTelephoneExtension(),
                 'Fax'                => $contact->getFax(),
                 'Email'              => $contact->getEmail(),
-            ]
+            ],
         ]);
 
         $contact->setContactId($response['d']['ContactId']);
@@ -67,9 +67,9 @@ class Contact
     public function modifyContact($contact)
     {
         $response = $this->domainbox->call('ModifyContact', [
-            'TLD'        => $tld,
+            'TLD'         => $tld,
             'LaunchPhase' => $launchPhase,
-            'Contact' => [
+            'Contact'     => [
                 'Name'               => $contact->getName(),
                 'Organisation'       => $contact->getOrganisation(),
                 'Street1'            => $contact->getStreet1(),
@@ -83,8 +83,9 @@ class Contact
                 'TelephoneExtension' => $contact->getTelephoneExtension(),
                 'Fax'                => $contact->getFax(),
                 'Email'              => $contact->getEmail(),
-            ]
+            ],
         ]);
+
         return $contact;
     }
 
@@ -115,7 +116,7 @@ class Contact
         $response = $this->domainbox->call('DeleteContact', [
             'ContactId'        => $contact->getContactId(),
         ]);
-        
+
         return true;
     }
 }

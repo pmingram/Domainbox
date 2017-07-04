@@ -2,8 +2,6 @@
 
 namespace MadeITBelgium\Domainbox\TLDs;
 
-use MadeITBelgium\Domainbox\TLDs\TLD;
-
 /**
  * Domainbox API.
  *
@@ -15,10 +13,10 @@ use MadeITBelgium\Domainbox\TLDs\TLD;
  */
 class Com extends TLD
 {
-    private $tld = ".com";
-    private $idnTLD = "com";
-    private $dnsName = "com";
-    
+    private $tld = '.com';
+    private $idnTLD = 'com';
+    private $dnsName = 'com';
+
     private $periods = null;
     private $fee_registry = 7.85;
     private $fee_renew = 7.85;
@@ -32,10 +30,10 @@ class Com extends TLD
     private $fee_backorder = 40.00;
     private $numberOfCategories = 0;
     private $categories = null;
-    
-    private $type = "gLTD"; //gTLD, ccTLD, pTLD
-    private $launchPhase = "GA"; //SR, LR, EAP, GA
-    
+
+    private $type = 'gLTD'; //gTLD, ccTLD, pTLD
+    private $launchPhase = 'GA'; //SR, LR, EAP, GA
+
     private $applyLock = true;
     private $autoRenew = true;
     private $autoRenewDays = null;
@@ -45,12 +43,12 @@ class Com extends TLD
     private $numberOfNameServers = 13;
 
     private $extension = null;
-    
+
     private $launchDate = null;
     private $dnssec = false;
     private $ipv6 = true;
     private $ipv4 = true;
-    
+
     private $canCHangeContact = true;
     private $canChangeContactOrganisation = true;
     private $canChangeContactName = true;

@@ -7,7 +7,6 @@ use GuzzleHttp\Psr7;
 use GuzzleHttp\Psr7\Response;
 use MadeITBelgium\Domainbox\Domainbox;
 use MadeITBelgium\Domainbox\Object\Contact;
-use MadeITBelgium\Domainbox\Object\Domain;
 
 class ContactTest extends \PHPUnit_Framework_TestCase
 {
@@ -62,22 +61,21 @@ class ContactTest extends \PHPUnit_Framework_TestCase
         $response = $contact->queryContact(62873737);
 
         $this->assertEquals(62873737, $response->getContactId());
-        $this->assertEquals("Tjebbe Lievens", $response->getName());
-        $this->assertEquals("Made I.T.", $response->getOrganisation());
-        $this->assertEquals("Somewhere 1", $response->getStreet1());
+        $this->assertEquals('Tjebbe Lievens', $response->getName());
+        $this->assertEquals('Made I.T.', $response->getOrganisation());
+        $this->assertEquals('Somewhere 1', $response->getStreet1());
         $this->assertEquals(null, $response->getStreet2());
         $this->assertEquals(null, $response->getStreet3());
-        $this->assertEquals("Geel", $response->getCity());
+        $this->assertEquals('Geel', $response->getCity());
         $this->assertEquals(null, $response->getState());
-        $this->assertEquals("2440", $response->getPostcode());
-        $this->assertEquals("BE", $response->getCountryCode());
-        $this->assertEquals("+32.485000000", $response->getTelephone());
+        $this->assertEquals('2440', $response->getPostcode());
+        $this->assertEquals('BE', $response->getCountryCode());
+        $this->assertEquals('+32.485000000', $response->getTelephone());
         $this->assertEquals(null, $response->getTelephoneExtension());
         $this->assertEquals(null, $response->getFax());
-        $this->assertEquals("info@madeit.be", $response->getEmail());
-        
+        $this->assertEquals('info@madeit.be', $response->getEmail());
     }
-    
+
     /**
      * @expectedException Exception
      */
@@ -105,6 +103,5 @@ class ContactTest extends \PHPUnit_Framework_TestCase
         $domainbox->setClient($client);
         $contact = $domainbox->contact();
         $response = $contact->queryContact(62873731);
-        
     }
 }
