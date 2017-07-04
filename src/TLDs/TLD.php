@@ -13,55 +13,55 @@ namespace MadeITBelgium\Domainbox\TLDs;
  */
 class TLD
 {
-    private $tld;
-    private $idnTLD;
-    private $dnsName;
+    protected $tld;
+    protected $idnTLD;
+    protected $dnsName;
 
-    private $periods;
-    private $fee_registry;
-    private $fee_renew;
-    private $fee_transfer;
-    private $fee_domainbox;
-    private $fee_icann;
-    private $fee_setup;
-    private $fee_application;
-    private $fee_total;
-    private $fee_restore;
-    private $fee_backorder;
-    private $numberOfCategories;
-    private $categories;
+    protected $periods;
+    protected $fee_registry;
+    protected $fee_renew;
+    protected $fee_transfer;
+    protected $fee_domainbox;
+    protected $fee_icann;
+    protected $fee_setup;
+    protected $fee_application;
+    protected $fee_total;
+    protected $fee_restore;
+    protected $fee_backorder;
+    protected $numberOfCategories;
+    protected $categories;
 
-    private $type; //gTLD, ccTLD, pTLD
-    private $launchPhase; //SR, LR, EAP, GA
+    protected $type; //gTLD, ccTLD, pTLD
+    protected $launchPhase; //SR, LR, EAP, GA
 
-    private $applyLock;
-    private $autoRenew;
-    private $autoRenewDays;
-    private $autoRenewDaysDefault;
-    private $applyPrivacy;
-    private $acceptTerms;
-    private $numberOfNameServers;
+    protected $applyLock;
+    protected $autoRenew;
+    protected $autoRenewDays;
+    protected $autoRenewDaysDefault;
+    protected $applyPrivacy;
+    protected $acceptTerms;
+    protected $numberOfNameServers;
 
-    private $extension;
+    protected $extension;
 
-    private $launchDate;
-    private $dnssec;
-    private $ipv6;
-    private $ipv4;
+    protected $launchDate;
+    protected $dnssec;
+    protected $ipv6;
+    protected $ipv4;
 
-    private $canCHangeContact;
-    private $canChangeContactOrganisation;
-    private $canChangeContactName;
-    private $canChangeContactBirth;
-    private $canChangeContactFax;
-    private $canChangeContactCountryCode;
-    private $canChangeContactEntityType;
-    private $canChangeContactNationality;
-    private $canChangeContactRegCode;
+    protected $canCHangeContact;
+    protected $canChangeContactOrganisation;
+    protected $canChangeContactName;
+    protected $canChangeContactBirth;
+    protected $canChangeContactFax;
+    protected $canChangeContactCountryCode;
+    protected $canChangeContactEntityType;
+    protected $canChangeContactNationality;
+    protected $canChangeContactRegCode;
     
-    private $domainRenewBeforeMin; //0days
-    private $domainRenewBeforeMax; //6months
-    private $renewPeriods; //array with values
+    protected $domainRenewBeforeMin; //0days
+    protected $domainRenewBeforeMax; //6months
+    protected $renewPeriods; //array with values
 
     public function __construct()
     {

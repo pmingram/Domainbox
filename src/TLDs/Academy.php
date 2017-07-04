@@ -13,23 +13,23 @@ namespace MadeITBelgium\Domainbox\TLDs;
  */
 class Academy extends TLD
 {
-    private $tld = '.academy';
-    private $idnTLD = 'academy';
-    private $dnsName = 'academy';
+    protected $tld = '.academy';
+    protected $idnTLD = 'academy';
+    protected $dnsName = 'academy';
 
-    private $periods = null;
-    private $fee_registry = 20.00;
-    private $fee_renew = 20.00;
-    private $fee_transfer = 20.00;
-    private $fee_domainbox = 7.00;
-    private $fee_icann = 0.18;
-    private $fee_setup = 0.00;
-    private $fee_application = 0.00;
-    private $fee_total = 27.18;
-    private $fee_restore = 65.00;
-    private $fee_backorder = null;
-    private $numberOfCategories = 9;
-    private $categories = [
+    protected $periods = null;
+    protected $fee_registry = 20.00;
+    protected $fee_renew = 20.00;
+    protected $fee_transfer = 20.00;
+    protected $fee_domainbox = 7.00;
+    protected $fee_icann = 0.18;
+    protected $fee_setup = 0.00;
+    protected $fee_application = 0.00;
+    protected $fee_total = 27.18;
+    protected $fee_restore = 65.00;
+    protected $fee_backorder = null;
+    protected $numberOfCategories = 9;
+    protected $categories = [
         'category1' => [
             'registry'    => 9200.00,
             'renew'       => 20.00,
@@ -122,23 +122,23 @@ class Academy extends TLD
         ],
     ];
 
-    private $type = 'gLTD'; //gTLD, ccTLD, pTLD
-    private $launchPhase = 'GA'; //SR, LR, EAP, GA
+    protected $type = 'gLTD'; //gTLD, ccTLD, pTLD
+    protected $launchPhase = 'GA'; //SR, LR, EAP, GA
 
-    private $applyLock = true;
-    private $autoRenew = true;
-    private $autoRenewDays = null;
-    private $autoRenewDaysDefault = 14;
-    private $applyPrivacy = true;
-    private $acceptTerms = true;
-    private $numberOfNameServers = 13;
+    protected $applyLock = true;
+    protected $autoRenew = true;
+    protected $autoRenewDays = null;
+    protected $autoRenewDaysDefault = 14;
+    protected $applyPrivacy = true;
+    protected $acceptTerms = true;
+    protected $numberOfNameServers = 13;
 
-    private $extension = null;
+    protected $extension = null;
 
-    private $launchDate = null;
-    private $dnssec = false;
-    private $ipv6 = true;
-    private $ipv4 = true;
+    protected $launchDate = null;
+    protected $dnssec = false;
+    protected $ipv6 = true;
+    protected $ipv4 = true;
 
     public function __construct()
     {

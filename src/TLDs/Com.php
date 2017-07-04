@@ -13,51 +13,51 @@ namespace MadeITBelgium\Domainbox\TLDs;
  */
 class Com extends TLD
 {
-    private $tld = '.com';
-    private $idnTLD = 'com';
-    private $dnsName = 'com';
+    protected $tld = '.com';
+    protected $idnTLD = 'com';
+    protected $dnsName = 'com';
 
-    private $periods = null;
-    private $fee_registry = 7.85;
-    private $fee_renew = 7.85;
-    private $fee_transfer = 7.85;
-    private $fee_domainbox = 2.00;
-    private $fee_icann = 0.18;
-    private $fee_setup = 0.00;
-    private $fee_application = 0.00;
-    private $fee_total = 10.03;
-    private $fee_restore = 75.00;
-    private $fee_backorder = 40.00;
-    private $numberOfCategories = 0;
-    private $categories = null;
+    protected $periods = null;
+    protected $fee_registry = 7.85;
+    protected $fee_renew = 7.85;
+    protected $fee_transfer = 7.85;
+    protected $fee_domainbox = 2.00;
+    protected $fee_icann = 0.18;
+    protected $fee_setup = 0.00;
+    protected $fee_application = 0.00;
+    protected $fee_total = 10.03;
+    protected $fee_restore = 75.00;
+    protected $fee_backorder = 40.00;
+    protected $numberOfCategories = 0;
+    protected $categories = null;
 
-    private $type = 'gLTD'; //gTLD, ccTLD, pTLD
-    private $launchPhase = 'GA'; //SR, LR, EAP, GA
+    protected $type = 'gLTD'; //gTLD, ccTLD, pTLD
+    protected $launchPhase = 'GA'; //SR, LR, EAP, GA
 
-    private $applyLock = true;
-    private $autoRenew = true;
-    private $autoRenewDays = null;
-    private $autoRenewDaysDefault = 14;
-    private $applyPrivacy = true;
-    private $acceptTerms = true;
-    private $numberOfNameServers = 13;
+    protected $applyLock = true;
+    protected $autoRenew = true;
+    protected $autoRenewDays = null;
+    protected $autoRenewDaysDefault = 14;
+    protected $applyPrivacy = true;
+    protected $acceptTerms = true;
+    protected $numberOfNameServers = 13;
 
-    private $extension = null;
+    protected $extension = null;
 
-    private $launchDate = null;
-    private $dnssec = false;
-    private $ipv6 = true;
-    private $ipv4 = true;
+    protected $launchDate = null;
+    protected $dnssec = false;
+    protected $ipv6 = true;
+    protected $ipv4 = true;
 
-    private $canCHangeContact = true;
-    private $canChangeContactOrganisation = true;
-    private $canChangeContactName = true;
-    private $canChangeContactBirth = true;
-    private $canChangeContactFax = true;
-    private $canChangeContactCountryCode = true;
-    private $canChangeContactEntityType = true;
-    private $canChangeContactNationality = true;
-    private $canChangeContactRegCode = true;
+    protected $canCHangeContact = true;
+    protected $canChangeContactOrganisation = true;
+    protected $canChangeContactName = true;
+    protected $canChangeContactBirth = true;
+    protected $canChangeContactFax = true;
+    protected $canChangeContactCountryCode = true;
+    protected $canChangeContactEntityType = true;
+    protected $canChangeContactNationality = true;
+    protected $canChangeContactRegCode = true;
 
     public function __construct()
     {
