@@ -58,6 +58,10 @@ class TLD
     private $canChangeContactEntityType;
     private $canChangeContactNationality;
     private $canChangeContactRegCode;
+    
+    private $domainRenewBeforeMin; //0days
+    private $domainRenewBeforeMax; //6months
+    private $renewPeriods; //array with values
 
     public function __construct()
     {
@@ -70,10 +74,11 @@ class TLD
         foreach ($phpFiles as $fileName) {
             if (!in_array($fileName, ['.', '..', 'TLD.php'])) {
                 $class = 'MadeITBelgium\\Domainbox\\TLDs\\'.substr($fileName, 0, strpos($fileName, '.'));
+                $object = new $class();
                 if ($type == 'object') {
-                    $tlds[] = (new $class());
+                    $tlds[$object->getTld()] = $object;
                 } elseif ($type == 'array') {
-                    $tlds[] = (new $class())->getTld();
+                    $tlds[] = $object->getTld();
                 }
             }
         }

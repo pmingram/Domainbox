@@ -4262,124 +4262,6 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         ], $registerDomain->generateDomainboxCommand());
     }
 
-    /*
-    //register
-    public function testRegisterGenerateDomainboxCommand_()
-    {
-        $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
-
-        $registerDomain = new Domain();
-        $domainName = 'maideit.co.uk';
-        $launchPhase = 'GA';
-        $period = 1;
-        $applyLock = false;
-        $autoRenew = true;
-        $autoRenewDays = 7;
-        $applyPrivacy = false;
-        $acceptTerms = true;
-        $nameServers = ['ns1.madeit.be', 'ns2.madeit.be'];
-        $glueRecords = [];
-        $registrant = $contact;
-        $admin = $contact;
-        $tech = $contact;
-        $billing = $contact;
-        $trademark = null;
-        $extension = null;
-        $sunriseData = null;
-        $commandOptions = null;
-        $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-
-        $this->assertEquals([
-            'DomainName'    => 'maideit.co.uk',
-            'LaunchPhase'   => 'GA',
-            'Period'        => 1,
-            'ApplyLock'     => false,
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
-            'ApplyPrivacy'  => false,
-            'Contacts'      => [
-                'Registrant' => [
-                    'Name'               => 'Tjebbe Lievens',
-                    'Organisation'       => 'Made I.T.',
-                    'Street1'            => 'Somewhere in belgium',
-                    'Street2'            => '',
-                    'Street3'            => '',
-                    'City'               => 'Geel',
-                    'State'              => 'Antwerp',
-                    'Postcode'           => '2440',
-                    'CountryCode'        => 'BE',
-                    'Telephone'          => '+32.123456789',
-                    'TelephoneExtension' => '',
-                    'Fax'                => '',
-                    'Email'              => 'info@madeit.be',
-                ],
-                'Admin' => [
-                    'Name'               => 'Tjebbe Lievens',
-                    'Organisation'       => 'Made I.T.',
-                    'Street1'            => 'Somewhere in belgium',
-                    'Street2'            => '',
-                    'Street3'            => '',
-                    'City'               => 'Geel',
-                    'State'              => 'Antwerp',
-                    'Postcode'           => '2440',
-                    'CountryCode'        => 'BE',
-                    'Telephone'          => '+32.123456789',
-                    'TelephoneExtension' => '',
-                    'Fax'                => '',
-                    'Email'              => 'info@madeit.be',
-                ],
-                'Billing' => [
-                    'Name'               => 'Tjebbe Lievens',
-                    'Organisation'       => 'Made I.T.',
-                    'Street1'            => 'Somewhere in belgium',
-                    'Street2'            => '',
-                    'Street3'            => '',
-                    'City'               => 'Geel',
-                    'State'              => 'Antwerp',
-                    'Postcode'           => '2440',
-                    'CountryCode'        => 'BE',
-                    'Telephone'          => '+32.123456789',
-                    'TelephoneExtension' => '',
-                    'Fax'                => '',
-                    'Email'              => 'info@madeit.be',
-                ],
-                'Tech' => [
-                    'Name'               => 'Tjebbe Lievens',
-                    'Organisation'       => 'Made I.T.',
-                    'Street1'            => 'Somewhere in belgium',
-                    'Street2'            => '',
-                    'Street3'            => '',
-                    'City'               => 'Geel',
-                    'State'              => 'Antwerp',
-                    'Postcode'           => '2440',
-                    'CountryCode'        => 'BE',
-                    'Telephone'          => '+32.123456789',
-                    'TelephoneExtension' => '',
-                    'Fax'                => '',
-                    'Email'              => 'info@madeit.be',
-                ],
-            ],
-            'Extension'   => ['UKDirectData' => ['RelatedDomainId' => 0]],
-            'Nameservers' => [
-                'NS1'         => 'ns1.madeit.be',
-                'NS2'         => 'ns2.madeit.be',
-                'NS3'         => '',
-                'NS4'         => '',
-                'NS5'         => '',
-                'NS6'         => '',
-                'NS7'         => '',
-                'NS8'         => '',
-                'NS9'         => '',
-                'NS10'        => '',
-                'NS11'        => '',
-                'NS12'        => '',
-                'NS13'        => '',
-                'GlueRecords' => [],
-            ],
-        ], $registerDomain->generateDomainboxCommand());
-    }
-    */
     public function testRegisterCommand()
     {
         $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
@@ -4427,5 +4309,208 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(12190, $response->getAdminContactId());
         $this->assertEquals(12190, $response->getTechContactId());
         $this->assertEquals(12187, $response->getBillingContactId());
+    }
+    
+    public function testRenewCommand()
+    {
+        $contact = new Contact('Tjebbe Lievens', 'Made I.T.', 'Somewhere in belgium', null, null, 'Geel', 'Antwerp', '2440', 'BE', '+32.123456789', null, null, 'info@madeit.be');
+
+        $registerDomain = new Domain();
+        $domainName = 'maideit.be';
+        $launchPhase = 'GA';
+        $period = 1;
+        $applyLock = false;
+        $autoRenew = true;
+        $autoRenewDays = 7;
+        $applyPrivacy = false;
+        $acceptTerms = true;
+        $nameServers = ['ns1.madeit.be', 'ns2.madeit.be'];
+        $glueRecords = [];
+        $registrant = $contact;
+        $admin = $contact;
+        $tech = $contact;
+        $billing = $contact;
+        $trademark = null;
+        $extension = null;
+        $sunriseData = null;
+        $commandOptions = null;
+        $registerDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
+        $registerDomain->setExpiryDate("2018-01-01");
+        $domainbox = new Domainbox('reseller', 'username', 'password', false);
+
+        // Create a mock and queue two responses.
+
+        $stream = Psr7\stream_for('{"d": {"ExpiryDate": "2019-01-01", "ResultCode": 100, "ResultMsg": "Command Successful", "TxID": "1b68172f-ca79-4fc4-9a04-f15a17b6abfc"}}');
+        $mock = new MockHandler([
+            new Response(200, ['Content-Type' => 'application/json'], $stream),
+        ]);
+
+        $handler = HandlerStack::create($mock);
+        $client = new Client(['handler' => $handler]);
+
+        $domainbox->setClient($client);
+        $domain = $domainbox->domain();
+        $response = $domain->renewDomain($registerDomain, 1);
+
+        $this->assertEquals("2019-01-01", $response->getExpiryDate());
+    }
+    
+    public function providerDeleteDomainTrue()
+    {
+        return [
+            [
+                'domain.me',
+                date('Y-m-d', strtotime('- 2days')),
+            ],
+            [
+                'domain.af',
+                date('Y-m-d', strtotime('- 1day')),
+            ],
+            [
+                'domain.br.com',
+                date('Y-m-05'),
+            ],
+            [
+                'domain.co.uk',
+                date('Y-m-05'),
+            ],
+        ];
+    }
+    
+    
+    /**
+    * This is kind of a smoke test
+    *
+    * @dataProvider providerDeleteDomainTrue
+    **/
+    public function testDeleteCommand($domainname, $createdDate) {
+        $registerDomain = new Domain();
+        $registerDomain->create($domainname);
+        $registerDomain->setCreatedDate($createdDate);
+        
+        $this->assertEquals(true, $registerDomain->canDeleteDomain());
+
+    }
+    
+    
+    public function providerDeleteDomainFalse()
+    {
+        return [
+            [
+                'domain.me',
+                date('Y-m-d', strtotime('- 3days')),
+            ],
+            [
+                'domain.af',
+                date('Y-m-d', strtotime('- 2day')),
+            ],
+            [
+                'domain.br.com',
+                date('Y-m-05', strtotime(' -1 month')),
+            ],
+            [
+                'domain.co.uk',
+                date('Y-m-05', strtotime(' -1 month')),
+            ],
+            [
+                'domain.be',
+                date('Y-m-d'),
+            ],
+            [
+                'domain.com',
+                date('Y-m-d'),
+            ]
+        ];
+    }
+    
+    
+    /**
+    * This is kind of a smoke test
+    *
+    * @dataProvider providerDeleteDomainFalse
+    **/
+    public function testNotDeleteCommand($domainname, $createdDate) {
+        $registerDomain = new Domain();
+        $registerDomain->create($domainname);
+        $registerDomain->setCreatedDate($createdDate);
+        
+        $this->assertEquals(false, $registerDomain->canDeleteDomain());
+
+    }
+    
+    
+    public function testDeleteOk()
+    {
+        $registerDomain = new Domain();
+        $domainName = 'maideit.be';
+        
+        $registerDomain->create($domainName);
+        $domainbox = new Domainbox('reseller', 'username', 'password', false);
+
+        // Create a mock and queue two responses.
+
+        $stream = Psr7\stream_for('{
+  "d": {
+    "Refunded": false,
+    "MonthlyDeletesRemaining": 0,
+    "RenewRefunded": false,
+    "RenewMonthlyDeletesRemaining": 0,
+    "TransferRefunded": false,
+    "TransferMonthlyDeletesRemaining": 0,
+    "ResultCode": 100,
+    "ResultMsg": "Success message",
+    "TxID": "d175c440-03fe-49f4-b994-b4a09857c9fe"
+  }
+}');
+        $mock = new MockHandler([
+            new Response(200, ['Content-Type' => 'application/json'], $stream),
+        ]);
+
+        $handler = HandlerStack::create($mock);
+        $client = new Client(['handler' => $handler]);
+
+        $domainbox->setClient($client);
+        $domain = $domainbox->domain();
+        $response = $domain->deleteDomain($registerDomain);
+        $this->assertEquals(true, $response);
+    }
+    
+    
+    /**
+     * @expectedException Exception
+     */
+    public function testDeleteNOK()
+    {
+        $registerDomain = new Domain();
+        $domainName = 'maideit.be';
+        
+        $registerDomain->create($domainName);
+        $domainbox = new Domainbox('reseller', 'username', 'password', false);
+
+        // Create a mock and queue two responses.
+
+        $stream = Psr7\stream_for('{
+  "d": {
+    "Refunded": false,
+    "MonthlyDeletesRemaining": 0,
+    "RenewRefunded": false,
+    "RenewMonthlyDeletesRemaining": 0,
+    "TransferRefunded": false,
+    "TransferMonthlyDeletesRemaining": 0,
+    "ResultCode": 260,
+    "ResultMsg": "Invalid Parameter: ForceDelete must be true. Refunds not available for .be domains",
+    "TxID": "81a1fc64-4d96-4deb-a5fe-310eea226cc7"
+  }
+}');
+        $mock = new MockHandler([
+            new Response(200, ['Content-Type' => 'application/json'], $stream),
+        ]);
+
+        $handler = HandlerStack::create($mock);
+        $client = new Client(['handler' => $handler]);
+
+        $domainbox->setClient($client);
+        $domain = $domainbox->domain();
+        $response = $domain->deleteDomain($registerDomain);
     }
 }

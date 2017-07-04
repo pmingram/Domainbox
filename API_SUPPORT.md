@@ -1,7 +1,7 @@
 # API Support check domainbox.com for more information.
 
 
-| Endpoint                                | SDK Class                                       | Output            | Version |
+| Endpoint                                | SDK Class::Function                             | Output            | Version |
 |-----------------------------------------|-------------------------------------------------|-------------------|---------|
 | CheckDomainAvailability                 | Domain::checkDomainAvailability()               | Domain            | 0.1.0   |
 |                                         |                                                 |                   |         |
@@ -9,8 +9,8 @@
 | CheckDomainAvailability                 | Domain::checkDomainAvailability()               | Domain            | 0.1.0   |
 | CheckDomainAvailabilityPlus             | Domain::checkDomainAvailabilityPlus()           | Domain            | 0.1.0   |
 | RegisterDomain                          | Domain::registerDomain()                        | Domain            | 0.1.0   |
-| RenewDomain                             |                                                 |                   | 0.1.0   |
-| DeleteDomain                            |                                                 |                   | 0.2.0   |
+| RenewDomain                             | Domain::renewDomain()                           | Domain            | 0.1.0   |
+| DeleteDomain                            | Domain::deleteDomain()                          | Domain            | 0.1.0   |
 | CheckDomainDeleteRefund                 |                                                 |                   | 0.2.0   |
 | UnrenewDomain                           |                                                 |                   | 0.2.0   |
 | CreateDomainAuthcode                    |                                                 |                   | 0.2.0   |

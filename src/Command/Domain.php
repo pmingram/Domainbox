@@ -109,6 +109,43 @@ class Domain
     }
 
     /**
+     * renew domainname.
+     *
+     * @param $domainname  The domainname to renew
+     */
+    public function renewDomain($domain, $period = 1)
+    {
+        $response = $this->domainbox->call('RenewDomain', [
+            'DomainName' => $domain->getDomainName(),
+            'CurrentExpiry' => $domain->getExpiryDate(),
+            'Period' => $period]);
+
+        $domain->loadData('RenewDomain', $response);
+
+        return $domain;
+    }
+
+    /**
+     * delete domainname.
+     *
+     * @param $domainname  The domainname to delete
+     */
+    public function deleteDomain($domain, $force = null)
+    {
+        $command = ['DomainName' => $domain->getDomainName()];
+        if($force === true) {
+            $command['ForceDelete'] = true;
+        }
+        else if($force === false) {
+            $command['ForceDelete'] = false;
+        }
+        
+        $response = $this->domainbox->call('DeleteDomain', $command);
+        
+        return true;
+    }
+
+    /**
      * Query a specific domainname.
      *
      * @param $domainname  The domainname the check
