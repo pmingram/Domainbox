@@ -15,7 +15,6 @@ use MadeITBelgium\Domainbox\Object\Domain as ObjectDomain;
  */
 class Domain
 {
-    protected $version = '1.0.0';
     private $domainbox;
 
     /**
@@ -105,6 +104,22 @@ class Domain
         $response = $this->domainbox->call('RegisterDomain', $domain->generateDomainboxCommand());
 
         $domain->loadData('RegisterDomain', $response);
+
+        return $domain;
+    }
+    
+
+    /**
+     * Query a specific domainname.
+     *
+     * @param $domainname  The domainname the check
+     */
+    public function queryDomain($domain)
+    {
+        $response = $this->domainbox->call('QueryDomain', ['DomainName' => $domain]);
+
+        $domain = new ObjectDomain();
+        $domain->loadData('QueryDomain', $response);
 
         return $domain;
     }

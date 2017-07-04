@@ -13,6 +13,7 @@ namespace MadeITBelgium\Domainbox\Object;
  */
 class Contact
 {
+    private $contactId;
     private $name;
     private $organisation;
     private $street1;
@@ -27,7 +28,7 @@ class Contact
     private $fax;
     private $email;
 
-    public function __construct($name = null, $organisation = null, $street1 = null, $street2 = null, $street3 = null, $city = null, $state = null, $postcode = null, $countryCode = null, $telephone = null, $telephoneExtension = null, $fax = null, $email = null)
+    public function __construct($name = null, $organisation = null, $street1 = null, $street2 = null, $street3 = null, $city = null, $state = null, $postcode = null, $countryCode = null, $telephone = null, $telephoneExtension = null, $fax = null, $email = null, $contactId = null)
     {
         $this->setName($name);
         $this->setOrganisation($organisation);
@@ -42,6 +43,30 @@ class Contact
         $this->setTelephoneExtension($telephoneExtension);
         $this->setFax($fax);
         $this->setEmail($email);
+        $this->setContactId($contactId);
+    }
+    
+    public function loadData($command, $response) {
+        if($command == "QueryContact") {
+            $this->loadDataQueryContact($response);
+        }
+    }
+    
+    private function loadDataQueryContact($response) {
+        $this->setName($response['d']['Contact']['Name']);
+        $this->setOrganisation($response['d']['Contact']['Organisation']);
+        $this->setStreet1($response['d']['Contact']['Street1']);
+        $this->setStreet2($response['d']['Contact']['Street2']);
+        $this->setStreet3($response['d']['Contact']['Street3']);
+        $this->setCity($response['d']['Contact']['City']);
+        $this->setState($response['d']['Contact']['State']);
+        $this->setPostcode($response['d']['Contact']['Postcode']);
+        $this->setCountryCode($response['d']['Contact']['CountryCode']);
+        $this->setTelephone($response['d']['Contact']['Telephone']);
+        $this->setTelephoneExtension($response['d']['Contact']['TelephoneExtension']);
+        $this->setFax($response['d']['Contact']['Fax']);
+        $this->setEmail($response['d']['Contact']['Email']);
+        $this->setContactId($response['d']['Contact']['ContactId']);
     }
 
     public function getName()
@@ -172,6 +197,16 @@ class Contact
     public function setEmail($email)
     {
         $this->email = $email;
+    }
+
+    public function getContactId()
+    {
+        return $this->contactId;
+    }
+
+    public function setContactId($contactId)
+    {
+        $this->contactId = $contactId;
     }
 
     public function generateDomainboxCommand()
