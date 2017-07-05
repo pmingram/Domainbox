@@ -28,8 +28,8 @@
 | QueryContact                            | Contact::queryContact()                         | Contact           | 0.1.0   |
 | DeleteContact                           | Contact::deleteContact()                        | Boolean           | 0.1.0   |
 |                                         |                                                 |                   |         |
-| ModifyDomainContacts                    |                                                 |                   | 0.1.0   |
-| ModifyDomainNameservers                 |                                                 |                   | 0.1.0   |
+| ModifyDomainContacts                    |                                                 |                   | 0.2.0   |
+| ModifyDomainNameservers                 |                                                 |                   | 0.2.0   |
 | ModifyDomainAuthcode                    |                                                 |                   | 0.2.0   |
 | ModifyDomainLock                        |                                                 |                   | 0.2.0   |
 | ModifyDomainRenewalSettings             |                                                 |                   | 0.2.0   |
