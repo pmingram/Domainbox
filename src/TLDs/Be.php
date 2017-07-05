@@ -28,13 +28,12 @@ class Be extends TLD
     protected $fee_total = 7.00;
     protected $fee_restore = 80.00;
     protected $fee_backorder = null;
-    
+
     protected $additionalData = [
-        'EUBEAdditionalData' => 
-            [
-                'Language' => ['nl' => 'nl (Dutch)', 'fr' => 'fr (French)', 'en'  => 'en (English)'],
+        'EUBEAdditionalData' => [
+                'Language'  => ['nl' => 'nl (Dutch)', 'fr' => 'fr (French)', 'en'  => 'en (English)'],
                 'VATNumber' => false,
-            ]
+            ],
     ];
 
     protected $type = 'ccLTD';
@@ -45,7 +44,7 @@ class Be extends TLD
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
-    
+
     public function __construct()
     {
         parent::__construct();

@@ -31,8 +31,8 @@ class TLD
     protected $numberOfCategories = 0;
     protected $categories = null;
 
-    protected $type = "gTLD"; //gTLD, ccTLD, pTLD
-    protected $launchPhase = "GA"; //SR, LR, EAP, GA
+    protected $type = 'gTLD'; //gTLD, ccTLD, pTLD
+    protected $launchPhase = 'GA'; //SR, LR, EAP, GA
 
     protected $applyLock = false;
     protected $autoRenew = true;
@@ -49,7 +49,7 @@ class TLD
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
-    
+
     protected $canChangeContact = true;
     protected $canChangeContactOrganisation = true;
     protected $canChangeContactName = true;
@@ -59,9 +59,9 @@ class TLD
     protected $canChangeContactEntityType = true;
     protected $canChangeContactNationality = true;
     protected $canChangeContactRegCode = false;
-    
+
     protected $domainRenewBeforeMin = 0; //0days
-    protected $domainRenewBeforeMax = round(strtotime('-6months') / (60*60*24)); //6months
+    protected $domainRenewBeforeMax = round(strtotime('-6months') / (60 * 60 * 24)); //6months
     protected $renewPeriods = [1]; //array with values
 
     protected $refund = false;
@@ -69,10 +69,9 @@ class TLD
     protected $refundPeriodTransfer = null;
     protected $refundPeriodRenew = null;
     protected $refundLimit = 0;
-    
+
     public function __construct()
     {
-        
     }
 
     public static function getAllTLDs($type = 'object')

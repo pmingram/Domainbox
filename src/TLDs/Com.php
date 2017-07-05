@@ -37,7 +37,7 @@ class Com extends TLD
     protected $refundPeriodTransfer = 5;
     protected $refundPeriodRenew = 5;
     protected $refundLimit = 10;
-    
+
     public function __construct()
     {
         parent::__construct();
