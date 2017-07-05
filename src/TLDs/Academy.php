@@ -127,8 +127,7 @@ class Academy extends TLD
     protected $applyLock = true;
     protected $applyPrivacy = true;
     protected $numberOfNameServers = 13;
-    
-    
+
     protected $refund = true;
     protected $refundPeriodAdd = 5;
     protected $refundPeriodTransfer = 5;
