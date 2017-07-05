@@ -17,54 +17,63 @@ class TLD
     protected $idnTLD;
     protected $dnsName;
 
-    protected $periods;
-    protected $fee_registry;
-    protected $fee_renew;
-    protected $fee_transfer;
-    protected $fee_domainbox;
-    protected $fee_icann;
-    protected $fee_setup;
-    protected $fee_application;
-    protected $fee_total;
-    protected $fee_restore;
-    protected $fee_backorder;
-    protected $numberOfCategories;
-    protected $categories;
+    protected $periods = [1];
+    protected $fee_registry = 0.00;
+    protected $fee_renew = 0.00;
+    protected $fee_transfer = 0.00;
+    protected $fee_domainbox = 0.00;
+    protected $fee_icann = 0.00;
+    protected $fee_setup = 0.00;
+    protected $fee_application = 0.00;
+    protected $fee_total = 0.00;
+    protected $fee_restore = 0.00;
+    protected $fee_backorder = 0.00;
+    protected $numberOfCategories = 0;
+    protected $categories = null;
 
-    protected $type; //gTLD, ccTLD, pTLD
-    protected $launchPhase; //SR, LR, EAP, GA
+    protected $type = "gTLD"; //gTLD, ccTLD, pTLD
+    protected $launchPhase = "GA"; //SR, LR, EAP, GA
 
-    protected $applyLock;
-    protected $autoRenew;
-    protected $autoRenewDays;
-    protected $autoRenewDaysDefault;
-    protected $applyPrivacy;
-    protected $acceptTerms;
-    protected $numberOfNameServers;
+    protected $applyLock = false;
+    protected $autoRenew = true;
+    protected $autoRenewDays = null;
+    protected $autoRenewDaysDefault = 14;
+    protected $applyPrivacy = false;
+    protected $acceptTerms = true;
+    protected $numberOfNameServers = 13;
 
-    protected $extension;
+    protected $extension = null;
+    protected $additionalData = null;
 
-    protected $launchDate;
-    protected $dnssec;
-    protected $ipv6;
-    protected $ipv4;
-
-    protected $canCHangeContact;
-    protected $canChangeContactOrganisation;
-    protected $canChangeContactName;
-    protected $canChangeContactBirth;
-    protected $canChangeContactFax;
-    protected $canChangeContactCountryCode;
-    protected $canChangeContactEntityType;
-    protected $canChangeContactNationality;
-    protected $canChangeContactRegCode;
+    protected $launchDate = null;
+    protected $dnssec = false;
+    protected $ipv6 = true;
+    protected $ipv4 = true;
     
-    protected $domainRenewBeforeMin; //0days
-    protected $domainRenewBeforeMax; //6months
-    protected $renewPeriods; //array with values
 
+    protected $canChangeContact = true;
+    protected $canChangeContactOrganisation = true;
+    protected $canChangeContactName = true;
+    protected $canChangeContactBirth = false;
+    protected $canChangeContactFax = true;
+    protected $canChangeContactCountryCode = true;
+    protected $canChangeContactEntityType = true;
+    protected $canChangeContactNationality = true;
+    protected $canChangeContactRegCode = false;
+    
+    protected $domainRenewBeforeMin = 0; //0days
+    protected $domainRenewBeforeMax = round(strtotime('-6months') / (60*60*24)); //6months
+    protected $renewPeriods = [1]; //array with values
+
+    protected $refund = false;
+    protected $refundPeriodAdd = null;
+    protected $refundPeriodTransfer = null;
+    protected $refundPeriodRenew = null;
+    protected $refundLimit = 0;
+    
     public function __construct()
     {
+        
     }
 
     public static function getAllTLDs($type = 'object')

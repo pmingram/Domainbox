@@ -122,23 +122,18 @@ class Academy extends TLD
         ],
     ];
 
-    protected $type = 'gLTD'; //gTLD, ccTLD, pTLD
-    protected $launchPhase = 'GA'; //SR, LR, EAP, GA
+    protected $type = 'gLTD';
 
     protected $applyLock = true;
-    protected $autoRenew = true;
-    protected $autoRenewDays = null;
-    protected $autoRenewDaysDefault = 14;
     protected $applyPrivacy = true;
-    protected $acceptTerms = true;
     protected $numberOfNameServers = 13;
-
-    protected $extension = null;
-
-    protected $launchDate = null;
-    protected $dnssec = false;
-    protected $ipv6 = true;
-    protected $ipv4 = true;
+    
+    
+    protected $refund = true;
+    protected $refundPeriodAdd = 5;
+    protected $refundPeriodTransfer = 5;
+    protected $refundPeriodRenew = 5;
+    protected $refundLimit = 10;
 
     public function __construct()
     {
