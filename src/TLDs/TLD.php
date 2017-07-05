@@ -50,7 +50,6 @@ class TLD
     protected $ipv6 = true;
     protected $ipv4 = true;
     
-
     protected $canChangeContact = true;
     protected $canChangeContactOrganisation = true;
     protected $canChangeContactName = true;

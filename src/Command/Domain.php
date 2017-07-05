@@ -116,9 +116,9 @@ class Domain
     public function renewDomain($domain, $period = 1)
     {
         $response = $this->domainbox->call('RenewDomain', [
-            'DomainName' => $domain->getDomainName(),
+            'DomainName'    => $domain->getDomainName(),
             'CurrentExpiry' => $domain->getExpiryDate(),
-            'Period' => $period]);
+            'Period'        => $period, ]);
 
         $domain->loadData('RenewDomain', $response);
 
@@ -133,15 +133,14 @@ class Domain
     public function deleteDomain($domain, $force = null)
     {
         $command = ['DomainName' => $domain->getDomainName()];
-        if($force === true) {
+        if ($force === true) {
             $command['ForceDelete'] = true;
-        }
-        else if($force === false) {
+        } elseif ($force === false) {
             $command['ForceDelete'] = false;
         }
-        
+
         $response = $this->domainbox->call('DeleteDomain', $command);
-        
+
         return true;
     }
 
