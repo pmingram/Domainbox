@@ -31,18 +31,19 @@ class Domainbox
      */
     public function __construct($reseller, $username, $password, $sandbox = false)
     {
-        if (!extension_loaded('soap'))
+        if (!extension_loaded('soap')) {
             throw new \Exception('DomainBox needs the SOAP PHP extension.');
+        }
         $this->reseller = $reseller;
         $this->username = $username;
         $this->password = $password;
         $this->sandbox = $sandbox;
-        
+
         $url = 'https://sandbox.domainbox.net/?WSDL';
         if ($this->sandbox) {
             $url = 'https://live.domainbox.net/?WSDL';
         }
-        $this->client = new \SoapClient($url, array('soap_version' => SOAP_1_2));
+        $this->client = new \SoapClient($url, ['soap_version' => SOAP_1_2]);
     }
 
     public function setClient($client)
@@ -57,18 +58,18 @@ class Domainbox
      * @param $parameters
      */
     public function call($endPoint, $parameters)
-    {  
-        $auth = array('AuthenicationParameters' => array('Reseller' => $this->reseller, 'Username' => $this->username, 'Password' => $this->password));
-        $command = array('CommandParameters' => $parameters);
+    {
+        $auth = ['AuthenicationParameters' => ['Reseller' => $this->reseller, 'Username' => $this->username, 'Password' => $this->password]];
+        $command = ['CommandParameters' => $parameters];
 
         $request = array_merge($auth, $command);
         $result = $this->client->$endPoint($request);
-        
+
         if (is_soap_fault($result)) {
             throw new \Exception();
         }
 
-        $resultKey = $endPoint . 'Result';
+        $resultKey = $endPoint.'Result';
         $this->checkResultCode($result->$resultKey);
 
         return $result->$resultKey;
