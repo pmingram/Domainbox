@@ -1,15 +1,11 @@
 <?php
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7;
-use GuzzleHttp\Psr7\Response;
 use MadeITBelgium\Domainbox\Domainbox;
 use MadeITBelgium\Domainbox\Object\Domain;
 
 class QueryDomainTest extends \PHPUnit_Framework_TestCase
 {
+    private $wsdl = 'tests/domainbox.wsdl';
     public function setUp()
     {
         parent::setUp();
@@ -19,115 +15,69 @@ class QueryDomainTest extends \PHPUnit_Framework_TestCase
     {
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
-        // Create a mock and queue two responses.
+        $soapClientMock = $this->getMockFromWsdl($this->wsdl);
 
-        $stream = Psr7\stream_for('{
-  "d": {
-    "Status": [
-      "OK",
-      "VERIFIED"
-    ],
-    "DomainId": 57438421,
-    "ExpiryDate": "2017-10-04",
-    "CreatedDate": "2014-10-04",
-    "ApplyLock": false,
-    "AutoRenew": false,
-    "AutoRenewDays": 14,
-    "ApplyPrivacy": true,
-    "Nameservers": {
-      "NS1": "ns1.dnsfarm.org",
-      "NS2": "ns2.dnsfarm.org",
-      "NS3": "ns3.dnsfarm.org",
-      "NS4": "",
-      "NS5": "",
-      "NS6": "",
-      "NS7": "",
-      "NS8": "",
-      "NS9": "",
-      "NS10": "",
-      "NS11": "",
-      "NS12": "",
-      "NS13": ""
-    },
-    "Contacts": {
-      "Registrant": {
-        "ContactId": 62873737,
-        "Name": "Tjebbe Lievens",
-        "Organisation": "Made I.T.",
-        "Street1": "Somewhere 1",
-        "Street2": "",
-        "Street3": "",
-        "City": "Geel",
-        "State": "",
-        "Postcode": "2440",
-        "CountryCode": "BE",
-        "Telephone": "+32.485000000",
-        "TelephoneExtension": "",
-        "Fax": "",
-        "Email": "info@madeit.be"
-      },
-      "Admin": {
-        "ContactId": 62873737,
-        "Name": "Tjebbe Lievens",
-        "Organisation": "Made I.T.",
-        "Street1": "Somewhere 1",
-        "Street2": "",
-        "Street3": "",
-        "City": "Geel",
-        "State": "",
-        "Postcode": "2440",
-        "CountryCode": "BE",
-        "Telephone": "+32.485000000",
-        "TelephoneExtension": "",
-        "Fax": "",
-        "Email": "info@madeit.be"
-      },
-      "Tech": {
-        "ContactId": 62873737,
-        "Name": "Tjebbe Lievens",
-        "Organisation": "Made I.T.",
-        "Street1": "Somewhere 1",
-        "Street2": "",
-        "Street3": "",
-        "City": "Geel",
-        "State": "",
-        "Postcode": "2440",
-        "CountryCode": "BE",
-        "Telephone": "+32.485000000",
-        "TelephoneExtension": "",
-        "Fax": "",
-        "Email": "info@madeit.be"
-      },
-      "Billing": {
-        "ContactId": 62873737,
-        "Name": "Tjebbe Lievens",
-        "Organisation": "Made I.T.",
-        "Street1": "Somewhere 1",
-        "Street2": "",
-        "Street3": "",
-        "City": "Geel",
-        "State": "",
-        "Postcode": "2440",
-        "CountryCode": "BE",
-        "Telephone": "+32.485000000",
-        "TelephoneExtension": "",
-        "Fax": "",
-        "Email": "info@madeit.be"
-      }
-    },
-    "ResultCode": 100,
-    "ResultMsg": "Domain Queried Successfully",
-    "TxID": "96b81455-752c-4210-88ef-9bdbb591a7b2"
-  }
-}');
-        $mock = new MockHandler([
-            new Response(200, ['Content-Type' => 'application/json'], $stream),
-        ]);
+        $contact = new stdClass;
+        $contact->ContactId = 62873737;
+        $contact->Name = 'Tjebbe Lievens';
+        $contact->Organisation = 'Made I.T.';
+        $contact->Street1 = "Somewhere 1";
+        $contact->Street2 = null;
+        $contact->Street3 = null;
+        $contact->City = "Geel";
+        $contact->State = null;
+        $contact->Postcode = "2440";
+        $contact->CountryCode = "BE";
+        $contact->Telephone = "+32.485000000";
+        $contact->TelephoneExtension = null;
+        $contact->Fax = null;
+        $contact->Email = "info@madeit.be";
+        
+        $result = new stdClass;
+        $result->Status = ['OK', 'VERIFIED'];
+        $result->DomainId = 57438421;
+        $result->ExpiryDate = "2017-10-04";
+        $result->CreatedDate = "2014-10-04";
+        $result->ApplyLock = false;
+        $result->AutoRenew = false;
+        $result->AutoRenewDays = 14;
+        $result->ApplyPrivacy = true;
+        $result->Nameservers = [
+            "NS1" => "ns1.dnsfarm.org",
+            "NS2" => "ns2.dnsfarm.org",
+            "NS3" => "ns3.dnsfarm.org",
+            "NS4" => "",
+            "NS5" => "",
+            "NS6" => "",
+            "NS7" => "",
+            "NS8" => "",
+            "NS9" => "",
+            "NS10" => "",
+            "NS11" => "",
+            "NS12" => "",
+            "NS13" => ""
+        ];
+        $result->Contacts = [
+            'Registrant' => $contact,
+            'Admin' => $contact,
+            'Billing' => $contact,
+            'Tech' => $contact,
+        ];
+        
+            
+            
+        $result->ResultCode = 100;
+        $result->ResultMsg = 'Command Successful';
+        $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
+        
+        $data = new stdClass;
+        $data->QueryDomainResult = $result;
 
-        $handler = HandlerStack::create($mock);
-        $client = new Client(['handler' => $handler]);
-
-        $domainbox->setClient($client);
+        $soapClientMock->expects($this->any())
+            ->method('QueryDomain')
+            ->willReturn($data);
+        
+        $domainbox->setClient($soapClientMock);
         $domain = $domainbox->domain();
         $response = $domain->queryDomain('emeraldcloudhosting.com');
 
@@ -153,28 +103,26 @@ class QueryDomainTest extends \PHPUnit_Framework_TestCase
     {
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
-        // Create a mock and queue two responses.
+        $soapClientMock = $this->getMockFromWsdl($this->wsdl);
+        
+        $result = new stdClass;
+        $result->DomainId = 0;
+        $result->ApplyLock = false;
+        $result->AutoRenew = false;
+        $result->AutoRenewDays = 0;
+        $result->ApplyPrivacy = false;
+        $result->ResultCode = 295;
+        $result->ResultMsg = 'Domain not in your reseller account: tjebbelievens.be';
+        $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
+        
+        $data = new stdClass;
+        $data->QueryDomainResult = $result;
 
-        $stream = Psr7\stream_for('{
-  "d": {
-    "DomainId": 0,
-    "ApplyLock": false,
-    "AutoRenew": false,
-    "AutoRenewDays": 0,
-    "ApplyPrivacy": false,
-    "ResultCode": 295,
-    "ResultMsg": "Domain not in your reseller account: tjebbelievens.be",
-    "TxID": "97007562-d838-48c6-9e38-0d2048c823e8"
-  }
-}');
-        $mock = new MockHandler([
-            new Response(200, ['Content-Type' => 'application/json'], $stream),
-        ]);
-
-        $handler = HandlerStack::create($mock);
-        $client = new Client(['handler' => $handler]);
-
-        $domainbox->setClient($client);
+        $soapClientMock->expects($this->any())
+            ->method('QueryDomain')
+            ->willReturn($data);
+        
+        $domainbox->setClient($soapClientMock);
         $domain = $domainbox->domain();
         $response = $domain->queryDomain('tjebbelievens.be');
 

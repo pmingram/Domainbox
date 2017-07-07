@@ -1,7 +1,17 @@
 # Changelog
 
-## V0.1 (Not released)
-- Domain Provisioning Commands (4/11)
-- Contact Commands (4/4)
-- ModifyDomain Commands (0/12)
-- QueryDomain Commands (1/12)
+## V0.2.0 (07/07/2017)
+- Json API replaced with SOAP API
+
+## V0.1.0 (06/07/2017)
+- Json API support
+- CheckDomainAvailability
+- CheckDomainAvailabilityPlus
+- RegisterDomain
+- RenewDomain
+- DeleteDomain
+- CreateContact
+- ModifyContact
+- QueryContact
+- DeleteContact
+- QueryDomain

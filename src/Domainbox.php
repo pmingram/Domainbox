@@ -2,8 +2,6 @@
 
 namespace MadeITBelgium\Domainbox;
 
-use GuzzleHttp\Client;
-
 /**
  * Domainbox API.
  *
@@ -33,11 +31,18 @@ class Domainbox
      */
     public function __construct($reseller, $username, $password, $sandbox = false)
     {
+        if (!extension_loaded('soap'))
+            throw new \Exception('DomainBox needs the SOAP PHP extension.');
         $this->reseller = $reseller;
         $this->username = $username;
         $this->password = $password;
         $this->sandbox = $sandbox;
-        $this->client = new Client();
+        
+        $url = 'https://sandbox.domainbox.net/?WSDL';
+        if ($this->sandbox) {
+            $url = 'https://live.domainbox.net/?WSDL';
+        }
+        $this->client = new \SoapClient($url, array('soap_version' => SOAP_1_2));
     }
 
     public function setClient($client)
@@ -52,41 +57,30 @@ class Domainbox
      * @param $parameters
      */
     public function call($endPoint, $parameters)
-    {
-        $url = 'https://json.domainbox.net';
-        if ($this->sandbox) {
-            $url = 'https://json-sandbox.domainbox.net';
-        }
-        $url .= '/'.$endPoint;
+    {  
+        $auth = array('AuthenicationParameters' => array('Reseller' => $this->reseller, 'Username' => $this->username, 'Password' => $this->password));
+        $command = array('CommandParameters' => $parameters);
 
-        $response = $this->client->post($url, [
-            'json' => [
-                'AuthenticationParameters' => [
-                    'Reseller' => $this->reseller,
-                    'Username' => $this->username,
-                    'Password' => $this->password,
-                ],
-                'CommandParameters' => $parameters, ],
-        ]);
-
-        if ($response->getStatusCode() == 200) {
-            $output = json_decode($response->getBody(), true);
-        } else {
+        $request = array_merge($auth, $command);
+        $result = $this->client->$endPoint($request);
+        
+        if (is_soap_fault($result)) {
             throw new \Exception();
         }
 
-        $this->checkResultCode($output);
+        $resultKey = $endPoint . 'Result';
+        $this->checkResultCode($result->$resultKey);
 
-        return $output;
+        return $result->$resultKey;
     }
 
     private function checkResultCode($output)
     {
-        if (!isset($output['d']['ResultCode'])) {
+        if (!isset($output->ResultCode)) {
             throw new \Exception('Wrong output.');
         }
 
-        switch ($output['d']['ResultCode']) {
+        switch ($output->ResultCode) {
             //Command Successful
             case 100: return true; break; //Command Successful
             case 101: return true; break; //Application Submitted

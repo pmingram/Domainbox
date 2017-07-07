@@ -1,15 +1,11 @@
 <?php
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7;
-use GuzzleHttp\Psr7\Response;
 use MadeITBelgium\Domainbox\Domainbox;
 use MadeITBelgium\Domainbox\Object\Contact;
 
 class ContactTest extends \PHPUnit_Framework_TestCase
 {
+    private $wsdl = 'tests/domainbox.wsdl';
     public function setUp()
     {
         parent::setUp();
@@ -19,44 +15,40 @@ class ContactTest extends \PHPUnit_Framework_TestCase
     {
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
-        // Create a mock and queue two responses.
+        $soapClientMock = $this->getMockFromWsdl($this->wsdl);
 
-        $stream = Psr7\stream_for('{
-  "d": {
-    "Contact": {
-      "ContactId": 62873737,
-      "Name": "Tjebbe Lievens",
-      "Organisation": "Made I.T.",
-      "Street1": "Somewhere 1",
-      "Street2": "",
-      "Street3": "",
-      "City": "Geel",
-      "State": "",
-      "Postcode": "2440",
-      "CountryCode": "BE",
-      "Telephone": "+32.485000000",
-      "TelephoneExtension": "",
-      "Fax": "",
-      "Email": "info@madeit.be"
-    },
-    "Linked": true,
-    "TLDs": [
-      ".com",
-      ".net"
-    ],
-    "ResultCode": 100,
-    "ResultMsg": "Contact Queried Successfully",
-    "TxID": "531d1f67-16b3-4fec-b118-638f3518a073"
-  }
-}');
-        $mock = new MockHandler([
-            new Response(200, ['Content-Type' => 'application/json'], $stream),
-        ]);
+        $contact = new stdClass;
+        $contact->ContactId = 62873737;
+        $contact->Name = 'Tjebbe Lievens';
+        $contact->Organisation = 'Made I.T.';
+        $contact->Street1 = "Somewhere 1";
+        $contact->Street2 = null;
+        $contact->Street3 = null;
+        $contact->City = "Geel";
+        $contact->State = null;
+        $contact->Postcode = "2440";
+        $contact->CountryCode = "BE";
+        $contact->Telephone = "+32.485000000";
+        $contact->TelephoneExtension = null;
+        $contact->Fax = null;
+        $contact->Email = "info@madeit.be";
+        
+        $result = new stdClass;
+        $result->Contact = $contact;
+        $result->Linked = true;
+        $result->TLDs = ['.com', '.net'];
+        $result->ResultCode = 100;
+        $result->ResultMsg = 'Command Successful';
+        $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
+        
+        $data = new stdClass;
+        $data->QueryContactResult = $result;
 
-        $handler = HandlerStack::create($mock);
-        $client = new Client(['handler' => $handler]);
-
-        $domainbox->setClient($client);
+        $soapClientMock->expects($this->any())
+            ->method('QueryContact')
+            ->willReturn($data);
+        
+        $domainbox->setClient($soapClientMock);
         $contact = $domainbox->contact();
         $response = $contact->queryContact(62873737);
 
@@ -83,24 +75,22 @@ class ContactTest extends \PHPUnit_Framework_TestCase
     {
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
-        // Create a mock and queue two responses.
+        $soapClientMock = $this->getMockFromWsdl($this->wsdl);
 
-        $stream = Psr7\stream_for('{
-  "d": {
-    "Linked": false,
-    "ResultCode": 322,
-    "ResultMsg": "Contact not in your reseller account: 62873731",
-    "TxID": "83d726bc-4af9-4cd4-ab1a-2ec7ad8b4cf8"
-  }
-}');
-        $mock = new MockHandler([
-            new Response(200, ['Content-Type' => 'application/json'], $stream),
-        ]);
+        $contact = new stdClass;
+        $contact->Linked = false;
+        $contact->ResultCode = 322;
+        $contact->ResultMsg = 'Contact not in your reseller account: 62873731';
+        $contact->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
+        
+        $data = new stdClass;
+        $data->QueryContactResult = $contact;
 
-        $handler = HandlerStack::create($mock);
-        $client = new Client(['handler' => $handler]);
-
-        $domainbox->setClient($client);
+        $soapClientMock->expects($this->any())
+            ->method('QueryContact')
+            ->willReturn($data);
+        
+        $domainbox->setClient($soapClientMock);
         $contact = $domainbox->contact();
         $response = $contact->queryContact(62873731);
     }

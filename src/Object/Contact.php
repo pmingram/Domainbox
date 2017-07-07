@@ -55,20 +55,20 @@ class Contact
 
     private function loadDataQueryContact($response)
     {
-        $this->setName($response['d']['Contact']['Name']);
-        $this->setOrganisation($response['d']['Contact']['Organisation']);
-        $this->setStreet1($response['d']['Contact']['Street1']);
-        $this->setStreet2($response['d']['Contact']['Street2']);
-        $this->setStreet3($response['d']['Contact']['Street3']);
-        $this->setCity($response['d']['Contact']['City']);
-        $this->setState($response['d']['Contact']['State']);
-        $this->setPostcode($response['d']['Contact']['Postcode']);
-        $this->setCountryCode($response['d']['Contact']['CountryCode']);
-        $this->setTelephone($response['d']['Contact']['Telephone']);
-        $this->setTelephoneExtension($response['d']['Contact']['TelephoneExtension']);
-        $this->setFax($response['d']['Contact']['Fax']);
-        $this->setEmail($response['d']['Contact']['Email']);
-        $this->setContactId($response['d']['Contact']['ContactId']);
+        $this->setName($response->Contact->Name);
+        $this->setOrganisation($response->Contact->Organisation);
+        $this->setStreet1($response->Contact->Street1);
+        $this->setStreet2($response->Contact->Street2);
+        $this->setStreet3($response->Contact->Street3);
+        $this->setCity($response->Contact->City);
+        $this->setState($response->Contact->State);
+        $this->setPostcode($response->Contact->Postcode);
+        $this->setCountryCode($response->Contact->CountryCode);
+        $this->setTelephone($response->Contact->Telephone);
+        $this->setTelephoneExtension($response->Contact->TelephoneExtension);
+        $this->setFax($response->Contact->Fax);
+        $this->setEmail($response->Contact->Email);
+        $this->setContactId($response->Contact->ContactId);
     }
 
     public function getName()

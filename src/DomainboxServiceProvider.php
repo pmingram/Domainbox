@@ -37,7 +37,8 @@ class DomainboxServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('domainbox', function ($app) {
-            return new Domainbox($config['domainbox.reseller'], $config['domainbox.username'], $config['domainbox.password'], $config['domainbox.sandbox']);
+            $config = $app->make('config')->get('domainbox');
+            return new Domainbox($config['reseller'], $config['username'], $config['password'], $config['sandbox']);
         });
     }
 

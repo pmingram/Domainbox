@@ -83,7 +83,7 @@ class Domain
         ]);
 
         $list = [];
-        foreach ($response['d']['DomainCheck']['Domains'] as $data) {
+        foreach ($response->DomainCheck->Domains as $data) {
             $domain = new ObjectDomain();
             $domain->loadData('CheckDomainAvailabilityPlus', $data);
             $list[] = $domain;
