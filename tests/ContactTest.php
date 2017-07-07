@@ -6,6 +6,7 @@ use MadeITBelgium\Domainbox\Object\Contact;
 class ContactTest extends \PHPUnit_Framework_TestCase
 {
     private $wsdl = 'tests/domainbox.wsdl';
+
     public function setUp()
     {
         parent::setUp();
@@ -17,37 +18,37 @@ class ContactTest extends \PHPUnit_Framework_TestCase
 
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
 
-        $contact = new stdClass;
+        $contact = new stdClass();
         $contact->ContactId = 62873737;
         $contact->Name = 'Tjebbe Lievens';
         $contact->Organisation = 'Made I.T.';
-        $contact->Street1 = "Somewhere 1";
+        $contact->Street1 = 'Somewhere 1';
         $contact->Street2 = null;
         $contact->Street3 = null;
-        $contact->City = "Geel";
+        $contact->City = 'Geel';
         $contact->State = null;
-        $contact->Postcode = "2440";
-        $contact->CountryCode = "BE";
-        $contact->Telephone = "+32.485000000";
+        $contact->Postcode = '2440';
+        $contact->CountryCode = 'BE';
+        $contact->Telephone = '+32.485000000';
         $contact->TelephoneExtension = null;
         $contact->Fax = null;
-        $contact->Email = "info@madeit.be";
-        
-        $result = new stdClass;
+        $contact->Email = 'info@madeit.be';
+
+        $result = new stdClass();
         $result->Contact = $contact;
         $result->Linked = true;
         $result->TLDs = ['.com', '.net'];
         $result->ResultCode = 100;
         $result->ResultMsg = 'Command Successful';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
-        
-        $data = new stdClass;
+
+        $data = new stdClass();
         $data->QueryContactResult = $result;
 
         $soapClientMock->expects($this->any())
             ->method('QueryContact')
             ->willReturn($data);
-        
+
         $domainbox->setClient($soapClientMock);
         $contact = $domainbox->contact();
         $response = $contact->queryContact(62873737);
@@ -77,19 +78,19 @@ class ContactTest extends \PHPUnit_Framework_TestCase
 
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
 
-        $contact = new stdClass;
+        $contact = new stdClass();
         $contact->Linked = false;
         $contact->ResultCode = 322;
         $contact->ResultMsg = 'Contact not in your reseller account: 62873731';
         $contact->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
-        
-        $data = new stdClass;
+
+        $data = new stdClass();
         $data->QueryContactResult = $contact;
 
         $soapClientMock->expects($this->any())
             ->method('QueryContact')
             ->willReturn($data);
-        
+
         $domainbox->setClient($soapClientMock);
         $contact = $domainbox->contact();
         $response = $contact->queryContact(62873731);

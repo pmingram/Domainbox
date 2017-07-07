@@ -7,6 +7,7 @@ use MadeITBelgium\Domainbox\Object\Domain;
 class DomainTest extends \PHPUnit_Framework_TestCase
 {
     private $wsdl = 'tests/domainbox.wsdl';
+
     public function setUp()
     {
         parent::setUp();
@@ -18,8 +19,8 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
-        
-        $result = new stdClass;
+
+        $result = new stdClass();
         $result->ResultCode = 101;
         $result->ResultMsg = 'Command Successful';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
@@ -30,14 +31,14 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $result->BackOrderAvailable = false;
         $result->AdditionalResults = null;
         $result->LaunchStep = null;
-        
-        $data = new stdClass;
+
+        $data = new stdClass();
         $data->CheckDomainAvailabilityResult = $result;
 
         $soapClientMock->expects($this->any())
             ->method('CheckDomainAvailability')
             ->willReturn($data);
-        
+
         $domainbox->setClient($soapClientMock);
         $domain = $domainbox->domain();
         $response = $domain->checkDomainAvailability('madeit.be', 'GA');
@@ -54,8 +55,8 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
-        
-        $result = new stdClass;
+
+        $result = new stdClass();
         $result->ResultCode = 100;
         $result->ResultMsg = 'Command Successful';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
@@ -66,14 +67,14 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $result->BackOrderAvailable = true;
         $result->AdditionalResults = null;
         $result->LaunchStep = null;
-        
-        $data = new stdClass;
+
+        $data = new stdClass();
         $data->CheckDomainAvailabilityResult = $result;
 
         $soapClientMock->expects($this->any())
             ->method('CheckDomainAvailability')
             ->willReturn($data);
-        
+
         $domainbox->setClient($soapClientMock);
         $domain = $domainbox->domain();
         $response = $domain->checkDomainAvailability('madeit.be', 'GA');
@@ -88,8 +89,8 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
-        
-        $result = new stdClass;
+
+        $result = new stdClass();
         $result->ResultCode = 100;
         $result->ResultMsg = 'Command Successful';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
@@ -100,14 +101,14 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $result->BackOrderAvailable = true;
         $result->AdditionalResults = null;
         $result->LaunchStep = null;
-        
-        $data = new stdClass;
+
+        $data = new stdClass();
         $data->CheckDomainAvailabilityResult = $result;
 
         $soapClientMock->expects($this->any())
             ->method('CheckDomainAvailability')
             ->willReturn($data);
-        
+
         $domainbox->setClient($soapClientMock);
         $domain = $domainbox->domain();
         $response = $domain->checkDomainAvailability('madeit.be', 'GA', true);
@@ -122,8 +123,8 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
-        
-        $result = new stdClass;
+
+        $result = new stdClass();
         $result->ResultCode = 100;
         $result->ResultMsg = 'Command Successful';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
@@ -134,14 +135,14 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $result->BackOrderAvailable = false;
         $result->AdditionalResults = null;
         $result->LaunchStep = null;
-        
-        $data = new stdClass;
+
+        $data = new stdClass();
         $data->CheckDomainAvailabilityResult = $result;
 
         $soapClientMock->expects($this->any())
             ->method('CheckDomainAvailability')
             ->willReturn($data);
-        
+
         $domainbox->setClient($soapClientMock);
         $domain = $domainbox->domain();
         $response = $domain->checkDomainAvailability('madeit.be', 'GA', true);
@@ -157,7 +158,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
 
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
 
-        $result = new stdClass;
+        $result = new stdClass();
         $result->ResultCode = 100;
         $result->ResultMsg = 'Command Successful';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
@@ -168,14 +169,14 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $result->BackOrderAvailable = false;
         $result->AdditionalResults = null;
         $result->LaunchStep = null;
-        
-        $data = new stdClass;
+
+        $data = new stdClass();
         $data->CheckDomainAvailabilityResult = $result;
 
         $soapClientMock->expects($this->any())
             ->method('CheckDomainAvailability')
             ->willReturn($data);
-        
+
         $domainbox->setClient($soapClientMock);
         $domain = $domainbox->domain();
         $response = $domain->checkDomainAvailability('madeit.be', 'GA', true);
@@ -193,7 +194,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         // Create a mock and queue two responses.
 /*
         $stream = Psr7\stream_for('{
-  
+
     "NameSuggestions": {
       "ResultCode": 500,
       "ResultMsg": "Name Suggestions failed. Unable to get name Suggestions"
@@ -268,91 +269,88 @@ class DomainTest extends \PHPUnit_Framework_TestCase
   }
 }'); //ResultCode changed from 210
         */
-        
 
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
-        
+
         $domains = [];
-        $domain = new stdClass;
+        $domain = new stdClass();
         $domain->ResultCode = 100;
-        $domain->ResultMsg = "Command Successful";
-        $domain->DomainName = "madeit.be";
+        $domain->ResultMsg = 'Command Successful';
+        $domain->DomainName = 'madeit.be';
         $domain->AvailabilityStatus = 1;
-        $domain->AvailabilityStatusDescr = "Unavailable";
-        $domain->LaunchPhase = "GA";
+        $domain->AvailabilityStatusDescr = 'Unavailable';
+        $domain->LaunchPhase = 'GA';
         $domain->DropDate = null;
         $domain->BackOrderAvailable = false;
         $domain->LaunchStep = null;
         $domain->AdditionalResults = [];
         $domains[] = $domain;
-        
-        $domain = new stdClass;
+
+        $domain = new stdClass();
         $domain->ResultCode = 100;
-        $domain->ResultMsg = "Command Successful";
-        $domain->DomainName = "madeit.com";
+        $domain->ResultMsg = 'Command Successful';
+        $domain->DomainName = 'madeit.com';
         $domain->AvailabilityStatus = 1;
-        $domain->AvailabilityStatusDescr = "Unavailable";
-        $domain->LaunchPhase = "GA";
+        $domain->AvailabilityStatusDescr = 'Unavailable';
+        $domain->LaunchPhase = 'GA';
         $domain->DropDate = null;
         $domain->BackOrderAvailable = true;
         $domain->LaunchStep = null;
         $domain->AdditionalResults = [];
         $domains[] = $domain;
-        
-        $domain = new stdClass;
+
+        $domain = new stdClass();
         $domain->ResultCode = 100;
-        $domain->ResultMsg = "Command Successful";
-        $domain->DomainName = "madeit.nl";
+        $domain->ResultMsg = 'Command Successful';
+        $domain->DomainName = 'madeit.nl';
         $domain->AvailabilityStatus = 0;
-        $domain->AvailabilityStatusDescr = "Available";
-        $domain->LaunchPhase = "GA";
+        $domain->AvailabilityStatusDescr = 'Available';
+        $domain->LaunchPhase = 'GA';
         $domain->DropDate = null;
         $domain->BackOrderAvailable = false;
         $domain->LaunchStep = null;
         $domain->AdditionalResults = [];
         $domains[] = $domain;
-        
-        
-        $domainCheck = new stdClass;
+
+        $domainCheck = new stdClass();
         $domainCheck->ResultCode = 100;
-        $domainCheck->ResultMsg = "Domain Check completed successfully";
+        $domainCheck->ResultMsg = 'Domain Check completed successfully';
         $domainCheck->Domains = $domains;
-        
-        
+
         $domains = [];
-        $domain = new stdClass;
-        $domain->DomainName = "madeitmine.com";
+        $domain = new stdClass();
+        $domain->DomainName = 'madeitmine.com';
         $domain->Price = 899.00;
         $domain->FastTransfer = false;
         $domains[] = $domain;
-        
-        $domain = new stdClass;
-        $domain->DomainName = "madeitdesign.com";
+
+        $domain = new stdClass();
+        $domain->DomainName = 'madeitdesign.com';
         $domain->Price = 877.00;
         $domain->FastTransfer = false;
         $domains[] = $domain;
-        
-        $premiumDomains = new stdClass;
+
+        $premiumDomains = new stdClass();
         $premiumDomains->ResultCode = 100;
-        $premiumDomains->ResultMsg = "Command Successful";
+        $premiumDomains->ResultMsg = 'Command Successful';
         $premiumDomains->Domains = $domains;
-        
-        $result = new stdClass;
+
+        $result = new stdClass();
         $result->ResultCode = 100;
         $result->ResultMsg = 'Command Successful';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
         $result->DomainCheck = $domainCheck;
         $result->PremiumDomains = $premiumDomains;
-        
-        $data = new stdClass;
+
+        $data = new stdClass();
         $data->CheckDomainAvailabilityPlusResult = $result;
 
         $soapClientMock->expects($this->any())
             ->method('CheckDomainAvailabilityPlus')
             ->willReturn($data);
-        
+
         $domainbox->setClient($soapClientMock);
-        
+
         $domain = $domainbox->domain();
         $response = $domain->checkDomainAvailabilityPlus('madeit.be');
 
@@ -4378,7 +4376,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
 
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
 
-        $result = new stdClass;
+        $result = new stdClass();
         $result->ResultCode = 260;
         $result->ResultMsg = 'Command Successful';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
@@ -4388,14 +4386,14 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $result->AdminContactId = 12190;
         $result->TechContactId = 12190;
         $result->BillingContactId = 12187;
-        
-        $data = new stdClass;
+
+        $data = new stdClass();
         $data->RegisterDomainResult = $result;
-        
+
         $soapClientMock->expects($this->any())
             ->method('RegisterDomain')
             ->willReturn($data);
-        
+
         $domainbox->setClient($soapClientMock);
         $domain = $domainbox->domain();
         $response = $domain->registerDomain($registerDomain);
@@ -4438,18 +4436,18 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         // Create a mock and queue two responses.
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
 
-        $result = new stdClass;
+        $result = new stdClass();
         $result->ResultCode = 260;
         $result->ResultMsg = 'Command Successful';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
-        $result->ExpiryDate = "2019-01-01";
-        
-        $data = new stdClass;
+        $result->ExpiryDate = '2019-01-01';
+
+        $data = new stdClass();
         $data->RenewDomainResult = $result;
         $soapClientMock->expects($this->any())
             ->method('RenewDomain')
             ->willReturn($data);
-        
+
         $domainbox->setClient($soapClientMock);
         $domain = $domainbox->domain();
         $response = $domain->renewDomain($registerDomain, 1);
@@ -4544,10 +4542,10 @@ class DomainTest extends \PHPUnit_Framework_TestCase
 
         $registerDomain->create($domainName);
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
-        
+
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
 
-        $result = new stdClass;
+        $result = new stdClass();
         $result->ResultCode = 100;
         $result->ResultMsg = 'Command Successful';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
@@ -4557,14 +4555,14 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $result->RenewMonthlyDeletesRemaining = 0;
         $result->TransferRefunded = false;
         $result->TransferMonthlyDeletesRemaining = 0;
-        
-        $data = new stdClass;
+
+        $data = new stdClass();
         $data->DeleteDomainResult = $result;
 
         $soapClientMock->expects($this->any())
             ->method('DeleteDomain')
             ->willReturn($data);
-        
+
         $domainbox->setClient($soapClientMock);
         $domain = $domainbox->domain();
         $response = $domain->deleteDomain($registerDomain);
@@ -4584,7 +4582,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
 
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
 
-        $result = new stdClass;
+        $result = new stdClass();
         $result->ResultCode = 260;
         $result->ResultMsg = 'Invalid Parameter: ForceDelete must be true. Refunds not available for .be domains';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
@@ -4594,16 +4592,15 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $result->RenewMonthlyDeletesRemaining = 0;
         $result->TransferRefunded = false;
         $result->TransferMonthlyDeletesRemaining = 0;
-        
-        $data = new stdClass;
+
+        $data = new stdClass();
         $data->DeleteDomainResult = $result;
         $soapClientMock->expects($this->any())
             ->method('DeleteDomain')
             ->willReturn($data);
-        
+
         $domainbox->setClient($soapClientMock);
         $domain = $domainbox->domain();
         $response = $domain->deleteDomain($registerDomain);
     }
-    
 }
