@@ -18,32 +18,38 @@ class Be extends TLD
     protected $dnsName = 'be';
 
     protected $periods = [1];
-    protected $fee_registry = 5.00;
-    protected $fee_renew = 5.00;
-    protected $fee_transfer = 5.00;
-    protected $fee_domainbox = 2.00;
-    protected $fee_icann = 0.00;
-    protected $fee_setup = 0.00;
-    protected $fee_application = 0.00;
-    protected $fee_total = 7.00;
-    protected $fee_restore = 80.00;
+    protected $fee_registry = 5;
+    protected $fee_renew = 5;
+    protected $fee_transfer = 5;
+    protected $fee_domainbox = 2;
+    protected $fee_icann = 0;
+    protected $fee_setup = 0;
+    protected $fee_application = 0;
+    protected $fee_total = 7;
+    protected $fee_restore = 80;
     protected $fee_backorder = null;
+
+    protected $type = 'ccTLD';
 
     protected $additionalData = [
         'EUBEAdditionalData' => [
-                'Language'  => ['nl' => 'nl (Dutch)', 'fr' => 'fr (French)', 'en'  => 'en (English)'],
-                'VATNumber' => false,
+                'Language'  => ['type' => 'select', 'values' => ['nl' => 'nl (Dutch)', 'fr' => 'fr (French)', 'en'  => 'en (English)'], 'required' => false],
+                'VATNumber' => ['type' => 'VAT', 'required' => false],
             ],
     ];
-
-    protected $type = 'ccLTD';
-
+    
     protected $applyLock = false;
     protected $applyPrivacy = false;
     protected $numberOfNameServers = 9;
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
+    
+    protected $refund = false;
+    protected $refundPeriodAdd = 0;
+    protected $refundPeriodTransfer = 0;
+    protected $refundPeriodRenew = 0;
+    protected $refundLimit = 0;
 
     public function __construct()
     {

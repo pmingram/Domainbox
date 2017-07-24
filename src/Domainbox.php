@@ -40,7 +40,7 @@ class Domainbox
         $this->sandbox = $sandbox;
 
         $url = 'https://sandbox.domainbox.net/?WSDL';
-        if ($this->sandbox) {
+        if (!$this->sandbox) {
             $url = 'https://live.domainbox.net/?WSDL';
         }
         $this->client = new \SoapClient($url, ['soap_version' => SOAP_1_2]);
@@ -59,7 +59,7 @@ class Domainbox
      */
     public function call($endPoint, $parameters)
     {
-        $auth = ['AuthenicationParameters' => ['Reseller' => $this->reseller, 'Username' => $this->username, 'Password' => $this->password]];
+        $auth = ['AuthenticationParameters' => ['Reseller' => $this->reseller, 'Username' => $this->username, 'Password' => $this->password]];
         $command = ['CommandParameters' => $parameters];
 
         $request = array_merge($auth, $command);

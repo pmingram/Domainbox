@@ -21,17 +21,23 @@ class Com extends TLD
     protected $fee_registry = 7.85;
     protected $fee_renew = 7.85;
     protected $fee_transfer = 7.85;
-    protected $fee_domainbox = 2.00;
+    protected $fee_domainbox = 2;
     protected $fee_icann = 0.18;
-    protected $fee_setup = 0.00;
-    protected $fee_application = 0.00;
+    protected $fee_setup = 0;
+    protected $fee_application = 0;
     protected $fee_total = 10.03;
-    protected $fee_restore = 75.00;
-    protected $fee_backorder = 40.00;
+    protected $fee_restore = 75;
+    protected $fee_backorder = 40;
+
+    protected $type = 'gTLD';
 
     protected $applyLock = true;
     protected $applyPrivacy = true;
-
+    protected $numberOfNameServers = 13;
+    protected $dnssec = false;
+    protected $ipv6 = true;
+    protected $ipv4 = true;
+    
     protected $refund = true;
     protected $refundPeriodAdd = 5;
     protected $refundPeriodTransfer = 5;
