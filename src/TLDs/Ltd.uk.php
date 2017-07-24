@@ -36,14 +36,14 @@ class Ltduk extends TLD
                 'RelatedDomainId'  => ['type' => 'Numeric', 'required' => true],
             ],
     ];
-    
+
     protected $applyLock = false;
     protected $applyPrivacy = true;
     protected $numberOfNameServers = 13;
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
-    
+
     protected $refund = false;
     protected $refundPeriodAdd = 'END OF MONTH';
     protected $refundPeriodTransfer = 0;

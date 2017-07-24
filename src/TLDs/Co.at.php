@@ -37,14 +37,13 @@ class Coat extends TLD
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
-    
-	
-	protected $dnsVerification = true;
-    
+
+    protected $dnsVerification = true;
+
     protected $domainRenewBeforeMin = 30; //0days
     protected $domainRenewBeforeMax = null;
     protected $renewPeriods = [30, 45, 60, 90]; //array with values
-    
+
     protected $refund = false;
     protected $refundPeriodAdd = 0;
     protected $refundPeriodTransfer = 0;
