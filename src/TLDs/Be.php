@@ -37,14 +37,14 @@ class Be extends TLD
                 'VATNumber' => ['type' => 'VAT', 'required' => false],
             ],
     ];
-    
+
     protected $applyLock = false;
     protected $applyPrivacy = false;
     protected $numberOfNameServers = 9;
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
-    
+
     protected $refund = false;
     protected $refundPeriodAdd = 0;
     protected $refundPeriodTransfer = 0;

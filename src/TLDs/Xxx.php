@@ -30,13 +30,13 @@ class Xxx extends TLD
     protected $fee_backorder = null;
 
     protected $type = 'gTLD';
-    
+
     protected $extension = [
         'XXXMemberData' => [
-            'MemberID' => ['required' => true, 'type' => 'string'],
+            'MemberID'       => ['required' => true, 'type' => 'string'],
             'MemberPassword' => ['required' => false, 'type' => 'password'],
-            'NonResolving' => ['required' => true, 'type' => 'string'],
-        ]
+            'NonResolving'   => ['required' => true, 'type' => 'string'],
+        ],
     ];
 
     protected $applyLock = true;
@@ -45,7 +45,7 @@ class Xxx extends TLD
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
-    
+
     protected $refund = true;
     protected $refundPeriodAdd = 5;
     protected $refundPeriodTransfer = 5;

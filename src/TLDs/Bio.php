@@ -37,14 +37,14 @@ class Bio extends TLD
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
-    
+
     protected $refund = true;
     protected $refundPeriodAdd = 5;
     protected $refundPeriodTransfer = 5;
     protected $refundPeriodRenew = 5;
     protected $refundLimit = 10;
 
-    protected $registerText = "By registering this domain name, the registrant commits to not undermine the Principles of Organic Agriculture as formulated by the IFOAM (POA). If the registrant is a producer, a transformer or retailer in the field of agriculture, food and farming, the registrant commits to abide by POA and by any regulations in force in the relevant markets where the registrant intends to present or promote its products within the on-line content associated with this .BIO domain name(s).";
+    protected $registerText = 'By registering this domain name, the registrant commits to not undermine the Principles of Organic Agriculture as formulated by the IFOAM (POA). If the registrant is a producer, a transformer or retailer in the field of agriculture, food and farming, the registrant commits to abide by POA and by any regulations in force in the relevant markets where the registrant intends to present or promote its products within the on-line content associated with this .BIO domain name(s).';
 
     public function __construct()
     {

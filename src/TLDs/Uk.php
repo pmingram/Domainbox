@@ -30,8 +30,7 @@ class Uk extends TLD
     protected $fee_backorder = null;
 
     protected $type = 'ccTLD';
-    
-    
+
     protected $additionalData = [
         'UKDirectData' => [
                 'RelatedDomainId'  => ['type' => 'Numeric', 'required' => true],
@@ -44,7 +43,7 @@ class Uk extends TLD
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
-    
+
     protected $refund = true;
     protected $refundPeriodAdd = 'END OF MONTH';
     protected $refundPeriodTransfer = 0;

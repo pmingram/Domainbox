@@ -28,10 +28,10 @@ class Jp extends TLD
     protected $fee_total = 52;
     protected $fee_restore = 65;
     protected $fee_backorder = null;
-    
+
     protected $extension = [
         'JPProxyServiceData' => [
-            'UseProxyService' => ['required' => true, 'type' => 'boolean']
+            'UseProxyService' => ['required' => true, 'type' => 'boolean'],
         ],
     ];
 
@@ -43,7 +43,7 @@ class Jp extends TLD
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
-    
+
     protected $refund = true;
     protected $refundPeriodAdd = 0;
     protected $refundPeriodTransfer = 0;
