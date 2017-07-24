@@ -37,9 +37,9 @@ class It extends TLD
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
-	
-	protected $dnsVerification = true;
-    
+
+    protected $dnsVerification = true;
+
     protected $refund = true;
     protected $refundPeriodAdd = 0;
     protected $refundPeriodTransfer = 0;

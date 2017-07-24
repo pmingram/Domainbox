@@ -34,17 +34,17 @@ class Audio extends TLD
     protected $extension = [
         'ChallengeParameters' => [
             'ChallengeQuestion' => ['type' => 'string', 'required' => true],
-            'ChallengeAnswer' => ['type' => 'string', 'required' => true],
-        ]
+            'ChallengeAnswer'   => ['type' => 'string', 'required' => true],
+        ],
     ];
-    
+
     protected $applyLock = true;
     protected $applyPrivacy = true;
     protected $numberOfNameServers = 13;
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
-    
+
     protected $refund = true;
     protected $refundPeriodAdd = 5;
     protected $refundPeriodTransfer = 5;
