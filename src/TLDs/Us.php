@@ -17,7 +17,7 @@ class Us extends TLD
     protected $idnTLD = 'us';
     protected $dnsName = 'us';
 
-    protected $periods =[1, 2];
+    protected $periods = [1, 2];
     protected $fee_registry = 6;
     protected $fee_renew = 6;
     protected $fee_transfer = 6;
@@ -37,7 +37,7 @@ class Us extends TLD
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
-    
+
     protected $refund = true;
     protected $refundPeriodAdd = 5;
     protected $refundPeriodTransfer = 5;

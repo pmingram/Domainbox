@@ -37,7 +37,7 @@ class Mu extends TLD
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
-    
+
     protected $refund = true;
     protected $refundPeriodAdd = 1;
     protected $refundPeriodTransfer = 0;

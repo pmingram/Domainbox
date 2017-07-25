@@ -30,14 +30,14 @@ class Scot extends TLD
     protected $fee_backorder = null;
 
     protected $type = 'gTLD';
-    
+
     protected $extension = [
         'IntendedUseParams' => [
-            'IntendedUse' => ['type' => 'string', 'required' => true],
-            'ReferenceUrl' => ['type' => 'string', 'required' => false],
-            'TrademarkId' => ['type' => 'string', 'required' => false],
+            'IntendedUse'     => ['type' => 'string', 'required' => true],
+            'ReferenceUrl'    => ['type' => 'string', 'required' => false],
+            'TrademarkId'     => ['type' => 'string', 'required' => false],
             'TrademarkIssuer' => ['type' => 'string', 'required' => false],
-        ]
+        ],
     ];
 
     protected $applyLock = true;
@@ -46,7 +46,7 @@ class Scot extends TLD
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
-    
+
     protected $refund = true;
     protected $refundPeriodAdd = 5;
     protected $refundPeriodTransfer = 5;

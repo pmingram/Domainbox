@@ -37,7 +37,7 @@ class Netsc extends TLD
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
-    
+
     protected $refund = false;
     protected $refundPeriodAdd = 5;
     protected $refundPeriodTransfer = 5;

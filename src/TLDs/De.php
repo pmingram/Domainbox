@@ -30,11 +30,11 @@ class De extends TLD
     protected $fee_backorder = 40;
 
     protected $type = 'ccTLD';
-    
+
     protected $extension = [
         'DeBillingData' => [
             'MonthlyBilling' => ['required' => true, 'type' => 'boolean'],
-        ]
+        ],
     ];
 
     protected $applyLock = false;
@@ -43,14 +43,14 @@ class De extends TLD
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
-    
+
     protected $refund = true;
     protected $refundPeriodAdd = 0;
     protected $refundPeriodTransfer = 0;
     protected $refundPeriodRenew = 0;
     protected $refundLimit = 0;
-	
-	protected $dnsVerification = true;
+
+    protected $dnsVerification = true;
 
     public function __construct()
     {
