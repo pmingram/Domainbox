@@ -86,7 +86,17 @@ class TLD
         $phpFiles = scandir(__DIR__);
         foreach ($phpFiles as $fileName) {
             if (!in_array($fileName, ['.', '..', 'TLD.php', 'TLDGenerator.php'])) {
+<<<<<<< HEAD
+                if ($fileName == "Global.php") {
+                    $className = "GlobalTld";
+                }
+                else {
+                    $className = str_replace('.', '', substr($fileName, 0, strlen($fileName) - strlen('.php')));
+                }
+                $class = 'MadeITBelgium\\Domainbox\\TLDs\\' . $className;
+=======
                 $class = 'MadeITBelgium\\Domainbox\\TLDs\\'.str_replace('.', '', substr($fileName, 0, strlen($fileName) - strlen('.php')));
+>>>>>>> aff88f5d8729e688afafc6cc7eebcf5711c89fb5
                 $object = new $class();
                 if ($type == 'object') {
                     $tlds[$object->getTld()] = $object;

@@ -11,7 +11,7 @@ namespace MadeITBelgium\Domainbox\TLDs;
  * @author     Made I.T. <info@madeit.be>
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  */
-class Global extends TLD
+class GlobalTld extends TLD
 {
     protected $tld = '.global';
     protected $idnTLD = 'global';
@@ -37,7 +37,7 @@ class Global extends TLD
     protected $dnssec = false;
     protected $ipv6 = true;
     protected $ipv4 = true;
-    
+
     protected $refund = true;
     protected $refundPeriodAdd = 5;
     protected $refundPeriodTransfer = 5;
