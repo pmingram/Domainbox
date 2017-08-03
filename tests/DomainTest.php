@@ -4377,7 +4377,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
 
         $result = new stdClass();
-        $result->ResultCode = 260;
+        $result->ResultCode = 200;
         $result->ResultMsg = 'Command Successful';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
         $result->OrderId = 13477;
@@ -4437,7 +4437,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
 
         $result = new stdClass();
-        $result->ResultCode = 260;
+        $result->ResultCode = 200;
         $result->ResultMsg = 'Command Successful';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
         $result->ExpiryDate = '2019-01-01';
