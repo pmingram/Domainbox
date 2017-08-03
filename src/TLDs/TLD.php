@@ -86,12 +86,13 @@ class TLD
         $phpFiles = scandir(__DIR__);
         foreach ($phpFiles as $fileName) {
             if (!in_array($fileName, ['.', '..', 'TLD.php', 'TLDGenerator.php'])) {
-                if ($fileName == 'Global.php') {
-                    $className = 'GlobalTld';
-                } else {
+                if ($fileName == "Global.php") {
+                    $className = "GlobalTld";
+                }
+                else {
                     $className = str_replace('.', '', substr($fileName, 0, strlen($fileName) - strlen('.php')));
                 }
-                $class = 'MadeITBelgium\\Domainbox\\TLDs\\'.$className;
+                $class = 'MadeITBelgium\\Domainbox\\TLDs\\' . $className;
                 $object = new $class();
                 if ($type == 'object') {
                     $tlds[$object->getTld()] = $object;
@@ -583,23 +584,23 @@ class TLD
     {
         $this->refundLimit = $refundLimit;
     }
-
+    
     public function getDnsVerification()
     {
         return $this->dnsVerification;
     }
-
+    
     public function setDnsVerification($dnsVerification)
     {
         $this->dnsVerification = $dnsVerification;
     }
-
+    
     public function getRegisterText()
     {
         return $this->registerText;
     }
-
-    public function setDnsVerification($registerText)
+    
+    public function setRegisterText($registerText)
     {
         $this->registerText = $registerText;
     }

@@ -11,7 +11,7 @@ namespace MadeITBelgium\Domainbox\TLDs;
  * @author     Made I.T. <info@madeit.be>
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  */
-class Schuk3rdLevel extends TLD
+class Schuk extends TLD
 {
     protected $tld = '.sch.uk';
     protected $idnTLD = 'sch.uk';

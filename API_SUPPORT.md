@@ -11,45 +11,62 @@
 | RegisterDomain                          | Domain::registerDomain()                        | Domain            | 0.1.0   |
 | RenewDomain                             | Domain::renewDomain()                           | Domain            | 0.1.0   |
 | DeleteDomain                            | Domain::deleteDomain()                          | Domain            | 0.1.0   |
-| CheckDomainDeleteRefund                 |                                                 |                   | 0.2.0   |
-| UnrenewDomain                           |                                                 |                   | 0.2.0   |
-| CreateDomainAuthcode                    |                                                 |                   | 0.2.0   |
-| ResendDomainVerificationEmail           |                                                 |                   | 0.2.0   |
-| CheckDomainClaims                       |                                                 |                   | 0.2.0   |
+| CheckDomainDeleteRefund                 |                                                 |                   | 0.5.0   |
+| UnrenewDomain                           |                                                 |                   | 0.5.0   |
+| CreateDomainAuthcode                    |                                                 |                   | 0.5.0   |
+| ResendDomainVerificationEmail           |                                                 |                   | 0.5.0   |
+| CheckDomainClaims                       |                                                 |                   | 0.5.0   |
 |                                         |                                                 |                   |         |
-| CreateTrademark                         |                                                 |                   | 0.3.0   |
-| QueryTrademark                          |                                                 |                   | 0.3.0   |
-| QueryTrademarkLabels                    |                                                 |                   | 0.3.0   |
-| QueryTrademarkSMD                       |                                                 |                   | 0.3.0   |
-| ModifyTrademark                         |                                                 |                   | 0.3.0   |
+| CreateTrademark                         |                                                 |                   | 0.6.0   |
+| QueryTrademark                          |                                                 |                   | 0.6.0   |
+| QueryTrademarkLabels                    |                                                 |                   | 0.6.0   |
+| QueryTrademarkSMD                       |                                                 |                   | 0.6.0   |
+| ModifyTrademark                         |                                                 |                   | 0.6.0   |
 |                                         |                                                 |                   |         |
 | CreateContact                           | Contact::createContact()                        | Contact           | 0.1.0   |
 | ModifyContact                           | Contact::modifyContact()                        | Contact           | 0.1.0   |
 | QueryContact                            | Contact::queryContact()                         | Contact           | 0.1.0   |
 | DeleteContact                           | Contact::deleteContact()                        | Boolean           | 0.1.0   |
 |                                         |                                                 |                   |         |
-| ModifyDomainContacts                    |                                                 |                   | 0.2.0   |
-| ModifyDomainNameservers                 |                                                 |                   | 0.2.0   |
-| ModifyDomainAuthcode                    |                                                 |                   | 0.2.0   |
-| ModifyDomainLock                        |                                                 |                   | 0.2.0   |
-| ModifyDomainRenewalSettings             |                                                 |                   | 0.2.0   |
-| ModifyDomainPrivacy                     |                                                 |                   | 0.2.0   |
-| ModifyDomainTelCredentials              |                                                 |                   | 0.2.0   |
-| ModifyDomainMemberContact               |                                                 |                   | 0.2.0   |
-| ModifyDomainAdditionalData              |                                                 |                   | 0.2.0   |
-| ModifyDomainStatus                      |                                                 |                   | 0.2.0   |
-| ModifyDomainProxy                       |                                                 |                   | 0.2.0   |
-| ModifyDomainRecords                     |                                                 |                   | 0.2.0   |
+| ModifyDomainContacts                    |                                                 |                   | 0.5.0   |
+| ModifyDomainNameservers                 |                                                 |                   | 0.5.0   |
+| ModifyDomainAuthcode                    |                                                 |                   | 0.5.0   |
+| ModifyDomainLock                        |                                                 |                   | 0.5.0   |
+| ModifyDomainRenewalSettings             |                                                 |                   | 0.5.0   |
+| ModifyDomainPrivacy                     |                                                 |                   | 0.5.0   |
+| ModifyDomainTelCredentials              |                                                 |                   | 0.5.0   |
+| ModifyDomainMemberContact               |                                                 |                   | 0.5.0   |
+| ModifyDomainAdditionalData              |                                                 |                   | 0.5.0   |
+| ModifyDomainStatus                      |                                                 |                   | 0.5.0   |
+| ModifyDomainProxy                       |                                                 |                   | 0.5.0   |
+| ModifyDomainRecords                     |                                                 |                   | 0.5.0   |
 |                                         |                                                 |                   |         |
 | QueryDomainAuthcode                     |                                                 |                   |         |
 | QueryDomain                             | Domain::queryDomain()                           | Domain            | 0.1.0   |
-| QueryDomainLock                         |                                                 |                   | 0.2.0   |
-| QueryDomainRenewalSettings              |                                                 |                   | 0.2.0   |
-| QueryDomainDates                        |                                                 |                   | 0.2.0   |
-| QueryDomainNameservers                  |                                                 |                   | 0.2.0   |
-| QueryDomainNameserverHosts              |                                                 |                   | 0.2.0   |
-| QueryDomainContacts                     |                                                 |                   | 0.2.0   |
-| QueryDomainPrivacy                      |                                                 |                   | 0.2.0   |
-| QueryDomainLaunch                       |                                                 |                   | 0.2.0   |
-| QueryDomainTelCredentials               |                                                 |                   | 0.2.0   |
-| QueryDomainMemberContact                |                                                 |                   | 0.2.0   |
+| QueryDomainLock                         |                                                 |                   | 0.5.0   |
+| QueryDomainRenewalSettings              |                                                 |                   | 0.5.0   |
+| QueryDomainDates                        |                                                 |                   | 0.5.0   |
+| QueryDomainNameservers                  |                                                 |                   | 0.5.0   |
+| QueryDomainNameserverHosts              |                                                 |                   | 0.5.0   |
+| QueryDomainContacts                     |                                                 |                   | 0.5.0   |
+| QueryDomainPrivacy                      |                                                 |                   | 0.5.0   |
+| QueryDomainLaunch                       |                                                 |                   | 0.5.0   |
+| QueryDomainTelCredentials               |                                                 |                   | 0.5.0   |
+| QueryDomainMemberContact                |                                                 |                   | 0.5.0   |
+|                                         |                                                 |                   |         |
+| CreateNameserver                        |                                                 |                   | 0.5.0   |
+| ModifyNameserver                        |                                                 |                   | 0.5.0   |
+| DeleteNameserver                        |                                                 |                   | 0.5.0   |
+| QueryNameserver                         |                                                 |                   | 0.5.0   |
+| CreateExternalNameserver                |                                                 |                   | 0.5.0   |
+|                                         |                                                 |                   |         |
+| CheckTransferAvailabilty                |                                                 |                   | 0.5.0   |
+| RequestTransfer                         |                                                 |                   | 0.5.0   |
+| QueryTransfer                           |                                                 |                   | 0.5.0   |
+| CancelTransfer                          |                                                 |                   | 0.5.0   |
+| ResendTransferAdminEmail                |                                                 |                   | 0.5.0   |
+| RestartTransfer                         |                                                 |                   | 0.5.0   |
+| QueryTransferAway                       |                                                 |                   | 0.5.0   |
+| CompleteTransferAway                    |                                                 |                   | 0.5.0   |
+| RejectTransferAway                      |                                                 |                   | 0.5.0   |
+| RequestTransferAway                     |                                                 |                   |         |
