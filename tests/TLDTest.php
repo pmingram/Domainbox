@@ -558,7 +558,7 @@ class TLDTest extends \PHPUnit_Framework_TestCase
         ], TLD::getAllTLDs());
     }
     
-    public function providerDeleteDomainFalse()
+    public function providerDomains()
     {
         return [
             [
@@ -577,12 +577,34 @@ class TLDTest extends \PHPUnit_Framework_TestCase
     /**
      * This is kind of a smoke test.
      *
-     * @dataProvider providerDeleteDomainFalse
+     * @dataProvider providerDomains
      **/
-    public function testNotDeleteCommand($tld, $class, $options)
+    public function testTlds($tld, $class, $options)
     {
         $tld = new $class();
-        $tld->getTld()
         $this->assertEquals($options['tld'], $tld->getTld());
+        $this->assertEquals($options['idnTLD'], $tld->getIdnTld());
+        $this->assertEquals($options['dnsName'], $tld->getDnsName());
+        $this->assertEquals($options['periods'], $tld->getPeriods());
+        $this->assertEquals($options['fee_registry'], $tld->getFee_registry());
+        $this->assertEquals($options['fee_renew'], $tld->getFee_renew());
+        $this->assertEquals($options['fee_transfer'], $tld->getFee_transfer());
+        $this->assertEquals($options['fee_domainbox'], $tld->getFee_domainbox());
+        $this->assertEquals($options['fee_icann'], $tld->getFee_icann());
+        $this->assertEquals($options['fee_setup'], $tld->getFee_setup());
+        $this->assertEquals($options['fee_application'], $tld->getFee_application());
+        $this->assertEquals($options['fee_total'], $tld->getFee_total());
+        $this->assertEquals($options['fee_restore'], $tld->getFee_restore());
+        $this->assertEquals($options['fee_backorder'], $tld->getFee_backorder());
+        $this->assertEquals($options['type'], $tld->getType());
+        $this->assertEquals($options['applyLock'], $tld->getApplyLock());
+        $this->assertEquals($options['applyPrivacy'], $tld->getApplyPrivacy());
+        $this->assertEquals($options['numberOfNameServers'], $tld->getNumberOfNameServers());
+        $this->assertEquals($options['dnssec'], $tld->getDnssec());
+        $this->assertEquals($options['ipv6'], $tld->getIpv6());
+        $this->assertEquals($options['ipv4'], $tld->getIpv4());
+        $this->assertEquals($options['refund'], $tld->getRefund());
+        $this->assertEquals($options['refundPeriodRenew'], $tld->getRefundPeriodRenew());
+        $this->assertEquals($options['refundLimit'], $tld->getRefundLimit());
     }
 }
