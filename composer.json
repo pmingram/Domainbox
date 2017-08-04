@@ -1,6 +1,6 @@
 {
   "name": "madeitbelgium/domainbox",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "PHP Laravel Domainbox SDK",
   "keywords": ["hosting", "domainbox", "domainname"],
   "homepage": "http://www.madeit.be",
