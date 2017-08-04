@@ -213,7 +213,11 @@ class Contact
 
     public function generateDomainboxCommand()
     {
-        return [
+        $data = [];
+        if($this->contactId != 0 && $this->contactId != null) {
+            $data['ContactId'] = $this->getContactId();
+        }
+        $data = $data + [
             'Name'               => $this->getName(),
             'Organisation'       => $this->getOrganisation(),
             'Street1'            => $this->getStreet1(),
@@ -228,5 +232,6 @@ class Contact
             'Fax'                => $this->getFax(),
             'Email'              => $this->getEmail(),
         ];
+        return $data;
     }
 }

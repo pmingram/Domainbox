@@ -119,6 +119,10 @@ class Domain
             $this->loadFromQueryDomainContacts($data);
         } elseif ($command == 'QueryDomainPrivacy') {
             $this->loadFromQueryDomainPrivacy($data);
+        } elseif ($command == 'ModifyDomainContacts') {
+            $this->loadFromModifyDomainContacts($data);
+        } elseif ($command == 'ModifyDomainAuthcode') {
+            $this->loadFromModifyDomainAuthcode($data);
         }
     }
 
@@ -157,6 +161,11 @@ class Domain
         $this->setAdminContactId($data->AdminContactId);
         $this->setTechContactId($data->TechContactId);
         $this->setBillingContactId($data->BillingContactId);
+    }
+
+    private function loadRenewDomain($data)
+    {
+        $this->setExpiryDate($data->ExpiryDate);
     }
 
     private function loadFromQueryDomainAuthcode($data)
@@ -219,7 +228,8 @@ class Domain
 
     private function loadFromQueryDomainRenewalSettings($data)
     {
-        $this->setDomainId($data->DomainId);
+        if(isset($data->DomainId))
+            $this->setDomainId($data->DomainId);
         $this->setAutoRenew($data->AutoRenew);
         $this->setAutoRenewDays($data->AutoRenewDays);
     }
@@ -243,7 +253,6 @@ class Domain
         $this->setNameServers($ns);
     }
     
-
     private function loadFromQueryDomainContacts($data)
     {
         $this->setDomainId($data->DomainId);
@@ -274,12 +283,20 @@ class Domain
         $this->setDomainId($data->DomainId);
         $this->setApplyPrivacy($data->ApplyPrivacy);
     }
-
-    private function loadRenewDomain($data)
+    
+    private function loadFromModifyDomainContacts($data)
     {
-        $this->setExpiryDate($data->ExpiryDate);
+        $this->setRegistrantContactId($data->RegistrantContactId);
+        $this->setAdminContactId($data->AdminContactId);
+        $this->setTechContactId($data->TechContactId);
+        $this->setBillingContactId($data->BillingContactId);
     }
-
+    
+    private function loadFromModifyDomainAuthcode($data)
+    {
+        $this->setAuthCode($data->AuthCode);
+    }
+    
     public function getDomainName()
     {
         return $this->domainName;

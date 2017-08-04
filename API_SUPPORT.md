@@ -1,4 +1,4 @@
-# API Support check domainbox.com for more information.
+# API Support check domainbox.com for more information. (19/...)
 
 
 | Endpoint                                | SDK Class::Function                             | Output            | Version |
@@ -14,7 +14,7 @@
 | CheckDomainDeleteRefund                 |                                                 |                   | 0.5.0   |
 | UnrenewDomain                           |                                                 |                   | 0.5.0   |
 | CreateDomainAuthcode                    |                                                 |                   | 0.5.0   |
-| ResendDomainVerificationEmail           |                                                 |                   | 0.5.0   |
+| ResendDomainVerificationEmail           | Domain::resendDomainVerificationEmail()         | Boolean           | 0.4.0   |
 | CheckDomainClaims                       |                                                 |                   | 0.5.0   |
 |                                         |                                                 |                   |         |
 | CreateTrademark                         |                                                 |                   | 0.6.0   |
@@ -28,18 +28,18 @@
 | QueryContact                            | Contact::queryContact()                         | Contact           | 0.1.0   |
 | DeleteContact                           | Contact::deleteContact()                        | Boolean           | 0.1.0   |
 |                                         |                                                 |                   |         |
-| ModifyDomainContacts                    |                                                 |                   | 0.5.0   |
+| ModifyDomainContacts                    | Domain::modifyDomainContacts()                  | Domain            | 0.4.0   |
 | ModifyDomainNameservers                 |                                                 |                   | 0.5.0   |
-| ModifyDomainAuthcode                    |                                                 |                   | 0.5.0   |
-| ModifyDomainLock                        |                                                 |                   | 0.5.0   |
-| ModifyDomainRenewalSettings             |                                                 |                   | 0.5.0   |
-| ModifyDomainPrivacy                     |                                                 |                   | 0.5.0   |
+| ModifyDomainAuthcode                    | Domain::modifyDomainAuthcode()                  | Domain            | 0.4.0   |
+| ModifyDomainLock                        | Domain::modifyDomainLock()                      | Boolean           | 0.4.0   |
+| ModifyDomainRenewalSettings             | Domain::ModifyDomainRenewalSettings()           | Domain            | 0.4.0   |
+| ModifyDomainPrivacy                     | Domain::ModifyDomainPrivacy()                   | Boolean           | 0.4.0   |
 | ModifyDomainTelCredentials              |                                                 |                   | 0.5.0   |
 | ModifyDomainMemberContact               |                                                 |                   | 0.5.0   |
 | ModifyDomainAdditionalData              |                                                 |                   | 0.5.0   |
 | ModifyDomainStatus                      |                                                 |                   | 0.5.0   |
 | ModifyDomainProxy                       |                                                 |                   | 0.5.0   |
-| ModifyDomainRecords                     |                                                 |                   | 0.5.0   |
+| ModifyDomainRecords                     | Domain::ModifyDomainRecords()                   | Boolean           | 0.4.0   |
 |                                         |                                                 |                   |         |
 | QueryDomainAuthcode                     | Domain::queryDomainAuthCode()                   | Domain            | 0.4.0   |
 | QueryDomain                             | Domain::queryDomain()                           | Domain            | 0.1.0   |
