@@ -64,6 +64,8 @@ class Domain
 
     private $expiryDate;
     private $createdDate;
+    
+    private $authCode;
 
     public function __construct()
     {
@@ -101,8 +103,22 @@ class Domain
             $this->loadFromRegistration($data);
         } elseif ($command == 'RenewDomain') {
             $this->loadRenewDomain($data);
+        } elseif ($command == 'QueryDomainAuthcode') {
+            $this->loadFromQueryDomainAuthcode($data);
         } elseif ($command == 'QueryDomain') {
             $this->loadFromQueryDomain($data);
+        } elseif ($command == 'QueryDomainLock') {
+            $this->loadFromQueryDomainLock($data);
+        } elseif ($command == 'QueryDomainRenewalSettings') {
+            $this->loadFromQueryDomainRenewalSettings($data);
+        } elseif ($command == 'QueryDomainDates') {
+            $this->loadFromQueryDomainDates($data);
+        } elseif ($command == 'QueryDomainNameservers') {
+            $this->loadFromQueryDomainNameservers($data);
+        } elseif ($command == 'QueryDomainContacts') {
+            $this->loadFromQueryDomainContacts($data);
+        } elseif ($command == 'QueryDomainPrivacy') {
+            $this->loadFromQueryDomainPrivacy($data);
         }
     }
 
@@ -143,6 +159,11 @@ class Domain
         $this->setBillingContactId($data->BillingContactId);
     }
 
+    private function loadFromQueryDomainAuthcode($data)
+    {
+        $this->setAuthCode($data->AuthCode);
+    }
+
     private function loadFromQueryDomain($data)
     {
         $this->setStatusDomain($data->Status[0]);
@@ -156,7 +177,9 @@ class Domain
 
         $ns = [];
         foreach ($data->Nameservers as $nameservers) {
-            $ns[] = $nameservers;
+            if(strlen($nameservers) > 0) {
+                $ns[] = $nameservers;
+            }
         }
         $this->setNameServers($ns);
 
@@ -186,6 +209,70 @@ class Domain
         $this->setLaunchPhase(null);
         $this->setDropDate(null);
         $this->setBackOrderAvailable(false);
+    }
+
+    private function loadFromQueryDomainLock($data)
+    {
+        $this->setDomainId($data->DomainId);
+        $this->setApplyLock($data->ApplyLock);
+    }
+
+    private function loadFromQueryDomainRenewalSettings($data)
+    {
+        $this->setDomainId($data->DomainId);
+        $this->setAutoRenew($data->AutoRenew);
+        $this->setAutoRenewDays($data->AutoRenewDays);
+    }
+
+    private function loadFromQueryDomainDates($data)
+    {
+        $this->setDomainId($data->DomainId);
+        $this->setExpiryDate($data->ExpiryDate);
+        $this->setCreatedDate($data->CreatedDate);
+    }
+
+    private function loadFromQueryDomainNameservers($data)
+    {
+        $this->setDomainId($data->DomainId);
+        $ns = [];
+        foreach ($data->Nameservers as $nameservers) {
+            if(strlen($nameservers) > 0) {
+                $ns[] = $nameservers;
+            }
+        }
+        $this->setNameServers($ns);
+    }
+    
+
+    private function loadFromQueryDomainContacts($data)
+    {
+        $this->setDomainId($data->DomainId);
+
+        if (isset($data->Contacts->Registrant)) {
+            $this->setRegistrant(new \MadeITBelgium\Domainbox\Object\Contact($data->Contacts->Registrant->Name, $data->Contacts->Registrant->Organisation, $data->Contacts->Registrant->Street1, $data->Contacts->Registrant->Street2, $data->Contacts->Registrant->Street3, $data->Contacts->Registrant->City, $data->Contacts->Registrant->State, $data->Contacts->Registrant->Postcode, $data->Contacts->Registrant->CountryCode, $data->Contacts->Registrant->Telephone, $data->Contacts->Registrant->TelephoneExtension, $data->Contacts->Registrant->Fax, $data->Contacts->Registrant->Email, $data->Contacts->Registrant->ContactId));
+            $this->setRegistrantContactId($data->Contacts->Registrant->ContactId);
+        }
+
+        if (isset($data->Contacts->Admin)) {
+            $this->setAdmin(new \MadeITBelgium\Domainbox\Object\Contact($data->Contacts->Admin->Name, $data->Contacts->Admin->Organisation, $data->Contacts->Admin->Street1, $data->Contacts->Admin->Street2, $data->Contacts->Admin->Street3, $data->Contacts->Admin->City, $data->Contacts->Admin->State, $data->Contacts->Admin->Postcode, $data->Contacts->Admin->CountryCode, $data->Contacts->Admin->Telephone, $data->Contacts->Admin->TelephoneExtension, $data->Contacts->Admin->Fax, $data->Contacts->Admin->Email, $data->Contacts->Admin->ContactId));
+            $this->setAdminContactId($data->Contacts->Admin->ContactId);
+        }
+
+        if (isset($data->Contacts->Tech)) {
+            $this->setTech(new \MadeITBelgium\Domainbox\Object\Contact($data->Contacts->Tech->Name, $data->Contacts->Tech->Organisation, $data->Contacts->Tech->Street1, $data->Contacts->Tech->Street2, $data->Contacts->Tech->Street3, $data->Contacts->Tech->City, $data->Contacts->Tech->State, $data->Contacts->Tech->Postcode, $data->Contacts->Tech->CountryCode, $data->Contacts->Tech->Telephone, $data->Contacts->Tech->TelephoneExtension, $data->Contacts->Tech->Fax, $data->Contacts->Tech->Email, $data->Contacts->Tech->ContactId));
+            $this->setTechContactId($data->Contacts->Tech->ContactId);
+        }
+
+        if (isset($data->ContactsBilling)) {
+            $this->setBilling(new \MadeITBelgium\Domainbox\Object\Contact($data->Contacts->Billing->Name, $data->Contacts->Billing->Organisation, $data->Contacts->Billing->Street1, $data->Contacts->Billing->Street2, $data->Contacts->Billing->Street3, $data->Contacts->Billing->City, $data->Contacts->Billing->State, $data->Contacts->Billing->Postcode, $data->Contacts->Billing->CountryCode, $data->Contacts->Billing->Telephone, $data->Contacts->Billing->TelephoneExtension, $data->Contacts->Billing->Fax, $data->Contacts->Billing->Email, $data->Contacts->Billing->ContactId));
+            $this->setBillingContactId($data->Contacts->Billing->ContactId);
+        }
+    }
+
+    private function loadFromQueryDomainPrivacy($data)
+    {
+        $this->setDomainId($data->DomainId);
+        $this->setApplyPrivacy($data->ApplyPrivacy);
     }
 
     private function loadRenewDomain($data)
@@ -511,6 +598,16 @@ class Domain
     public function setCreatedDate($createdDate)
     {
         $this->createdDate = $createdDate;
+    }
+    
+    public function getAuthCode()
+    {
+        return $this->authCode;
+    }
+    
+    public function setAuthCode($authCode)
+    {
+        $this->authCode = $authCode;
     }
 
     public function generateDomainboxCommand()

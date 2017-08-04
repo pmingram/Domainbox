@@ -41,15 +41,15 @@
 | ModifyDomainProxy                       |                                                 |                   | 0.5.0   |
 | ModifyDomainRecords                     |                                                 |                   | 0.5.0   |
 |                                         |                                                 |                   |         |
-| QueryDomainAuthcode                     |                                                 |                   |         |
+| QueryDomainAuthcode                     | Domain::queryDomainAuthCode()                   | Domain            | 0.4.0   |
 | QueryDomain                             | Domain::queryDomain()                           | Domain            | 0.1.0   |
-| QueryDomainLock                         |                                                 |                   | 0.5.0   |
-| QueryDomainRenewalSettings              |                                                 |                   | 0.5.0   |
-| QueryDomainDates                        |                                                 |                   | 0.5.0   |
-| QueryDomainNameservers                  |                                                 |                   | 0.5.0   |
+| QueryDomainLock                         | Domain::queryDomainLock()                       | Domain            | 0.4.0   |
+| QueryDomainRenewalSettings              | Domain::queryDomainRenewalSettings()            | Domain            | 0.4.0   |
+| QueryDomainDates                        | Domain::queryDomainDates()                      | Domain            | 0.4.0   |
+| QueryDomainNameservers                  | Domain::queryDomainNameservers()                | Domain            | 0.4.0   |
 | QueryDomainNameserverHosts              |                                                 |                   | 0.5.0   |
-| QueryDomainContacts                     |                                                 |                   | 0.5.0   |
-| QueryDomainPrivacy                      |                                                 |                   | 0.5.0   |
+| QueryDomainContacts                     | Domain::queryDomainContacts()                   | Domain            | 0.4.0   |
+| QueryDomainPrivacy                      | Domain::QueryDomainPrivacy()                    | Domain            | 0.4.0   |
 | QueryDomainLaunch                       |                                                 |                   | 0.5.0   |
 | QueryDomainTelCredentials               |                                                 |                   | 0.5.0   |
 | QueryDomainMemberContact                |                                                 |                   | 0.5.0   |

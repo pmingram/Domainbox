@@ -145,6 +145,21 @@ class Domain
     }
 
     /**
+     * Query a specific domainname auth code.
+     *
+     * @param $domainname  The domainname the receive the authcode
+     */
+    public function queryDomainAuthcode($domain)
+    {
+        $response = $this->domainbox->call('QueryDomainAuthcode', ['DomainName' => $domain]);
+
+        $domain = new ObjectDomain();
+        $domain->loadData('QueryDomainAuthcode', $response);
+
+        return $domain;
+    }
+
+    /**
      * Query a specific domainname.
      *
      * @param $domainname  The domainname the check
@@ -155,6 +170,96 @@ class Domain
 
         $domain = new ObjectDomain();
         $domain->loadData('QueryDomain', $response);
+
+        return $domain;
+    }
+
+    /**
+     * Query a specific domainname lock status.
+     *
+     * @param $domainname  The domainname
+     */
+    public function queryDomainLock($domain)
+    {
+        $response = $this->domainbox->call('QueryDomainLock', ['DomainName' => $domain]);
+
+        $domain = new ObjectDomain();
+        $domain->loadData('QueryDomainLock', $response);
+
+        return $domain;
+    }
+
+    /**
+     * Query a specific domainname renewal settings
+     *
+     * @param $domainname  The domainname
+     */
+    public function queryDomainRenewalSettings($domain)
+    {
+        $response = $this->domainbox->call('QueryDomainRenewalSettings', ['DomainName' => $domain]);
+
+        $domain = new ObjectDomain();
+        $domain->loadData('QueryDomainRenewalSettings', $response);
+
+        return $domain;
+    }
+
+    /**
+     * Query a specific domainname dates inf.
+     *
+     * @param $domainname  The domainname
+     */
+    public function queryDomainDates($domain)
+    {
+        $response = $this->domainbox->call('QueryDomainDates', ['DomainName' => $domain]);
+
+        $domain = new ObjectDomain();
+        $domain->loadData('QueryDomainDates', $response);
+
+        return $domain;
+    }
+
+    /**
+     * Query a specific domainname dates inf.
+     *
+     * @param $domainname  The domainname
+     */
+    public function queryDomainNameservers($domain)
+    {
+        $response = $this->domainbox->call('QueryDomainNameservers', ['DomainName' => $domain]);
+
+        $domain = new ObjectDomain();
+        $domain->loadData('QueryDomainNameservers', $response);
+
+        return $domain;
+    }
+
+    /**
+     * Query a specific domainname.
+     *
+     * @param $domainname  The domainname the check
+     */
+    public function QueryDomainContacts($domain)
+    {
+        $response = $this->domainbox->call('QueryDomainContacts', ['DomainName' => $domain]);
+
+        $domain = new ObjectDomain();
+        $domain->loadData('QueryDomainContacts', $response);
+
+        return $domain;
+    }
+
+    /**
+     * Query a specific domainname dates inf.
+     *
+     * @param $domainname  The domainname
+     */
+    public function queryDomainPrivacy($domain)
+    {
+        $response = $this->domainbox->call('QueryDomainPrivacy', ['DomainName' => $domain]);
+
+        $domain = new ObjectDomain();
+        $domain->loadData('QueryDomainPrivacy', $response);
 
         return $domain;
     }
