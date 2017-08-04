@@ -1,8 +1,7 @@
 <?php
 
-use MadeITBelgium\Domainbox\Validation\Validator;
-use MadeITBelgium\Domainbox\Validation\ValidatorExtensions;
 use Illuminate\Validation\Factory;
+use MadeITBelgium\Domainbox\Validation\ValidatorExtensions;
 
 class ValidatorTest extends \PHPUnit_Framework_TestCase
 {
@@ -10,19 +9,19 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     {
         parent::setUp();
     }
-    
+
     public function testValidatorDomainnameTrue()
     {
-        $validator = new MadeITBelgium\Domainbox\Validation\Validator;
-        $this->assertTrue($validator->isDomainname("madeit.be"));
+        $validator = new MadeITBelgium\Domainbox\Validation\Validator();
+        $this->assertTrue($validator->isDomainname('madeit.be'));
     }
-    
+
     public function testValidatorDomainnameFalse()
     {
-        $validator = new MadeITBelgium\Domainbox\Validation\Validator;
-        $this->assertFalse($validator->isDomainname("madeit.belgium"));
+        $validator = new MadeITBelgium\Domainbox\Validation\Validator();
+        $this->assertFalse($validator->isDomainname('madeit.belgium'));
     }
-    
+
     public function testValidDomainname()
     {
         $validator = Mockery::mock('MadeITBelgium\Domainbox\Validation\Validator');
@@ -36,7 +35,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $validator = $factory->make(['foo' => 'madeit.be'], ['foo' => 'domainname']);
         $this->assertTrue($validator->passes());
     }
-    
+
     public function testValidDomainnameFails()
     {
         $validator = Mockery::mock('MadeITBelgium\Domainbox\Validation\Validator');
