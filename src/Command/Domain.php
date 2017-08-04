@@ -152,6 +152,7 @@ class Domain
     public function resendDomainVerificationEmail($domainname)
     {
         $response = $this->domainbox->call('ResendDomainVerificationEmail', ['DomainName' => $domainname]);
+
         return true;
     }
 
@@ -201,7 +202,7 @@ class Domain
     }
 
     /**
-     * Query a specific domainname renewal settings
+     * Query a specific domainname renewal settings.
      *
      * @param $domainname  The domainname
      */
@@ -274,8 +275,6 @@ class Domain
 
         return $domain;
     }
-    
-    
 
     /**
      * Query a specific domainname dates inf.
@@ -291,9 +290,9 @@ class Domain
 
         return $domain;
     }
-    
+
     /**
-     * Modify the domainname auth code
+     * Modify the domainname auth code.
      *
      * @param $domainname  The domainname
      * @param $generateNew  Boolean to generate new or create self
@@ -303,7 +302,7 @@ class Domain
     public function modifyDomainAuthcode($domainname, $generateNew = true, $authCode = null, $autoLockMode = 'auto')
     {
         $command = ['DomainName' => $domainname, 'GenerateNew' => $generateNew, 'AutoLockMode' => $autoLockMode];
-        if($generateNew == false && $authCode != null) {
+        if ($generateNew == false && $authCode != null) {
             $command['AuthCode'] = $authCode;
         }
         $response = $this->domainbox->call('ModifyDomainAuthcode', $command);
@@ -313,9 +312,9 @@ class Domain
 
         return $domain;
     }
-    
+
     /**
-     * Modify the domainname auth code
+     * Modify the domainname auth code.
      *
      * @param $domainname  The domainname
      * @param $applyLock  Boolean
@@ -323,11 +322,12 @@ class Domain
     public function modifyDomainLock($domainname, $applyLock)
     {
         $response = $this->domainbox->call('ModifyDomainLock', ['DomainName' => $domainname, 'ApplyLock' => $applyLock]);
+
         return true;
     }
-    
+
     /**
-     * Modify the domainname renewal settings
+     * Modify the domainname renewal settings.
      *
      * @param $domainname  The domainname
      * @param $applyLock  Boolean
@@ -341,9 +341,9 @@ class Domain
 
         return $domain;
     }
-    
+
     /**
-     * Modify the domainname privacy
+     * Modify the domainname privacy.
      *
      * @param $domainname  The domainname
      * @param $applyPrivacy  Boolean
@@ -352,11 +352,12 @@ class Domain
     public function modifyDomainPrivacy($domainname, $applyPrivacy, $autoLockMode = 'auto')
     {
         $response = $this->domainbox->call('ModifyDomainPrivacy', ['DomainName' => $domainname, 'ApplyPrivacy' => $applyPrivacy, 'AutoLockMode' => $autoLockMode]);
+
         return true;
     }
-    
+
     /**
-     * Modify the domainname auth code
+     * Modify the domainname auth code.
      *
      * @param $domainname  The domainname
      * @param $applyPrivacy  Boolean
@@ -365,37 +366,38 @@ class Domain
     public function modifyDomainRecords($domainname, $automatic = false, $autoLockMode = 'auto', $addRecords = null, $removeRecords = null)
     {
         $command = [
-            'DomainName' => $domainname, 
-            'Automatic' => $automatic,
+            'DomainName'   => $domainname,
+            'Automatic'    => $automatic,
             'AutoLockMode' => $autoLockMode,
         ];
-        
-        if($addRecords != null) {
+
+        if ($addRecords != null) {
             $command['AddRecords'] = [
-                'Algorithm' => $addRecords['Algorithm'],
-                'KeyTag' => $addRecords['KeyTag'],
+                'Algorithm'  => $addRecords['Algorithm'],
+                'KeyTag'     => $addRecords['KeyTag'],
                 'DigestType' => $addRecords['DigestType'],
-                'Digest' => $addRecords['Digest'],
-                'MaxLife' => $addRecords['MaxLife'],
-                'Flags' => $addRecords['Flags'],
-                'Protocol' => $addRecords['Protocol'],
-                'PublicKey' => $addRecords['PublicKey'],
+                'Digest'     => $addRecords['Digest'],
+                'MaxLife'    => $addRecords['MaxLife'],
+                'Flags'      => $addRecords['Flags'],
+                'Protocol'   => $addRecords['Protocol'],
+                'PublicKey'  => $addRecords['PublicKey'],
             ];
         }
-        if($removeRecords != null) {
+        if ($removeRecords != null) {
             $command['RemoveRecords'] = [
-                'Algorithm' => $removeRecords['Algorithm'],
-                'KeyTag' => $removeRecords['KeyTag'],
+                'Algorithm'  => $removeRecords['Algorithm'],
+                'KeyTag'     => $removeRecords['KeyTag'],
                 'DigestType' => $removeRecords['DigestType'],
-                'Digest' => $removeRecords['Digest'],
-                'MaxLife' => $removeRecords['MaxLife'],
-                'Flags' => $removeRecords['Flags'],
-                'Protocol' => $removeRecords['Protocol'],
-                'PublicKey' => $removeRecords['PublicKey'],
+                'Digest'     => $removeRecords['Digest'],
+                'MaxLife'    => $removeRecords['MaxLife'],
+                'Flags'      => $removeRecords['Flags'],
+                'Protocol'   => $removeRecords['Protocol'],
+                'PublicKey'  => $removeRecords['PublicKey'],
             ];
         }
-        
+
         $response = $this->domainbox->call('ModifyDomainRecords', $command);
+
         return true;
     }
 }

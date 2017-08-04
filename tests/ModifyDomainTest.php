@@ -1,7 +1,6 @@
 <?php
 
 use MadeITBelgium\Domainbox\Domainbox;
-use MadeITBelgium\Domainbox\Object\Domain;
 use MadeITBelgium\Domainbox\Object\Contact;
 
 class ModifyDomainTest extends \PHPUnit_Framework_TestCase
@@ -37,8 +36,8 @@ class ModifyDomainTest extends \PHPUnit_Framework_TestCase
         $contact->Email = 'info@madeit.be';
 
         $result = new stdClass();
-        $result->DomainName = "ech.be";
-        
+        $result->DomainName = 'ech.be';
+
         $result->Contacts = [
             'Registrant' => $contact,
         ];
@@ -70,12 +69,12 @@ class ModifyDomainTest extends \PHPUnit_Framework_TestCase
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
-        
+
         $result = new stdClass();
         $result->ResultCode = 100;
         $result->ResultMsg = 'Command Successful';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
-        $result->AuthCode = "ABC123";
+        $result->AuthCode = 'ABC123';
         $result->AdminContactId = 62873737;
         $result->TechContactId = 62873737;
         $result->BillingContactId = 62873737;
@@ -99,12 +98,12 @@ class ModifyDomainTest extends \PHPUnit_Framework_TestCase
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
-        
+
         $result = new stdClass();
         $result->ResultCode = 100;
         $result->ResultMsg = 'Command Successful';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
-        $result->AuthCode = "123456";
+        $result->AuthCode = '123456';
         $result->AdminContactId = 62873737;
         $result->TechContactId = 62873737;
         $result->BillingContactId = 62873737;
@@ -128,7 +127,7 @@ class ModifyDomainTest extends \PHPUnit_Framework_TestCase
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
-        
+
         $result = new stdClass();
         $result->ResultCode = 100;
         $result->ResultMsg = 'Command Successful';
@@ -153,7 +152,7 @@ class ModifyDomainTest extends \PHPUnit_Framework_TestCase
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
-        
+
         $result = new stdClass();
         $result->ResultCode = 100;
         $result->ResultMsg = 'Command Successful';
@@ -176,13 +175,12 @@ class ModifyDomainTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(7, $response->getAutoRenewDays());
     }
 
-
     public function testModifyDomainPrivacy()
     {
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
-        
+
         $result = new stdClass();
         $result->ResultCode = 100;
         $result->ResultMsg = 'Command Successful';

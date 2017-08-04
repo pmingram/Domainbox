@@ -17,10 +17,11 @@ class DomainboxServiceProvider extends ServiceProvider
 {
     protected $defer = false;
 
-	protected $rules = [
+    protected $rules = [
         'domainname',
-        'domainavailable'
-	];
+        'domainavailable',
+    ];
+
     /**
      * Bootstrap the application events.
      *
@@ -31,8 +32,8 @@ class DomainboxServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/config/domainbox.php' => config_path('domainbox.php'),
         ]);
-        
-        $this->loadTranslationsFrom(__DIR__ . '/lang', 'domainbox');
+
+        $this->loadTranslationsFrom(__DIR__.'/lang', 'domainbox');
         $this->addNewRules();
     }
 
@@ -59,19 +60,18 @@ class DomainboxServiceProvider extends ServiceProvider
     {
         return ['domainbox'];
     }
-    
+
     protected function addNewRules()
     {
-        foreach ($this->rules as $rule)
-        {
+        foreach ($this->rules as $rule) {
             $this->extendValidator($rule);
         }
     }
-    
+
     protected function extendValidator($rule)
     {
-        $method = 'validate' . studly_case($rule);
+        $method = 'validate'.studly_case($rule);
         $translation = $this->app['translator']->get('domainbox::validation');
-        $this->app['validator']->extend($rule, 'MadeITBelgium\Domainbox\Validation\ValidatorExtensions@' . $method, $translation[$rule]);
+        $this->app['validator']->extend($rule, 'MadeITBelgium\Domainbox\Validation\ValidatorExtensions@'.$method, $translation[$rule]);
     }
 }
