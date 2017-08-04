@@ -64,7 +64,7 @@ class Domain
 
     private $expiryDate;
     private $createdDate;
-    
+
     private $authCode;
 
     public function __construct()
@@ -186,7 +186,7 @@ class Domain
 
         $ns = [];
         foreach ($data->Nameservers as $nameservers) {
-            if(strlen($nameservers) > 0) {
+            if (strlen($nameservers) > 0) {
                 $ns[] = $nameservers;
             }
         }
@@ -228,8 +228,9 @@ class Domain
 
     private function loadFromQueryDomainRenewalSettings($data)
     {
-        if(isset($data->DomainId))
+        if (isset($data->DomainId)) {
             $this->setDomainId($data->DomainId);
+        }
         $this->setAutoRenew($data->AutoRenew);
         $this->setAutoRenewDays($data->AutoRenewDays);
     }
@@ -246,13 +247,13 @@ class Domain
         $this->setDomainId($data->DomainId);
         $ns = [];
         foreach ($data->Nameservers as $nameservers) {
-            if(strlen($nameservers) > 0) {
+            if (strlen($nameservers) > 0) {
                 $ns[] = $nameservers;
             }
         }
         $this->setNameServers($ns);
     }
-    
+
     private function loadFromQueryDomainContacts($data)
     {
         $this->setDomainId($data->DomainId);
@@ -283,7 +284,7 @@ class Domain
         $this->setDomainId($data->DomainId);
         $this->setApplyPrivacy($data->ApplyPrivacy);
     }
-    
+
     private function loadFromModifyDomainContacts($data)
     {
         $this->setRegistrantContactId($data->RegistrantContactId);
@@ -291,12 +292,12 @@ class Domain
         $this->setTechContactId($data->TechContactId);
         $this->setBillingContactId($data->BillingContactId);
     }
-    
+
     private function loadFromModifyDomainAuthcode($data)
     {
         $this->setAuthCode($data->AuthCode);
     }
-    
+
     public function getDomainName()
     {
         return $this->domainName;
@@ -616,12 +617,12 @@ class Domain
     {
         $this->createdDate = $createdDate;
     }
-    
+
     public function getAuthCode()
     {
         return $this->authCode;
     }
-    
+
     public function setAuthCode($authCode)
     {
         $this->authCode = $authCode;

@@ -147,7 +147,7 @@ class QueryDomainTest extends \PHPUnit_Framework_TestCase
         $result->ResultCode = 100;
         $result->ResultMsg = 'Command Successful';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
-        $result->AuthCode = "ABC123";
+        $result->AuthCode = 'ABC123';
 
         $data = new stdClass();
         $data->QueryDomainAuthcodeResult = $result;
@@ -258,7 +258,6 @@ class QueryDomainTest extends \PHPUnit_Framework_TestCase
         $result->ExpiryDate = '2012-08-08';
         $result->CreatedDate = '2010-08-17';
         $result->DomainId = 1;
-        
 
         $data = new stdClass();
         $data->QueryDomainDatesResult = $result;
@@ -282,30 +281,29 @@ class QueryDomainTest extends \PHPUnit_Framework_TestCase
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
 
         $nameservers = new stdClass();
-        $nameservers->NS1 = "ns1.ech.be";
-        $nameservers->NS2 = "ns2.ech.be";
-        $nameservers->NS3 = "ns3.ech.be";
-        $nameservers->NS4 = "ns4.ech.be";
-        $nameservers->NS5 = "ns5.ech.be";
-        $nameservers->NS6 = "ns6.ech.be";
-        $nameservers->NS7 = "";
-        $nameservers->NS8 = "";
-        $nameservers->NS9 = "";
-        $nameservers->NS10 = "";
-        $nameservers->NS11 = "";
-        $nameservers->NS12 = "";
-        $nameservers->NS13 = "";
-        
+        $nameservers->NS1 = 'ns1.ech.be';
+        $nameservers->NS2 = 'ns2.ech.be';
+        $nameservers->NS3 = 'ns3.ech.be';
+        $nameservers->NS4 = 'ns4.ech.be';
+        $nameservers->NS5 = 'ns5.ech.be';
+        $nameservers->NS6 = 'ns6.ech.be';
+        $nameservers->NS7 = '';
+        $nameservers->NS8 = '';
+        $nameservers->NS9 = '';
+        $nameservers->NS10 = '';
+        $nameservers->NS11 = '';
+        $nameservers->NS12 = '';
+        $nameservers->NS13 = '';
+
         $result = new stdClass();
         $result->ResultCode = 100;
         $result->ResultMsg = 'Command Successful';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
         $result->DomainId = 1;
         $result->Nameservers = $nameservers;
-        
 
         $data = new stdClass();
-        $data-> QueryDomainNameserversResult = $result;
+        $data->QueryDomainNameserversResult = $result;
 
         $soapClientMock->expects($this->any())
             ->method('QueryDomainNameservers')
@@ -401,5 +399,4 @@ class QueryDomainTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(true, $response->getApplyPrivacy());
         $this->assertEquals(1, $response->getDomainId());
     }
-
 }
