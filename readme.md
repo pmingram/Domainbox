@@ -49,7 +49,9 @@ $checkDomainAvailability[0]->isAvailable();
 
 ## Laraval validator
 ```php
-
+public function store(Request $request) {
+    $this->validate($request, ['domainname' => 'domainname|domainavailable']);
+}
 ```
 
 The complete documentation can be found at: [http://www.madeit.be/](http://www.madeit.be/)
