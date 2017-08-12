@@ -20,7 +20,7 @@ class Domainbox
     private $sandbox;
 
     private $client;
-    
+
     private $lastResultCode;
     private $lastResultMessage;
 
@@ -46,13 +46,10 @@ class Domainbox
         if (!$this->sandbox) {
             $url = 'https://live.domainbox.net/?WSDL';
         }
-        
-        if($client != null)
-        {
+
+        if ($client != null) {
             $this->client = new \SoapClient($url, ['soap_version' => SOAP_1_2]);
-        }
-        else
-        {
+        } else {
             $this->client = $client;
         }
     }
@@ -85,7 +82,7 @@ class Domainbox
 
         $this->lastResultCode = $result->$resultKey->ResultCode;
         $this->lastResultMessage = $result->$resultKey->ResultMsg;
-        
+
         return $result->$resultKey;
     }
 
@@ -164,6 +161,7 @@ class Domainbox
     {
         $domain = new Command\Domain();
         $domain->setDomainbox($this);
+
         return $domain;
     }
 
@@ -171,21 +169,23 @@ class Domainbox
     {
         $contact = new Command\Contact();
         $contact->setDomainbox($this);
+
         return $contact;
     }
-    
+
     public function nameserver()
     {
         $nameserver = new Command\Nameserver();
         $nameserver->setDomainbox($this);
+
         return $nameserver;
     }
-    
+
     public function getLastResultCode()
     {
         return $this->lastResultCode;
     }
-    
+
     public function getLastResultMessage()
     {
         $this->lastResultMessage;
