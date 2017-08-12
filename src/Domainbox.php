@@ -32,7 +32,7 @@ class Domainbox
      * @param $password
      * @param sandbox
      */
-    public function __construct($reseller, $username, $password, $sandbox = false)
+    public function __construct($reseller, $username, $password, $sandbox = false, $client = null)
     {
         if (!extension_loaded('soap')) {
             throw new \Exception('DomainBox needs the SOAP PHP extension.');
@@ -46,7 +46,15 @@ class Domainbox
         if (!$this->sandbox) {
             $url = 'https://live.domainbox.net/?WSDL';
         }
-        $this->client = new \SoapClient($url, ['soap_version' => SOAP_1_2]);
+        
+        if($client != null)
+        {
+            $this->client = new \SoapClient($url, ['soap_version' => SOAP_1_2]);
+        }
+        else
+        {
+            $this->client = $client;
+        }
     }
 
     public function setClient($client)
@@ -75,8 +83,8 @@ class Domainbox
         $resultKey = $endPoint.'Result';
         $this->checkResultCode($result->$resultKey);
 
-        $this->lastResultCode = $output->ResultCode;
-        $this->lastResultMessage = $output->ResultMsg;
+        $this->lastResultCode = $result->$resultKey->ResultCode;
+        $this->lastResultMessage = $result->$resultKey->ResultMsg;
         
         return $result->$resultKey;
     }
@@ -154,12 +162,23 @@ class Domainbox
 
     public function domain()
     {
-        return new Command\Domain($this);
+        $domain = new Command\Domain();
+        $domain->setDomainbox($this);
+        return $domain;
     }
 
     public function contact()
     {
-        return new Command\Contact($this);
+        $contact = new Command\Contact();
+        $contact->setDomainbox($this);
+        return $contact;
+    }
+    
+    public function nameserver()
+    {
+        $nameserver = new Command\Nameserver();
+        $nameserver->setDomainbox($this);
+        return $nameserver;
     }
     
     public function getLastResultCode()

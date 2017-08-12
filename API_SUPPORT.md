@@ -11,11 +11,11 @@
 | RegisterDomain                          | Domain::registerDomain()                        | Domain            | 0.1.0   |
 | RenewDomain                             | Domain::renewDomain()                           | Domain            | 0.1.0   |
 | DeleteDomain                            | Domain::deleteDomain()                          | Domain            | 0.1.0   |
-| CheckDomainDeleteRefund                 |                                                 |                   | 0.5.0   |
-| UnrenewDomain                           |                                                 |                   | 0.5.0   |
-| CreateDomainAuthcode                    |                                                 |                   | 0.5.0   |
+| CheckDomainDeleteRefund                 |                                                 |                   |         |
+| UnrenewDomain                           |                                                 |                   |         |
+| CreateDomainAuthcode                    |                                                 |                   |         |
 | ResendDomainVerificationEmail           | Domain::resendDomainVerificationEmail()         | Boolean           | 0.4.0   |
-| CheckDomainClaims                       |                                                 |                   | 0.5.0   |
+| CheckDomainClaims                       |                                                 |                   |         |
 |                                         |                                                 |                   |         |
 | CreateTrademark                         |                                                 |                   | 0.6.0   |
 | QueryTrademark                          |                                                 |                   | 0.6.0   |
@@ -29,16 +29,16 @@
 | DeleteContact                           | Contact::deleteContact()                        | Boolean           | 0.1.0   |
 |                                         |                                                 |                   |         |
 | ModifyDomainContacts                    | Domain::modifyDomainContacts()                  | Domain            | 0.4.0   |
-| ModifyDomainNameservers                 |                                                 |                   | 0.5.0   |
+| ModifyDomainNameservers                 |                                                 |                   |         |
 | ModifyDomainAuthcode                    | Domain::modifyDomainAuthcode()                  | Domain            | 0.4.0   |
 | ModifyDomainLock                        | Domain::modifyDomainLock()                      | Boolean           | 0.4.0   |
 | ModifyDomainRenewalSettings             | Domain::ModifyDomainRenewalSettings()           | Domain            | 0.4.0   |
 | ModifyDomainPrivacy                     | Domain::ModifyDomainPrivacy()                   | Boolean           | 0.4.0   |
-| ModifyDomainTelCredentials              |                                                 |                   | 0.5.0   |
-| ModifyDomainMemberContact               |                                                 |                   | 0.5.0   |
-| ModifyDomainAdditionalData              |                                                 |                   | 0.5.0   |
-| ModifyDomainStatus                      |                                                 |                   | 0.5.0   |
-| ModifyDomainProxy                       |                                                 |                   | 0.5.0   |
+| ModifyDomainTelCredentials              |                                                 |                   |         |
+| ModifyDomainMemberContact               |                                                 |                   |         |
+| ModifyDomainAdditionalData              |                                                 |                   |         |
+| ModifyDomainStatus                      |                                                 |                   |         |
+| ModifyDomainProxy                       |                                                 |                   |         |
 | ModifyDomainRecords                     | Domain::ModifyDomainRecords()                   | Boolean           | 0.4.0   |
 |                                         |                                                 |                   |         |
 | QueryDomainAuthcode                     | Domain::queryDomainAuthCode()                   | Domain            | 0.4.0   |
@@ -47,26 +47,26 @@
 | QueryDomainRenewalSettings              | Domain::queryDomainRenewalSettings()            | Domain            | 0.4.0   |
 | QueryDomainDates                        | Domain::queryDomainDates()                      | Domain            | 0.4.0   |
 | QueryDomainNameservers                  | Domain::queryDomainNameservers()                | Domain            | 0.4.0   |
-| QueryDomainNameserverHosts              |                                                 |                   | 0.5.0   |
+| QueryDomainNameserverHosts              |                                                 |                   |         |
 | QueryDomainContacts                     | Domain::queryDomainContacts()                   | Domain            | 0.4.0   |
 | QueryDomainPrivacy                      | Domain::QueryDomainPrivacy()                    | Domain            | 0.4.0   |
-| QueryDomainLaunch                       |                                                 |                   | 0.5.0   |
-| QueryDomainTelCredentials               |                                                 |                   | 0.5.0   |
-| QueryDomainMemberContact                |                                                 |                   | 0.5.0   |
+| QueryDomainLaunch                       |                                                 |                   |         |
+| QueryDomainTelCredentials               |                                                 |                   |         |
+| QueryDomainMemberContact                |                                                 |                   |         |
 |                                         |                                                 |                   |         |
-| CreateNameserver                        |                                                 |                   | 0.5.0   |
-| ModifyNameserver                        |                                                 |                   | 0.5.0   |
-| DeleteNameserver                        |                                                 |                   | 0.5.0   |
-| QueryNameserver                         |                                                 |                   | 0.5.0   |
-| CreateExternalNameserver                |                                                 |                   | 0.5.0   |
+| CreateNameserver                        | Nameserver::createNameserver()                  | Boolean           | 0.5.0   |
+| ModifyNameserver                        | Nameserver::modifyNameserver()                  | Boolean           | 0.5.0   |
+| DeleteNameserver                        | Nameserver::deleteNameserver()                  | Boolean           | 0.5.0   |
+| QueryNameserver                         | Nameserver::queryNameserver()                   | Nameserver        | 0.5.0   |
+| CreateExternalNameserver                | Nameserver::createNameserver()                  | Boolean           | 0.5.0   |
 |                                         |                                                 |                   |         |
-| CheckTransferAvailabilty                |                                                 |                   | 0.5.0   |
-| RequestTransfer                         |                                                 |                   | 0.5.0   |
-| QueryTransfer                           |                                                 |                   | 0.5.0   |
-| CancelTransfer                          |                                                 |                   | 0.5.0   |
-| ResendTransferAdminEmail                |                                                 |                   | 0.5.0   |
-| RestartTransfer                         |                                                 |                   | 0.5.0   |
-| QueryTransferAway                       |                                                 |                   | 0.5.0   |
-| CompleteTransferAway                    |                                                 |                   | 0.5.0   |
-| RejectTransferAway                      |                                                 |                   | 0.5.0   |
+| CheckTransferAvailabilty                |                                                 |                   |         |
+| RequestTransfer                         |                                                 |                   |         |
+| QueryTransfer                           |                                                 |                   |         |
+| CancelTransfer                          |                                                 |                   |         |
+| ResendTransferAdminEmail                |                                                 |                   |         |
+| RestartTransfer                         |                                                 |                   |         |
+| QueryTransferAway                       |                                                 |                   |         |
+| CompleteTransferAway                    |                                                 |                   |         |
+| RejectTransferAway                      |                                                 |                   |         |
 | RequestTransferAway                     |                                                 |                   |         |

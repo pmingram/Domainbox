@@ -6,4 +6,5 @@ return [
   'password' => env('DOMAINBOX_PASSWORD'),
 
   'sandbox' => env('DOMAINBOX_SANDBOX', false),
+  'client' => null,
 ];

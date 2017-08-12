@@ -18,16 +18,22 @@ class Domain
     private $domainbox;
 
     /**
-     * Construct Domainbox.
+     * set Domainbox.
      *
      * @param $domainbox
      */
-    public function __construct($domainbox)
+    public function setDomainbox($domainbox)
     {
         $this->domainbox = $domainbox;
     }
     
-    public function getDomainbox() {
+    /**
+     * get Domainbox.
+     *
+     * @param $domainbox
+     */
+    public function getDomainbox()
+    {
         return $this->domainbox;
     }
 
