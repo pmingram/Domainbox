@@ -192,83 +192,83 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
         // Create a mock and queue two responses.
-/*
-        $stream = Psr7\stream_for('{
-
-    "NameSuggestions": {
-      "ResultCode": 500,
-      "ResultMsg": "Name Suggestions failed. Unable to get name Suggestions"
-    },
-    "TypoSuggestions": {
-      "ResultCode": 500,
-      "ResultMsg": "Typo Suggestions failed. Unable to get Typo Suggestions"
-    },
-    "PrefixSuffixSuggestions": {
-      "ResultCode": 500,
-      "ResultMsg": "Suffix/Prefix Suggestions failed. Unable to get Suffix/Prefix Suggestions"
-    },
-    "PremiumDomains": {
-      "ResultCode": 100,
-      "ResultMsg": "Command Successful",
-      "Domains": [
-        {
-          "DomainName": "madeitmine.com",
-          "Price": "1495.00",
-          "FastTransfer": true
-        },
-        {
-          "DomainName": "madeitup.com",
-          "Price": "6099.00",
-          "FastTransfer": true
-        },
-        {
-          "DomainName": "madeitmatter.com",
-          "Price": "1895.00",
-          "FastTransfer": true
-        },
-        {
-          "DomainName": "madeiteasy.com",
-          "Price": "3599.00",
-          "FastTransfer": true
-        },
-        {
-          "DomainName": "madeityet.com",
-          "Price": "349.00",
-          "FastTransfer": true
-        },
-        {
-          "DomainName": "madeitfunny.com",
-          "Price": "250.00",
-          "FastTransfer": false
-        },
-        {
-          "DomainName": "MadeItHappen.com",
-          "Price": "2288.00",
-          "FastTransfer": true
-        },
-        {
-          "DomainName": "madeitright.com",
-          "Price": "2695.00",
-          "FastTransfer": false
-        },
-        {
-          "DomainName": "madeitsimple.com",
-          "Price": "899.00",
-          "FastTransfer": false
-        },
-        {
-          "DomainName": "madeitdesign.com",
-          "Price": "877.00",
-          "FastTransfer": false
-        }
-      ]
-    },
-    "ResultCode": 100,
-    "ResultMsg": "The following items failed (Name Suggestions, Typo Suggestions, Suffix/Prefix Suggestions)",
-    "TxID": "9fb8f585-c43e-4d29-8fae-86110cd89adc"
-  }
-}'); //ResultCode changed from 210
-        */
+        /*
+                $stream = Psr7\stream_for('{
+        
+            "NameSuggestions": {
+              "ResultCode": 500,
+              "ResultMsg": "Name Suggestions failed. Unable to get name Suggestions"
+            },
+            "TypoSuggestions": {
+              "ResultCode": 500,
+              "ResultMsg": "Typo Suggestions failed. Unable to get Typo Suggestions"
+            },
+            "PrefixSuffixSuggestions": {
+              "ResultCode": 500,
+              "ResultMsg": "Suffix/Prefix Suggestions failed. Unable to get Suffix/Prefix Suggestions"
+            },
+            "PremiumDomains": {
+              "ResultCode": 100,
+              "ResultMsg": "Command Successful",
+              "Domains": [
+                {
+                  "DomainName": "madeitmine.com",
+                  "Price": "1495.00",
+                  "FastTransfer": true
+                },
+                {
+                  "DomainName": "madeitup.com",
+                  "Price": "6099.00",
+                  "FastTransfer": true
+                },
+                {
+                  "DomainName": "madeitmatter.com",
+                  "Price": "1895.00",
+                  "FastTransfer": true
+                },
+                {
+                  "DomainName": "madeiteasy.com",
+                  "Price": "3599.00",
+                  "FastTransfer": true
+                },
+                {
+                  "DomainName": "madeityet.com",
+                  "Price": "349.00",
+                  "FastTransfer": true
+                },
+                {
+                  "DomainName": "madeitfunny.com",
+                  "Price": "250.00",
+                  "FastTransfer": false
+                },
+                {
+                  "DomainName": "MadeItHappen.com",
+                  "Price": "2288.00",
+                  "FastTransfer": true
+                },
+                {
+                  "DomainName": "madeitright.com",
+                  "Price": "2695.00",
+                  "FastTransfer": false
+                },
+                {
+                  "DomainName": "madeitsimple.com",
+                  "Price": "899.00",
+                  "FastTransfer": false
+                },
+                {
+                  "DomainName": "madeitdesign.com",
+                  "Price": "877.00",
+                  "FastTransfer": false
+                }
+              ]
+            },
+            "ResultCode": 100,
+            "ResultMsg": "The following items failed (Name Suggestions, Typo Suggestions, Suffix/Prefix Suggestions)",
+            "TxID": "9fb8f585-c43e-4d29-8fae-86110cd89adc"
+          }
+        }'); //ResultCode changed from 210
+                */
 
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
 

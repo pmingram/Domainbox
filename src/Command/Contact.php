@@ -26,7 +26,7 @@ class Contact
     {
         $this->domainbox = $domainbox;
     }
-    
+
     /**
      * get Domainbox.
      *

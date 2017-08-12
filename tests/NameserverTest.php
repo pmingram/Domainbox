@@ -1,7 +1,6 @@
 <?php
 
 use MadeITBelgium\Domainbox\Domainbox;
-use MadeITBelgium\Domainbox\Object\Nameserver;
 
 class NameserverTest extends \PHPUnit_Framework_TestCase
 {
@@ -32,7 +31,7 @@ class NameserverTest extends \PHPUnit_Framework_TestCase
 
         $domainbox->setClient($soapClientMock);
         $nameserver = $domainbox->nameserver();
-        $response = $nameserver->createNameserver("domain.com", "ns1", ['192.168.1.1'], ['::1']);
+        $response = $nameserver->createNameserver('domain.com', 'ns1', ['192.168.1.1'], ['::1']);
 
         $this->assertTrue($response);
     }
@@ -57,7 +56,7 @@ class NameserverTest extends \PHPUnit_Framework_TestCase
 
         $domainbox->setClient($soapClientMock);
         $nameserver = $domainbox->nameserver();
-        $response = $nameserver->modifyNameserver("domain.com", "ns1", ['192.168.1.1'], ['::1'], ['192.168.1.1'], ['::1']);
+        $response = $nameserver->modifyNameserver('domain.com', 'ns1', ['192.168.1.1'], ['::1'], ['192.168.1.1'], ['::1']);
 
         $this->assertTrue($response);
     }
@@ -82,10 +81,10 @@ class NameserverTest extends \PHPUnit_Framework_TestCase
 
         $domainbox->setClient($soapClientMock);
         $nameserver = $domainbox->nameserver();
-        $response = $nameserver->deleteNameserver("domain.com", "ns1");
+        $response = $nameserver->deleteNameserver('domain.com', 'ns1');
         $this->assertTrue($response);
     }
-    
+
     public function testQueryNameserver()
     {
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
@@ -94,15 +93,14 @@ class NameserverTest extends \PHPUnit_Framework_TestCase
 
         $ipv4 = new stdClass();
         $ipv4->string = '192.168.1.1';
-        
+
         $ipv6 = new stdClass();
         $ipv6->string = '::1';
-        
+
         $ips = new stdClass();
         $ips->IPv4Addresses = [$ipv4];
         $ips->IPv6Addresses = [$ipv6];
-            
-            
+
         $result = new stdClass();
         $result->IPAddresses = $ips;
         $result->ResultCode = 100;
@@ -120,7 +118,7 @@ class NameserverTest extends \PHPUnit_Framework_TestCase
         $domainbox->setClient($soapClientMock);
         $nameserver = $domainbox->nameserver();
         $response = $nameserver->queryNameserver('domain.com', 'ns1');
-        
+
         $this->assertEquals(['192.168.1.1'], $response->getIpv4());
         $this->assertEquals(['::1'], $response->getIpv6());
         $this->assertTrue($response->canDelete());
