@@ -400,4 +400,14 @@ class Domain
 
         return true;
     }
+    
+    public function getLastResultCode()
+    {
+        return $this->domainbox->getLastResultCode();
+    }
+    
+    public function getLastResultMessage()
+    {
+        $this->domainbox->getLastResultMessage();
+    }
 }

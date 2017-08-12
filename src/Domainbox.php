@@ -20,6 +20,9 @@ class Domainbox
     private $sandbox;
 
     private $client;
+    
+    private $lastResultCode;
+    private $lastResultMessage;
 
     /**
      * Construct Domainbox.
@@ -72,6 +75,9 @@ class Domainbox
         $resultKey = $endPoint.'Result';
         $this->checkResultCode($result->$resultKey);
 
+        $this->lastResultCode = $output->ResultCode;
+        $this->lastResultMessage = $output->ResultMsg;
+        
         return $result->$resultKey;
     }
 
@@ -154,5 +160,15 @@ class Domainbox
     public function contact()
     {
         return new Command\Contact($this);
+    }
+    
+    public function getLastResultCode()
+    {
+        return $this->lastResultCode;
+    }
+    
+    public function getLastResultMessage()
+    {
+        $this->lastResultMessage;
     }
 }
