@@ -26,6 +26,10 @@ class Domain
     {
         $this->domainbox = $domainbox;
     }
+    
+    public function getDomainbox() {
+        return $this->domainbox;
+    }
 
     /**
      * checkDomainAvailability.
