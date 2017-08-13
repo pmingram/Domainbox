@@ -175,7 +175,9 @@ class Domain
 
     private function loadFromQueryDomain($data)
     {
-        $this->setStatusDomain($data->Status[0]);
+        if(is_array($data->Status)) {
+            $this->setStatusDomain($data->Status[0]);
+        }
         $this->setDomainId($data->DomainId);
         $this->setExpiryDate($data->ExpiryDate);
         $this->setCreatedDate($data->CreatedDate);
