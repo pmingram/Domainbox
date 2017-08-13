@@ -47,7 +47,7 @@ class Domainbox
             $url = 'https://live.domainbox.net/?WSDL';
         }
 
-        if ($client != null) {
+        if ($client == null) {
             $this->client = new \SoapClient($url, ['soap_version' => SOAP_1_2]);
         } else {
             $this->client = $client;
