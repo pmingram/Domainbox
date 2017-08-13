@@ -175,7 +175,7 @@ class Domain
 
     private function loadFromQueryDomain($data)
     {
-        if(is_array($data->Status)) {
+        if (is_array($data->Status)) {
             $this->setStatusDomain($data->Status[0]);
         }
         $this->setDomainId($data->DomainId);
