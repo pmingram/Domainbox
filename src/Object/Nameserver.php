@@ -30,19 +30,17 @@ class Nameserver
 
     private function loadQueryNameserver($data)
     {
-        if(count($data->IPAddresses->IPv4Addresses) == 1 && isset($data->IPAddresses->IPv4Addresses->string)) {
+        if (count($data->IPAddresses->IPv4Addresses) == 1 && isset($data->IPAddresses->IPv4Addresses->string)) {
             $this->addIpv4($data->IPAddresses->IPv4Addresses->string);
-        }
-        else {
+        } else {
             foreach ($data->IPAddresses->IPv4Addresses as $ip) {
                 $this->addIpv4($ip->string);
             }
         }
 
-        if(count($data->IPAddresses->IPv6Addresses) == 1 && isset($data->IPAddresses->IPv6Addresses->string)) {
+        if (count($data->IPAddresses->IPv6Addresses) == 1 && isset($data->IPAddresses->IPv6Addresses->string)) {
             $this->addIpv6($data->IPAddresses->IPv6Addresses->string);
-        }
-        else {
+        } else {
             foreach ($data->IPAddresses->IPv6Addresses as $ip) {
                 $this->addIpv6($ip->string);
             }
