@@ -31,8 +31,8 @@ class Comes extends TLD
 
     protected $type = 'ccTLD';
 
-    protected $applyLock = true;
-    protected $applyPrivacy = true;
+    protected $applyLock = false;
+    protected $applyPrivacy = false;
     protected $numberOfNameServers = 13;
     protected $dnssec = false;
     protected $ipv6 = true;
