@@ -194,7 +194,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase
         // Create a mock and queue two responses.
         /*
                 $stream = Psr7\stream_for('{
-        
+
             "NameSuggestions": {
               "ResultCode": 500,
               "ResultMsg": "Name Suggestions failed. Unable to get name Suggestions"
