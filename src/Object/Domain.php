@@ -27,12 +27,42 @@ class Domain
         10 => 'UnavailableRegistryTimeout',
         11 => 'AvailableWithProvidedDomainId',
     ];
+    
+    private $statusTransferMessages = [
+        0  => 'ErrorOccurred',
+        1  => 'Transferrable',
+        2  => 'InvalidDomainSupplied',
+        3  => 'InYourAccount',
+        4  => 'DomainNotRegistered',
+        5  => 'DomainLocked',
+        6  => 'DomainLockedByRegistry',
+        7  => 'AlreadyPendingTransfer',
+        8  => 'DomainPendingDelete',
+        9  => 'RegisteredWithinTheLastXDays',
+        10 => 'TransferredWithinTheLastXDays',
+    ];
+    
+    private $statusQueryTransferMessage = [
+        0 => 'ErrorQuerying',
+        1 => 'PendingOwnerApproval',
+        2 => 'PendingRegistryApproval',
+        3 => 'Completed',
+        4 => 'Cancelled',
+        5 => 'RejectedByLosingRegistrar',
+        6 => 'RejectedByAdminContact',
+        7 => 'TransferTimed-out',
+        8 => 'ApprovalExceededMaximumAttempts',
+        9 => 'PendingPushFromLosingRegistrar',
+        10 => 'RejectedByRegistry',
+        11 => 'DomainPurchased',
+    ];
 
     private $domainName;
     private $status;
     private $statusRegistration;
     private $statusDomain;
     private $available;
+    private $transferable;
     private $launchPhase;
     private $dropDate;
     private $backOrderAvailable;
@@ -66,6 +96,10 @@ class Domain
     private $createdDate;
 
     private $authCode;
+    private $currentRegistar;
+    private $transferAdminEmailSend;
+    private $transferAdminEmailSendDate;
+    private $transferAdminEmailAddress;
 
     public function __construct()
     {
@@ -123,7 +157,17 @@ class Domain
             $this->loadFromModifyDomainContacts($data);
         } elseif ($command == 'ModifyDomainAuthcode') {
             $this->loadFromModifyDomainAuthcode($data);
+        } elseif ($command == 'CheckTransferAvailability') {
+            $this->loadCheckTransferAvailability($data);
+        } elseif ($command == 'TransferDomain') {
+            $this->loadFromTransfer($data);
+        } elseif ($command == 'QueryTransfer') {
+            $this->loadQueryTransfer($data);
+        } elseif ($command == 'ResendTransferAdminEmail') {
+            $this->loadResendTransferAdminEmail($data);
         }
+        
+        
     }
 
     private function loadCheckDomainAvailability($data)
@@ -300,6 +344,44 @@ class Domain
         $this->setAuthCode($data->AuthCode);
     }
 
+    private function loadCheckTransferAvailability($data)
+    {
+        $this->setStatus($this->statusTransferMessages[$data->AvailabilityStatus]);
+
+        $this->setTransferable(false);
+        if (in_array($this->getStatus(), ['Transferrable'])) {
+            $this->setTransferable(true);
+        }
+        $this->setCurrentRegistar($data->CurrentRegistrar);
+    }
+
+    private function loadFromTransfer($data)
+    {
+        $this->setOrderId($data->OrderId);
+        $this->setDomainId($data->DomainId);
+        $this->setRegistrantContactId($data->RegistrantContactId);
+        $this->setAdminContactId($data->AdminContactId);
+        $this->setTechContactId($data->TechContactId);
+        $this->setBillingContactId($data->BillingContactId);
+    }
+
+    private function loadQueryTransfer($data)
+    {
+        $this->setStatus($this->statusQueryTransferMessage[$data->TransferStatus]);
+
+        $this->setDomainId($data->DomainId);
+        $this->setCurrentRegistar($data->LosingRegistrar);
+        $this->setTransferAdminEmailSend($data->AdminEmailSent);
+        $this->setTransferAdminEmailSendDate($data->AdminEmailSentDate);
+        $this->setTransferAdminEmailAddress($data->AdminEmailAddress);
+    }
+
+    private function loadResendTransferAdminEmail($data)
+    {
+        $this->setCurrentRegistar($data->LosingRegistrar);
+        $this->setTransferAdminEmailAddress($data->AdminEmailAddress);
+    }
+
     public function getDomainName()
     {
         return $this->domainName;
@@ -328,6 +410,16 @@ class Domain
     public function setAvailable($available)
     {
         $this->available = $available;
+    }
+
+    public function isTransferable()
+    {
+        return $this->transferable;
+    }
+
+    public function setTransferable($transferable)
+    {
+        $this->transferable = $transferable;
     }
 
     public function getLaunchPhase()
@@ -630,6 +722,46 @@ class Domain
         $this->authCode = $authCode;
     }
 
+    public function getCurrentRegistar()
+    {
+        return $this->currentRegistar;
+    }
+
+    public function setCurrentRegistar($currentRegistar)
+    {
+        $this->currentRegistar = $currentRegistar;
+    }
+
+    public function isTransferAdminEmailSend()
+    {
+        return $this->transferAdminEmailSend;
+    }
+
+    public function setTransferAdminEmailSend($transferAdminEmailSend)
+    {
+        $this->transferAdminEmailSend = $transferAdminEmailSend;
+    }
+
+    public function getTransferAdminEmailSendDate()
+    {
+        return $this->transferAdminEmailSendDate;
+    }
+
+    public function setTransferAdminEmailSendDate($transferAdminEmailSendDate)
+    {
+        $this->transferAdminEmailSendDate = $transferAdminEmailSendDate;
+    }
+
+    public function getTransferAdminEmailAddress()
+    {
+        return $this->transferAdminEmailAddress;
+    }
+
+    public function setTransferAdminEmailAddress($transferAdminEmailAddress)
+    {
+        $this->transferAdminEmailAddress = $transferAdminEmailAddress;
+    }
+
     public function generateDomainboxCommand()
     {
         $hostname = substr($this->getDomainName(), 0, strpos($this->getDomainName(), '.'));
@@ -915,6 +1047,205 @@ class Domain
         }
         if (in_array($tld, ['.scot'])) {
             $command['Extension']['IntendedUseParams'] = ['IntendedUse' => '', 'ReferenceUrl' => '', 'TrademarkId' => '', 'TrademarkIssuer' => ''];
+        }
+
+        return $command;
+    }
+
+    public function generateTransferDomainboxCommand()
+    {
+        $hostname = substr($this->getDomainName(), 0, strpos($this->getDomainName(), '.'));
+        $tld = substr($this->getDomainName(), strlen($hostname));
+
+        $command = [
+            'DomainName'    => $this->getDomainName(),
+            'AutoRenew'     => $this->getAutoRenew(),
+            'AutoRenewDays' => $this->getAutoRenewDays(),
+            'AuthCode'      => $this->getAuthCode(),
+            'AcceptTerms'   => $this->getAcceptTerms(),
+            'KeepExistingNameservers' => true,
+
+            'Contacts' => [
+                'Registrant' => $this->getRegistrant()->generateDomainboxCommand(),
+                'Admin'      => $this->getAdmin()->generateDomainboxCommand(),
+                'Billing'    => $this->getBilling()->generateDomainboxCommand(),
+                'Tech'       => $this->getTech()->generateDomainboxCommand(),
+            ],
+        ];
+
+        if ($this->getExtension() != null) {
+            $command['Extension'] = $this->getExtension();
+        }
+
+        $nameservers = $this->getNameServers();
+        $glueRecords = $this->getGlueRecords();
+        $command['Nameservers'] = [
+            'NS1'         => isset($nameservers[0]) ? $nameservers[0] : '',
+            'NS2'         => isset($nameservers[1]) ? $nameservers[1] : '',
+            'NS3'         => isset($nameservers[2]) ? $nameservers[2] : '',
+            'NS4'         => isset($nameservers[3]) ? $nameservers[3] : '',
+            'NS5'         => isset($nameservers[4]) ? $nameservers[4] : '',
+            'NS6'         => isset($nameservers[5]) ? $nameservers[5] : '',
+            'NS7'         => isset($nameservers[6]) ? $nameservers[6] : '',
+            'NS8'         => isset($nameservers[7]) ? $nameservers[7] : '',
+            'NS9'         => isset($nameservers[8]) ? $nameservers[8] : '',
+            'NS10'        => isset($nameservers[9]) ? $nameservers[9] : '',
+            'NS11'        => isset($nameservers[10]) ? $nameservers[10] : '',
+            'NS12'        => isset($nameservers[11]) ? $nameservers[11] : '',
+            'NS13'        => isset($nameservers[12]) ? $nameservers[12] : '',
+            'GlueRecords' => $glueRecords,
+        ];
+
+        $trademark = $this->getTrademark();
+        if ($trademark != null) {
+            //TODO
+        }
+
+        $sunriseData = $this->getSunriseData();
+        if ($sunriseData != null) {
+            //TODO
+        }
+
+        $commandOptions = $this->getCommandOptions();
+        if ($commandOptions != null) {
+            //TODO
+        }
+
+        if (in_array($tld, ['.co.uk', '.org.uk', '.me.uk', '.ltd.uk', '.plc.uk', '.net.uk'])) {
+            $command['Contacts']['Registrant']['AdditionalData']['UKAdditionalData'] = '';
+            $command['Extension']['UKDirectData']['RelatedDomainId'] = 0;
+        }
+        if (in_array($tld, ['.us'])) {
+            $command['Contacts']['Registrant']['AdditionalData']['USAdditionalData'] = '';
+        }
+        if (in_array($tld, ['.eu'])) {
+            unset($command['Nameservers']['NS10']);
+            unset($command['Nameservers']['NS11']);
+            unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
+        }
+        if (in_array($tld, ['.be'])) {
+            unset($command['Nameservers']['NS10']);
+            unset($command['Nameservers']['NS11']);
+            unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
+        }
+        if (in_array($tld, ['.es'])) {
+            unset($command['Nameservers']['NS10']);
+            unset($command['Nameservers']['NS11']);
+            unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
+        }
+        if (in_array($tld, ['.tel'])) {
+            unset($command['Nameservers']);
+        }
+        if (in_array($tld, ['.at', '.or.at', '.co.at'])) {
+            $command['AutoRenew'] = true;
+            if (!in_array($command['AutoRenewDays'], [30, 45, 60, 90])) {
+                $command['AutoRenewDays'] = 30;
+            }
+            $command['AcceptTerms'] = true;
+            unset($command['Nameservers']['NS9']);
+            unset($command['Nameservers']['NS10']);
+            unset($command['Nameservers']['NS11']);
+            unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
+        }
+        if (in_array($tld, ['.tk'])) {
+            unset($command['Nameservers']['NS9']);
+            unset($command['Nameservers']['NS10']);
+            unset($command['Nameservers']['NS11']);
+            unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
+        }
+        if (in_array($tld, ['.fr', '.yt', '.tf', '.pm', '.re', '.wf'])) {
+            unset($command['Nameservers']['NS9']);
+            unset($command['Nameservers']['NS10']);
+            unset($command['Nameservers']['NS11']);
+            unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
+        }
+        if (in_array($tld, ['.de'])) {
+            $command['AcceptTerms'] = true;
+            $command['Extension']['DeBillingData']['MonthlyBilling'] = false;
+        }
+        if (in_array($tld, ['.mx'])) {
+            unset($command['Nameservers']['NS5']);
+            unset($command['Nameservers']['NS6']);
+            unset($command['Nameservers']['NS7']);
+            unset($command['Nameservers']['NS8']);
+            unset($command['Nameservers']['NS9']);
+            unset($command['Nameservers']['NS10']);
+            unset($command['Nameservers']['NS11']);
+            unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
+        }
+        if (in_array($tld, ['.it'])) {
+            unset($command['Nameservers']['NS7']);
+            unset($command['Nameservers']['NS8']);
+            unset($command['Nameservers']['NS9']);
+            unset($command['Nameservers']['NS10']);
+            unset($command['Nameservers']['NS11']);
+            unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
+        }
+        if (in_array($tld, ['.co.za'])) {
+            unset($command['Nameservers']['NS5']);
+            unset($command['Nameservers']['NS6']);
+            unset($command['Nameservers']['NS7']);
+            unset($command['Nameservers']['NS8']);
+            unset($command['Nameservers']['NS9']);
+            unset($command['Nameservers']['NS10']);
+            unset($command['Nameservers']['NS11']);
+            unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
+        }
+        if (in_array($tld, ['.pl', '.com.pl', '.net.pl'])) {
+            unset($command['Nameservers']['NS11']);
+            unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
+        }
+        if (in_array($tld, ['.jp'])) {
+            $command['Extension']['JPProxyServiceData']['UseProxyService'] = true;
+        }
+        if (in_array($tld, ['.lv'])) {
+            unset($command['Nameservers']['NS6']);
+            unset($command['Nameservers']['NS7']);
+            unset($command['Nameservers']['NS8']);
+            unset($command['Nameservers']['NS9']);
+            unset($command['Nameservers']['NS10']);
+            unset($command['Nameservers']['NS11']);
+            unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
+        }
+        if (in_array($tld, ['.co.nz', '.net.nz', '.org.nz', '.gen.nz', '.kiwi.nz', '.ac.nz', '.geek.nz', '.maori.nz', '.school.nz'])) {
+            unset($command['Nameservers']['NS11']);
+            unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
+        }
+        if (in_array($tld, ['.sx'])) {
+            unset($command['Nameservers']['NS11']);
+            unset($command['Nameservers']['NS12']);
+            unset($command['Nameservers']['NS13']);
+        }
+        if (in_array($tld, ['.cat'])) {
+            $command['Extension']['CatParameterData'] = ['Maintainer' => '', 'AuthId' => '', 'AuthKey' => '', 'IntendedUse' => ''];
+        }
+        if (in_array($tld, ['.academy', '.accountants', '.agency', '.associates', '.bargains', '.bike', '.boutique', '.builders', '.business', '.cab', '.camera', '.camp', '.capital', '.cards', '.care', '.careers', '.cash', '.catering', '.center', '.cheap', '.church', '.city', '.claims', '.cleaning', '.clinic', '.clothing', '.codes', '.coffee', '.community', '.company', '.computer', '.condos', '.construction', '.contractors', '.cool', '.credit', '.creditcard', '.cruises', '.dating', '.deals', '.dental', '.diamonds', '.digital', '.direct', '.directory', '.discount', '.domains', '.education', '.email', '.engineering', '.enterprises', '.equipment', '.estate', '.events', '.exchange', '.expert', '.exposed', '.fail', '.farm', '.finance', '.financial', '.fish', '.fitness', '.flights', '.florist', '.foundation', '.fund', '.furniture', '.gallery', '.gifts', '.glass', '.graphics', '.gratis', '.gripe', '.guide', '.guru', '.healthcare', '.holdings', '.holiday', '.house', '.immo', '.industries', '.institute', '.insure', '.international', '.investments', '.kitchen', '.land', '.lease', '.life', '.lighting', '.limited', '.limo', '.loans', '.maison', '.management', '.marketing', '.media', '.network', '.partners', '.parts', '.photography', '.photos', '.pictures', '.pizza', '.place', '.plumbing', '.productions', '.properties', '.recipes', '.reisen', '.rentals', '.repair', '.report', '.restaurant', '.sarl', '.schule', '.services', '.shoes', '.singles', '.solar', '.solutions', '.supplies', '.supply', '.support', '.surgery', '.systems', '.tax', '.technology', '.tienda', '.tips', '.today', '.tools', '.town', '.toys', '.training', '.university', '.vacations', '.ventures', '.viajes', '.villas', '.vision', '.voyage', '.watch', '.works', '.wtf', '.zone'])) {
+            $command['Extension']['DonutsPriceCategoryData']['PriceCategory'] = '';
+        }
+        if (in_array($tld, ['.audio', '.blackfriday', '.christmas', '.click', '.diet', '.gift', '.guitars', '.help', '.hiphop', '.hosting', '.juegos', '.link', '.photo', '.pics', '.property', '.sexy', '.tattoo'])) {
+            $command['Extension']['ChallengeParameters']['Challenges'] = $tld;
+        }
+        if (in_array($tld, ['.actor', '.dance', '.democrat', '.futbol', '.immobilien', '.kaufen', '.pub', '.moda', '.ninja', '.reviews', '.social'])) {
+            $command['Extension']['PremiumPriceCategory']['PriceCategory'] = 'Category16';
+        }
+        if (in_array($tld, ['.scot'])) {
+            $command['Extension']['IntendedUseParams'] = ['IntendedUse' => '', 'ReferenceUrl' => '', 'TrademarkId' => '', 'TrademarkIssuer' => ''];
+        }
+        
+        if($command['KeepExistingNameservers']) {
+            //unset($command['Nameservers']);
         }
 
         return $command;

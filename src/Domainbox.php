@@ -181,6 +181,14 @@ class Domainbox
         return $nameserver;
     }
 
+    public function transfer()
+    {
+        $domain = new Command\Transfer();
+        $domain->setDomainbox($this);
+
+        return $domain;
+    }
+
     public function getLastResultCode()
     {
         return $this->lastResultCode;

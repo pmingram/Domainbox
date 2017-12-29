@@ -17,11 +17,11 @@
 | ResendDomainVerificationEmail           | Domain::resendDomainVerificationEmail()         | Boolean           | 0.4.0   |
 | CheckDomainClaims                       |                                                 |                   |         |
 |                                         |                                                 |                   |         |
-| CreateTrademark                         |                                                 |                   | 0.6.0   |
-| QueryTrademark                          |                                                 |                   | 0.6.0   |
-| QueryTrademarkLabels                    |                                                 |                   | 0.6.0   |
-| QueryTrademarkSMD                       |                                                 |                   | 0.6.0   |
-| ModifyTrademark                         |                                                 |                   | 0.6.0   |
+| CreateTrademark                         |                                                 |                   | 0.7.0   |
+| QueryTrademark                          |                                                 |                   | 0.7.0   |
+| QueryTrademarkLabels                    |                                                 |                   | 0.7.0   |
+| QueryTrademarkSMD                       |                                                 |                   | 0.7.0   |
+| ModifyTrademark                         |                                                 |                   | 0.7.0   |
 |                                         |                                                 |                   |         |
 | CreateContact                           | Contact::createContact()                        | Contact           | 0.1.0   |
 | ModifyContact                           | Contact::modifyContact()                        | Contact           | 0.1.0   |
@@ -60,12 +60,12 @@
 | QueryNameserver                         | Nameserver::queryNameserver()                   | Nameserver        | 0.5.0   |
 | CreateExternalNameserver                | Nameserver::createNameserver()                  | Boolean           | 0.5.0   |
 |                                         |                                                 |                   |         |
-| CheckTransferAvailabilty                |                                                 |                   |         |
-| RequestTransfer                         |                                                 |                   |         |
-| QueryTransfer                           |                                                 |                   |         |
-| CancelTransfer                          |                                                 |                   |         |
-| ResendTransferAdminEmail                |                                                 |                   |         |
-| RestartTransfer                         |                                                 |                   |         |
+| CheckTransferAvailabilty                | Transfer::CheckTransferAvailabilty()            | Domain            | 0.6.0   |
+| RequestTransfer                         | Transfer::transferDomain()                      | Domain            | 0.6.0   |
+| QueryTransfer                           | Transfer::queryTransfer()                       | Domain            | 0.6.0   |
+| CancelTransfer                          | Transfer::cancelTransfer()                      | Boolean           | 0.6.0   |
+| ResendTransferAdminEmail                | Transfer::resendTransferAdminEmail()            | Domain            | 0.6.0   |
+| RestartTransfer                         | Transfer::restartTransfer()                     | Boolean           | 0.6.0   |
 | QueryTransferAway                       |                                                 |                   |         |
 | CompleteTransferAway                    |                                                 |                   |         |
 | RejectTransferAway                      |                                                 |                   |         |
