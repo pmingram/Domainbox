@@ -95,6 +95,7 @@ class Transfer
     public function cancelTransfer($domainname, $domainId)
     {
         $response = $this->domainbox->call('CancelTransfer', ['DomainName' => $domainname, 'DomainId' => $domainId]);
+
         return true;
     }
 
@@ -107,7 +108,7 @@ class Transfer
     public function resendTransferAdminEmail($domainname, $domainId)
     {
         $response = $this->domainbox->call('ResendTransferAdminEmail', ['DomainName' => $domainname, 'DomainId' => $domainId]);
-        
+
         $domain = new ObjectDomain();
         $domain->loadData('ResendTransferAdminEmail', $response);
 
@@ -115,7 +116,7 @@ class Transfer
     }
 
     /**
-     * Restarts the transfer afresh, as if RequestTransfer had been issued
+     * Restarts the transfer afresh, as if RequestTransfer had been issued.
      *
      * @param $domainname  The domainname the receive the authcode
      * @param $domainid    The domainname ID
@@ -123,6 +124,7 @@ class Transfer
     public function restartTransfer($domainname, $domainId)
     {
         $response = $this->domainbox->call('RestartTransfer', ['DomainName' => $domainname, 'DomainId' => $domainId]);
+
         return true;
     }
 

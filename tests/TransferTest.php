@@ -41,9 +41,9 @@ class TransferTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('Transferrable', $response->getStatus());
         $this->assertEquals(true, $response->isTransferable());
-        $this->assertEquals("TEST", $response->getCurrentRegistar());
+        $this->assertEquals('TEST', $response->getCurrentRegistar());
     }
-    
+
     public function testDomainnameIsNotTransferable()
     {
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
@@ -71,9 +71,9 @@ class TransferTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('InvalidDomainSupplied', $response->getStatus());
         $this->assertEquals(false, $response->isTransferable());
-        $this->assertEquals("TEST", $response->getCurrentRegistar());
+        $this->assertEquals('TEST', $response->getCurrentRegistar());
     }
-    
+
     //transfer
     public function testTransferGenerateDomainboxCommand_UK()
     {
@@ -99,18 +99,18 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $extension = null;
         $sunriseData = null;
         $commandOptions = null;
-        
+
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.co.uk',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.co.uk',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,
-            'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'AuthCode'                 => 'ABC',
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -218,15 +218,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.us',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.us',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -334,15 +334,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.im',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.im',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -448,15 +448,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.in',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.in',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -562,15 +562,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.eu',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.eu',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -672,15 +672,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.be',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.be',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -782,15 +782,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.es',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.es',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -892,15 +892,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.af',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.af',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -1006,15 +1006,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.tel',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.tel',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -1104,15 +1104,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.at',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 30,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.at',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 30,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -1213,15 +1213,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.nl',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.nl',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -1327,15 +1327,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.tk',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.tk',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -1436,15 +1436,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.qa',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.qa',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -1550,15 +1550,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.fr',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.fr',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -1659,15 +1659,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.de',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.de',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -1774,15 +1774,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.mx',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.mx',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -1879,15 +1879,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.it',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.it',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -1986,15 +1986,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.co.za',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.co.za',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -2091,15 +2091,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.fm',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.fm',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -2205,15 +2205,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.pl',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.pl',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -2316,15 +2316,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.io',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.io',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -2430,15 +2430,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.jp',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.jp',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -2545,15 +2545,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.lv',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.lv',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -2650,15 +2650,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.gg',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.gg',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -2763,15 +2763,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.ch',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.ch',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -2876,15 +2876,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.dm',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.dm',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -2989,15 +2989,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.co.nz',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.co.nz',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -3099,15 +3099,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.sx',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.sx',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -3209,15 +3209,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.pro',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.pro',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -3322,15 +3322,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.cat',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.cat',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -3436,15 +3436,15 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.academy',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.academy',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,             'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -3550,16 +3550,16 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.audio',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.audio',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,
-            'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'AuthCode'                 => 'ABC',
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -3665,16 +3665,16 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.actor',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.actor',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,
-            'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'AuthCode'                 => 'ABC',
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -3780,16 +3780,16 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.archi',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'              => 'maideit.archi',
+            'AutoRenew'               => true,
+            'AutoRenewDays'           => 7,
+            'AcceptTerms'             => true,
             'KeepExistingNameservers' => true,
-            'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'AuthCode'                => 'ABC',
+            'Contacts'                => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -3894,16 +3894,16 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $this->assertEquals([
-            'DomainName'    => 'maideit.scot',
-            'AutoRenew'     => true,
-            'AutoRenewDays' => 7,
-            'AcceptTerms'   => true,
+            'DomainName'               => 'maideit.scot',
+            'AutoRenew'                => true,
+            'AutoRenewDays'            => 7,
+            'AcceptTerms'              => true,
             'KeepExistingNameservers'  => true,
-            'AuthCode' => 'ABC',
-            'Contacts'      => [
+            'AuthCode'                 => 'ABC',
+            'Contacts'                 => [
                 'Registrant' => [
                     'Name'               => 'Tjebbe Lievens',
                     'Organisation'       => 'Made I.T.',
@@ -4009,8 +4009,8 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $sunriseData = null;
         $commandOptions = null;
         $transferDomain->create($domainName, $launchPhase, $period, $applyLock, $autoRenew, $autoRenewDays, $applyPrivacy, $acceptTerms, $nameServers, $glueRecords, $registrant, $admin, $tech, $billing, $trademark, $extension, $sunriseData, $commandOptions);
-        $transferDomain->setAuthCode("ABC");
-        
+        $transferDomain->setAuthCode('ABC');
+
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
 
         $soapClientMock = $this->getMockFromWsdl($this->wsdl);
@@ -4059,8 +4059,8 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $result->TransferStatus = 1;
         $result->AvailabilityStatusDescr = 'PendingOwnerApproval';
         $result->AdminEmailSent = true;
-        $result->AdminEmailSentDate = "2014-02-14 22:31:02";
-        $result->AdminEmailAddress = "jimmy@email.com";
+        $result->AdminEmailSentDate = '2014-02-14 22:31:02';
+        $result->AdminEmailAddress = 'jimmy@email.com';
         $result->LosingRegistrar = 'TEST';
 
         $data = new stdClass();
@@ -4076,12 +4076,11 @@ class TransferTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('PendingOwnerApproval', $response->getStatus());
         $this->assertEquals(true, $response->isTransferAdminEmailSend());
-        $this->assertEquals("TEST", $response->getCurrentRegistar());
-        $this->assertEquals("jimmy@email.com", $response->getTransferAdminEmailAddress());
-        $this->assertEquals("2014-02-14 22:31:02", $response->getTransferAdminEmailSendDate());
+        $this->assertEquals('TEST', $response->getCurrentRegistar());
+        $this->assertEquals('jimmy@email.com', $response->getTransferAdminEmailAddress());
+        $this->assertEquals('2014-02-14 22:31:02', $response->getTransferAdminEmailSendDate());
     }
 
-    
     public function testCancelTransfer()
     {
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
@@ -4106,7 +4105,7 @@ class TransferTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(true, $response);
     }
-    
+
     public function testResendTransferAdminEmail()
     {
         $domainbox = new Domainbox('reseller', 'username', 'password', false);
@@ -4117,7 +4116,7 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $result->ResultCode = 100;
         $result->ResultMsg = 'Transfer Queried Successfully';
         $result->TxID = '102fa86c-7077-4fc2-8c1d-0a0a8aec5990';
-        $result->AdminEmailAddress = "jimmy@email.com";
+        $result->AdminEmailAddress = 'jimmy@email.com';
         $result->LosingRegistrar = 'TEST';
 
         $data = new stdClass();
@@ -4130,11 +4129,11 @@ class TransferTest extends \PHPUnit_Framework_TestCase
         $domainbox->setClient($soapClientMock);
         $transfer = $domainbox->transfer();
         $response = $transfer->resendTransferAdminEmail('madeit.be', 1);
-        
-        $this->assertEquals("TEST", $response->getCurrentRegistar());
-        $this->assertEquals("jimmy@email.com", $response->getTransferAdminEmailAddress());
+
+        $this->assertEquals('TEST', $response->getCurrentRegistar());
+        $this->assertEquals('jimmy@email.com', $response->getTransferAdminEmailAddress());
     }
-    
+
     public function testRestartTransfer()
     {
         $domainbox = new Domainbox('reseller', 'username', 'password', false);

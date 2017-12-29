@@ -27,7 +27,7 @@ class Domain
         10 => 'UnavailableRegistryTimeout',
         11 => 'AvailableWithProvidedDomainId',
     ];
-    
+
     private $statusTransferMessages = [
         0  => 'ErrorOccurred',
         1  => 'Transferrable',
@@ -41,18 +41,18 @@ class Domain
         9  => 'RegisteredWithinTheLastXDays',
         10 => 'TransferredWithinTheLastXDays',
     ];
-    
+
     private $statusQueryTransferMessage = [
-        0 => 'ErrorQuerying',
-        1 => 'PendingOwnerApproval',
-        2 => 'PendingRegistryApproval',
-        3 => 'Completed',
-        4 => 'Cancelled',
-        5 => 'RejectedByLosingRegistrar',
-        6 => 'RejectedByAdminContact',
-        7 => 'TransferTimed-out',
-        8 => 'ApprovalExceededMaximumAttempts',
-        9 => 'PendingPushFromLosingRegistrar',
+        0  => 'ErrorQuerying',
+        1  => 'PendingOwnerApproval',
+        2  => 'PendingRegistryApproval',
+        3  => 'Completed',
+        4  => 'Cancelled',
+        5  => 'RejectedByLosingRegistrar',
+        6  => 'RejectedByAdminContact',
+        7  => 'TransferTimed-out',
+        8  => 'ApprovalExceededMaximumAttempts',
+        9  => 'PendingPushFromLosingRegistrar',
         10 => 'RejectedByRegistry',
         11 => 'DomainPurchased',
     ];
@@ -166,8 +166,6 @@ class Domain
         } elseif ($command == 'ResendTransferAdminEmail') {
             $this->loadResendTransferAdminEmail($data);
         }
-        
-        
     }
 
     private function loadCheckDomainAvailability($data)
@@ -1058,11 +1056,11 @@ class Domain
         $tld = substr($this->getDomainName(), strlen($hostname));
 
         $command = [
-            'DomainName'    => $this->getDomainName(),
-            'AutoRenew'     => $this->getAutoRenew(),
-            'AutoRenewDays' => $this->getAutoRenewDays(),
-            'AuthCode'      => $this->getAuthCode(),
-            'AcceptTerms'   => $this->getAcceptTerms(),
+            'DomainName'              => $this->getDomainName(),
+            'AutoRenew'               => $this->getAutoRenew(),
+            'AutoRenewDays'           => $this->getAutoRenewDays(),
+            'AuthCode'                => $this->getAuthCode(),
+            'AcceptTerms'             => $this->getAcceptTerms(),
             'KeepExistingNameservers' => true,
 
             'Contacts' => [
@@ -1243,8 +1241,8 @@ class Domain
         if (in_array($tld, ['.scot'])) {
             $command['Extension']['IntendedUseParams'] = ['IntendedUse' => '', 'ReferenceUrl' => '', 'TrademarkId' => '', 'TrademarkIssuer' => ''];
         }
-        
-        if($command['KeepExistingNameservers']) {
+
+        if ($command['KeepExistingNameservers']) {
             //unset($command['Nameservers']);
         }
 
