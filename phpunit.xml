@@ -14,20 +14,22 @@
         </testsuite>
     </testsuites>
     <filter>
-    <blacklist>
-        <file>./src/DomainboxFacade.php</file>
-        <file>./src/DomainboxServiceProvider.php</file>
-        <file>./src/config/domainbox.php</file>
-        <file>./src/lang/en/valdation.php</file>
-    </blacklist>
-    <whitelist>
-        <directory suffeix=".php">./src</directory>
-        <exclude>
-            <file>./src/DomainboxFacade.php</file>
-            <file>./src/DomainboxServiceProvider.php</file>
-            <file>./src/config/domainbox.php</file>
-            <file>./src/lang/en/valdation.php</file>
-        </exclude>
-    </whitelist>
-</filter>
+        <blacklist>
+            <file>src/DomainboxFacade.php</file>
+            <file>src/DomainboxServiceProvider.php</file>
+            <file>src/config/domainbox.php</file>
+            <file>src/lang/en/valdation.php</file>
+            <file>src/TLDs/TLDGenerator.php</file>
+        </blacklist>
+        <whitelist>
+            <directory suffeix=".php">./src</directory>
+            <exclude>
+                <file>src/DomainboxFacade.php</file>
+                <file>src/DomainboxServiceProvider.php</file>
+                <file>src/config/domainbox.php</file>
+                <file>src/lang/en/valdation.php</file>
+                <file>src/TLDs/TLDGenerator.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
 </phpunit>
