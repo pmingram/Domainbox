@@ -606,159 +606,159 @@ class TLDTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($options['refundPeriodRenew'], $tld->getRefundPeriodRenew());
         $this->assertEquals($options['refundLimit'], $tld->getRefundLimit());
     }
-    
+
     public function testTLDSets()
     {
         $tld = new MadeITBelgium\Domainbox\TLDs\TLD();
-        
-        $tld->setTld("test");
-        $this->assertEquals("test", $tld->getTld());
-        
-        $tld->setIdnTLD("test");
-        $this->assertEquals("test", $tld->getIdnTLD());
-        
-        $tld->setDnsName("test");
-        $this->assertEquals("test", $tld->getDnsName());
-        
-        $tld->setPeriods("test");
-        $this->assertEquals("test", $tld->getPeriods());
-        
-        $tld->setFee_registry("test");
-        $this->assertEquals("test", $tld->getFee_registry());
-        
-        $tld->setFee_renew("test");
-        $this->assertEquals("test", $tld->getFee_renew());
-        
-        $tld->setFee_transfer("test");
-        $this->assertEquals("test", $tld->getFee_transfer());
-        
-        $tld->setFee_domainbox("test");
-        $this->assertEquals("test", $tld->getFee_domainbox());
-        
-        $tld->setFee_icann("test");
-        $this->assertEquals("test", $tld->getFee_icann());
-        
-        $tld->setFee_setup("test");
-        $this->assertEquals("test", $tld->getFee_setup());
-        
-        $tld->setFee_application("test");
-        $this->assertEquals("test", $tld->getFee_application());
-        
-        $tld->setFee_total("test");
-        $this->assertEquals("test", $tld->getFee_total());
-        
-        $tld->setFee_restore("test");
-        $this->assertEquals("test", $tld->getFee_restore());
-        
-        $tld->setFee_backorder("test");
-        $this->assertEquals("test", $tld->getFee_backorder());
-        
-        $tld->setNumberOfCategories("test");
-        $this->assertEquals("test", $tld->getNumberOfCategories());
-        
-        $tld->setCategories("test");
-        $this->assertEquals("test", $tld->getCategories());
-        
-        $tld->setType("test");
-        $this->assertEquals("test", $tld->getType());
-        
-        $tld->setLaunchPhase("test");
-        $this->assertEquals("test", $tld->getLaunchPhase());
-        
-        $tld->setApplyLock("test");
-        $this->assertEquals("test", $tld->getApplyLock());
-        
-        $tld->setAutoRenew("test");
-        $this->assertEquals("test", $tld->getAutoRenew());
-        
-        $tld->setAutoRenewDays("test");
-        $this->assertEquals("test", $tld->getAutoRenewDays());
-        
-        $tld->setAutoRenewDaysDefault("test");
-        $this->assertEquals("test", $tld->getAutoRenewDaysDefault());
-        
-        $tld->setApplyPrivacy("test");
-        $this->assertEquals("test", $tld->getApplyPrivacy());
-        
-        $tld->setAcceptTerms("test");
-        $this->assertEquals("test", $tld->getAcceptTerms());
-        
-        $tld->setNumberOfNameServers("test");
-        $this->assertEquals("test", $tld->getNumberOfNameServers());
-        
-        $tld->setExtension("test");
-        $this->assertEquals("test", $tld->getExtension());
-        
-        $tld->setAdditionalData("test");
-        $this->assertEquals("test", $tld->getAdditionalData());
-        
-        $tld->setLaunchDate("test");
-        $this->assertEquals("test", $tld->getLaunchDate());
-        
-        $tld->setDnssec("test");
-        $this->assertEquals("test", $tld->getDnssec());
-        
-        $tld->setIpv6("test");
-        $this->assertEquals("test", $tld->getIpv6());
-        
-        $tld->setIpv4("test");
-        $this->assertEquals("test", $tld->getIpv4());
-        
-        $tld->setCanChangeContact("test");
-        $this->assertEquals("test", $tld->getCanChangeContact());
-        
-        $tld->setCanChangeContactOrganisation("test");
-        $this->assertEquals("test", $tld->getCanChangeContactOrganisation());
-        
-        $tld->setCanChangeContactName("test");
-        $this->assertEquals("test", $tld->getCanChangeContactName());
-        
-        $tld->setCanChangeContactBirth("test");
-        $this->assertEquals("test", $tld->getCanChangeContactBirth());
-        
-        $tld->setCanChangeContactFax("test");
-        $this->assertEquals("test", $tld->getCanChangeContactFax());
-        
-        $tld->setCanChangeContactCountryCode("test");
-        $this->assertEquals("test", $tld->getCanChangeContactCountryCode());
-        
-        $tld->setCanChangeContactEntityType("test");
-        $this->assertEquals("test", $tld->getCanChangeContactEntityType());
-        
-        $tld->setCanChangeContactNationality("test");
-        $this->assertEquals("test", $tld->getCanChangeContactNationality());
-        
-        $tld->setCanChangeContactRegCode("test");
-        $this->assertEquals("test", $tld->getCanChangeContactRegCode());
-        
-        $tld->setDomainRenewBeforeMin("test");
-        $this->assertEquals("test", $tld->getDomainRenewBeforeMin());
-        
-        $tld->setDomainRenewBeforeMax("test");
-        $this->assertEquals("test", $tld->getDomainRenewBeforeMax());
-        
-        $tld->setRenewPeriods("test");
-        $this->assertEquals("test", $tld->getRenewPeriods());
-        
-        $tld->setRefund("test");
-        $this->assertEquals("test", $tld->getRefund());
-        
-        $tld->setRefundPeriodAdd("test");
-        $this->assertEquals("test", $tld->getRefundPeriodAdd());
-        
-        $tld->setRefundPeriodTransfer("test");
-        $this->assertEquals("test", $tld->getRefundPeriodTransfer());
-        
-        $tld->setRefundPeriodRenew("test");
-        $this->assertEquals("test", $tld->getRefundPeriodRenew());
-        
-        $tld->setRefundLimit("test");
-        $this->assertEquals("test", $tld->getRefundLimit());
-        
-        $tld->setDnsVerification("test");
-        $this->assertEquals("test", $tld->getDnsVerification());
-        
-        $tld->setRegisterText("test");
-        $this->assertEquals("test", $tld->getRegisterText());
+
+        $tld->setTld('test');
+        $this->assertEquals('test', $tld->getTld());
+
+        $tld->setIdnTLD('test');
+        $this->assertEquals('test', $tld->getIdnTLD());
+
+        $tld->setDnsName('test');
+        $this->assertEquals('test', $tld->getDnsName());
+
+        $tld->setPeriods('test');
+        $this->assertEquals('test', $tld->getPeriods());
+
+        $tld->setFee_registry('test');
+        $this->assertEquals('test', $tld->getFee_registry());
+
+        $tld->setFee_renew('test');
+        $this->assertEquals('test', $tld->getFee_renew());
+
+        $tld->setFee_transfer('test');
+        $this->assertEquals('test', $tld->getFee_transfer());
+
+        $tld->setFee_domainbox('test');
+        $this->assertEquals('test', $tld->getFee_domainbox());
+
+        $tld->setFee_icann('test');
+        $this->assertEquals('test', $tld->getFee_icann());
+
+        $tld->setFee_setup('test');
+        $this->assertEquals('test', $tld->getFee_setup());
+
+        $tld->setFee_application('test');
+        $this->assertEquals('test', $tld->getFee_application());
+
+        $tld->setFee_total('test');
+        $this->assertEquals('test', $tld->getFee_total());
+
+        $tld->setFee_restore('test');
+        $this->assertEquals('test', $tld->getFee_restore());
+
+        $tld->setFee_backorder('test');
+        $this->assertEquals('test', $tld->getFee_backorder());
+
+        $tld->setNumberOfCategories('test');
+        $this->assertEquals('test', $tld->getNumberOfCategories());
+
+        $tld->setCategories('test');
+        $this->assertEquals('test', $tld->getCategories());
+
+        $tld->setType('test');
+        $this->assertEquals('test', $tld->getType());
+
+        $tld->setLaunchPhase('test');
+        $this->assertEquals('test', $tld->getLaunchPhase());
+
+        $tld->setApplyLock('test');
+        $this->assertEquals('test', $tld->getApplyLock());
+
+        $tld->setAutoRenew('test');
+        $this->assertEquals('test', $tld->getAutoRenew());
+
+        $tld->setAutoRenewDays('test');
+        $this->assertEquals('test', $tld->getAutoRenewDays());
+
+        $tld->setAutoRenewDaysDefault('test');
+        $this->assertEquals('test', $tld->getAutoRenewDaysDefault());
+
+        $tld->setApplyPrivacy('test');
+        $this->assertEquals('test', $tld->getApplyPrivacy());
+
+        $tld->setAcceptTerms('test');
+        $this->assertEquals('test', $tld->getAcceptTerms());
+
+        $tld->setNumberOfNameServers('test');
+        $this->assertEquals('test', $tld->getNumberOfNameServers());
+
+        $tld->setExtension('test');
+        $this->assertEquals('test', $tld->getExtension());
+
+        $tld->setAdditionalData('test');
+        $this->assertEquals('test', $tld->getAdditionalData());
+
+        $tld->setLaunchDate('test');
+        $this->assertEquals('test', $tld->getLaunchDate());
+
+        $tld->setDnssec('test');
+        $this->assertEquals('test', $tld->getDnssec());
+
+        $tld->setIpv6('test');
+        $this->assertEquals('test', $tld->getIpv6());
+
+        $tld->setIpv4('test');
+        $this->assertEquals('test', $tld->getIpv4());
+
+        $tld->setCanChangeContact('test');
+        $this->assertEquals('test', $tld->getCanChangeContact());
+
+        $tld->setCanChangeContactOrganisation('test');
+        $this->assertEquals('test', $tld->getCanChangeContactOrganisation());
+
+        $tld->setCanChangeContactName('test');
+        $this->assertEquals('test', $tld->getCanChangeContactName());
+
+        $tld->setCanChangeContactBirth('test');
+        $this->assertEquals('test', $tld->getCanChangeContactBirth());
+
+        $tld->setCanChangeContactFax('test');
+        $this->assertEquals('test', $tld->getCanChangeContactFax());
+
+        $tld->setCanChangeContactCountryCode('test');
+        $this->assertEquals('test', $tld->getCanChangeContactCountryCode());
+
+        $tld->setCanChangeContactEntityType('test');
+        $this->assertEquals('test', $tld->getCanChangeContactEntityType());
+
+        $tld->setCanChangeContactNationality('test');
+        $this->assertEquals('test', $tld->getCanChangeContactNationality());
+
+        $tld->setCanChangeContactRegCode('test');
+        $this->assertEquals('test', $tld->getCanChangeContactRegCode());
+
+        $tld->setDomainRenewBeforeMin('test');
+        $this->assertEquals('test', $tld->getDomainRenewBeforeMin());
+
+        $tld->setDomainRenewBeforeMax('test');
+        $this->assertEquals('test', $tld->getDomainRenewBeforeMax());
+
+        $tld->setRenewPeriods('test');
+        $this->assertEquals('test', $tld->getRenewPeriods());
+
+        $tld->setRefund('test');
+        $this->assertEquals('test', $tld->getRefund());
+
+        $tld->setRefundPeriodAdd('test');
+        $this->assertEquals('test', $tld->getRefundPeriodAdd());
+
+        $tld->setRefundPeriodTransfer('test');
+        $this->assertEquals('test', $tld->getRefundPeriodTransfer());
+
+        $tld->setRefundPeriodRenew('test');
+        $this->assertEquals('test', $tld->getRefundPeriodRenew());
+
+        $tld->setRefundLimit('test');
+        $this->assertEquals('test', $tld->getRefundLimit());
+
+        $tld->setDnsVerification('test');
+        $this->assertEquals('test', $tld->getDnsVerification());
+
+        $tld->setRegisterText('test');
+        $this->assertEquals('test', $tld->getRegisterText());
     }
 }
