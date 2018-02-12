@@ -5,7 +5,7 @@
   "keywords": ["hosting", "domainbox", "domainname"],
   "homepage": "http://www.madeit.be",
   "type": "library",
-  "license": "LGPL",
+  "license": "LGPL-3.0-or-later",
   "authors": [
     {
       "name": "Tjebbe Lievens - Made I.T.",
@@ -30,5 +30,12 @@
       "psr-4": {
           "MadeITBelgium\\Domainbox\\": "src/"
       }
-  }
+  },
+  "extra": {
+       "laravel": {
+           "providers": [
+               "MadeITBelgium\\Domainbox\\DomainboxServiceProvider"
+           ]
+       }
+    }
 }
