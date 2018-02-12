@@ -18,14 +18,14 @@ class Net extends TLD
     protected $dnsName = 'net';
 
     protected $periods = null;
-    protected $fee_registry = 8.95;
-    protected $fee_renew = 8.95;
-    protected $fee_transfer = 8.95;
+    protected $fee_registry = 9.77;
+    protected $fee_renew = 9.77;
+    protected $fee_transfer = 9.77;
     protected $fee_domainbox = 2;
     protected $fee_icann = 0.18;
     protected $fee_setup = 0;
     protected $fee_application = 0;
-    protected $fee_total = 11.13;
+    protected $fee_total = 11.95;
     protected $fee_restore = 75;
     protected $fee_backorder = 40;
 
