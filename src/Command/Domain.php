@@ -410,11 +410,9 @@ class Domain
 
         return true;
     }
-    
-    
 
     /**
-     * Modify the domainname nameservers
+     * Modify the domainname nameservers.
      *
      * @param $domainname  The domainname
      * @param $nameservers  Array
@@ -429,35 +427,35 @@ class Domain
 
         if ($nameservers != null && count($nameservers) > 0) {
             $command['Nameservers'] = [];
-            for($i = 1; $i < count($nameservers); $i++) {
-                $command['Nameservers']['NS' . $i] = $nameservers[$i];
+            for ($i = 1; $i < count($nameservers); $i++) {
+                $command['Nameservers']['NS'.$i] = $nameservers[$i];
             }
         }
 
         if ($gluerecords != null && count($gluerecords) > 0) {
-            foreach($gluerecords as $nameserver => $ipData) {
+            foreach ($gluerecords as $nameserver => $ipData) {
                 $gluerecord = [
                     'GlueRecord' => [
-                        'Nameserver' => $nameserver,
+                        'Nameserver'  => $nameserver,
                         'IPAddresses' => [
                             'IPv4Addresses' => [],
                             'IPv6Addresses' => [],
                         ],
                     ],
                 ];
-                
-                if(isset($ipData['ipv4'])) {
-                    for($j = 0; $j < count($ipData['ipv4']); $j++) {
+
+                if (isset($ipData['ipv4'])) {
+                    for ($j = 0; $j < count($ipData['ipv4']); $j++) {
                         $gluerecord['GlueRecord']['IPAddresses']['IPv4Addresses'][] = ['string' => $ipData['ipv4'][$j]];
                     }
                 }
-                
-                if(isset($ipData['ipv6'])) {
-                    for($j = 0; $j < count($ipData['ipv6']); $j++) {
+
+                if (isset($ipData['ipv6'])) {
+                    for ($j = 0; $j < count($ipData['ipv6']); $j++) {
                         $gluerecord['GlueRecord']['IPAddresses']['IPv6Addresses'][] = ['string' => $$ipData['ipv6'][$j]];
                     }
                 }
-                
+
                 $command['Nameservers']['GlueRecords'][] = $gluerecord;
             }
         }
