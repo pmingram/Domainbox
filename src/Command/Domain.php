@@ -414,13 +414,13 @@ class Domain
     
 
     /**
-     * Modify the domainname auth code.
+     * Modify the domainname nameservers
      *
      * @param $domainname  The domainname
-     * @param $applyPrivacy  Boolean
-     * @param $authLockMode  'auto' or 'unlock'
+     * @param $nameservers  Array
+     * @param $gluerecords  Array
      */
-    public function modifyDomainRecords($domainname, $nameservers = [], $gluerecords = [])
+    public function modifyDomainNameservers($domainname, $nameservers = [], $gluerecords = [])
     {
         $command = [
             'DomainName'   => $domainname,
