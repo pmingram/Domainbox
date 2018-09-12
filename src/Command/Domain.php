@@ -410,6 +410,62 @@ class Domain
 
         return true;
     }
+    
+    
+
+    /**
+     * Modify the domainname auth code.
+     *
+     * @param $domainname  The domainname
+     * @param $applyPrivacy  Boolean
+     * @param $authLockMode  'auto' or 'unlock'
+     */
+    public function modifyDomainRecords($domainname, $nameservers = [], $gluerecords = [])
+    {
+        $command = [
+            'DomainName'   => $domainname,
+            'Nameservers'  => ['GlueRecords' => []],
+        ];
+
+        if ($nameservers != null && count($nameservers) > 0) {
+            $command['Nameservers'] = [];
+            for($i = 1; $i < count($nameservers); $i++) {
+                $command['Nameservers']['NS' . $i] = $nameservers[$i];
+            }
+        }
+
+        if ($gluerecords != null && count($gluerecords) > 0) {
+            foreach($gluerecords as $nameserver => $ipData) {
+                $gluerecord = [
+                    'GlueRecord' => [
+                        'Nameserver' => $nameserver,
+                        'IPAddresses' => [
+                            'IPv4Addresses' => [],
+                            'IPv6Addresses' => [],
+                        ],
+                    ],
+                ];
+                
+                if(isset($ipData['ipv4'])) {
+                    for($j = 0; $j < count($ipData['ipv4']); $j++) {
+                        $gluerecord['GlueRecord']['IPAddresses']['IPv4Addresses'][] = ['string' => $ipData['ipv4'][$j]];
+                    }
+                }
+                
+                if(isset($ipData['ipv6'])) {
+                    for($j = 0; $j < count($ipData['ipv6']); $j++) {
+                        $gluerecord['GlueRecord']['IPAddresses']['IPv6Addresses'][] = ['string' => $$ipData['ipv6'][$j]];
+                    }
+                }
+                
+                $command['Nameservers']['GlueRecords'][] = $gluerecord;
+            }
+        }
+
+        $response = $this->domainbox->call('ModifyDomainNameservers', $command);
+
+        return true;
+    }
 
     public function getLastResultCode()
     {
