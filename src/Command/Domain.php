@@ -427,7 +427,7 @@ class Domain
 
         if ($nameservers != null && count($nameservers) > 0) {
             $command['Nameservers'] = [];
-            for ($i = 1; $i < count($nameservers); $i++) {
+            for ($i = 1; $i <= count($nameservers); $i++) {
                 $command['Nameservers']['NS'.$i] = $nameservers[$i - 1];
             }
         }
