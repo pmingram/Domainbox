@@ -18,14 +18,14 @@ class Archi extends TLD
     protected $dnsName = 'archi';
 
     protected $periods = null;
-    protected $fee_registry = 65;
-    protected $fee_renew = 65;
-    protected $fee_transfer = 65;
+    protected $fee_registry = 44.99;
+    protected $fee_renew = 44.99;
+    protected $fee_transfer = 44.99;
     protected $fee_domainbox = 7;
     protected $fee_icann = 0.18;
     protected $fee_setup = 0;
     protected $fee_application = 0;
-    protected $fee_total = 72.18;
+    protected $fee_total = 52.17;
     protected $fee_restore = 225;
     protected $fee_backorder = null;
 
