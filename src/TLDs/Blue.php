@@ -18,14 +18,14 @@ class Blue extends TLD
     protected $dnsName = 'blue';
 
     protected $periods = null;
-    protected $fee_registry = 9.95;
-    protected $fee_renew = 9.95;
-    protected $fee_transfer = 9.95;
+    protected $fee_registry = 19.99;
+    protected $fee_renew = 10.99;
+    protected $fee_transfer = 10.99;
     protected $fee_domainbox = 7;
     protected $fee_icann = 0.18;
     protected $fee_setup = 0;
     protected $fee_application = 0;
-    protected $fee_total = 17.13;
+    protected $fee_total = 18.17;
     protected $fee_restore = 90;
     protected $fee_backorder = null;
 
