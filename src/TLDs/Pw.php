@@ -18,14 +18,14 @@ class Pw extends TLD
     protected $dnsName = 'pw';
 
     protected $periods = null;
-    protected $fee_registry = 7;
-    protected $fee_renew = 7;
-    protected $fee_transfer = 7;
+    protected $fee_registry = 15;
+    protected $fee_renew = 15;
+    protected $fee_transfer = 15;
     protected $fee_domainbox = 2;
     protected $fee_icann = 0;
     protected $fee_setup = 0;
     protected $fee_application = 0;
-    protected $fee_total = 9;
+    protected $fee_total = 17;
     protected $fee_restore = 25;
     protected $fee_backorder = null;
 
