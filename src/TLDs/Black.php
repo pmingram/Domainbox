@@ -18,14 +18,14 @@ class Black extends TLD
     protected $dnsName = 'black';
 
     protected $periods = null;
-    protected $fee_registry = 29.95;
-    protected $fee_renew = 29.95;
-    protected $fee_transfer = 29.95;
+    protected $fee_registry = 34.99;
+    protected $fee_renew = 34.99;
+    protected $fee_transfer = 34.99;
     protected $fee_domainbox = 7;
     protected $fee_icann = 0.18;
     protected $fee_setup = 0;
     protected $fee_application = 0;
-    protected $fee_total = 37.13;
+    protected $fee_total = 42.17;
     protected $fee_restore = 90;
     protected $fee_backorder = null;
 
