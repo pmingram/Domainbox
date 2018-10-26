@@ -18,14 +18,14 @@ class Info extends TLD
     protected $dnsName = 'info';
 
     protected $periods = null;
-    protected $fee_registry = 9.86;
-    protected $fee_renew = 9.86;
-    protected $fee_transfer = 9.86;
+    protected $fee_registry = 10.84;
+    protected $fee_renew = 10.84;
+    protected $fee_transfer = 10.84;
     protected $fee_domainbox = 2;
     protected $fee_icann = 0.18;
     protected $fee_setup = 0;
     protected $fee_application = 0;
-    protected $fee_total = 12.04;
+    protected $fee_total = 13.02;
     protected $fee_restore = 65;
     protected $fee_backorder = 40;
 

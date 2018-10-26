@@ -18,14 +18,14 @@ class Ski extends TLD
     protected $dnsName = 'ski';
 
     protected $periods = null;
-    protected $fee_registry = 35;
-    protected $fee_renew = 35;
-    protected $fee_transfer = 35;
+    protected $fee_registry = 29.99;
+    protected $fee_renew = 29.99;
+    protected $fee_transfer = 29.99;
     protected $fee_domainbox = 7;
     protected $fee_icann = 0.18;
     protected $fee_setup = 0;
     protected $fee_application = 0;
-    protected $fee_total = 42.18;
+    protected $fee_total = 37.17;
     protected $fee_restore = 145;
     protected $fee_backorder = null;
 

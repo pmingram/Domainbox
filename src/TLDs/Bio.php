@@ -18,14 +18,14 @@ class Bio extends TLD
     protected $dnsName = 'bio';
 
     protected $periods = null;
-    protected $fee_registry = 55;
-    protected $fee_renew = 55;
+    protected $fee_registry = 44.99;
+    protected $fee_renew = 44.99;
     protected $fee_transfer = 55;
     protected $fee_domainbox = 7;
     protected $fee_icann = 0.18;
     protected $fee_setup = 0;
     protected $fee_application = 0;
-    protected $fee_total = 62.18;
+    protected $fee_total = 52.17;
     protected $fee_restore = 225;
     protected $fee_backorder = null;
 

@@ -18,14 +18,14 @@ class Mobi extends TLD
     protected $dnsName = 'mobi';
 
     protected $periods = null;
-    protected $fee_registry = 7.25;
-    protected $fee_renew = 12;
-    protected $fee_transfer = 12;
+    protected $fee_registry = 12.99;
+    protected $fee_renew = 12.99;
+    protected $fee_transfer = 12.99;
     protected $fee_domainbox = 2;
     protected $fee_icann = 0.18;
     protected $fee_setup = 0;
     protected $fee_application = 0;
-    protected $fee_total = 9.43;
+    protected $fee_total = 13.17;
     protected $fee_restore = 65;
     protected $fee_backorder = 40;
 

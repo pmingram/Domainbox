@@ -18,14 +18,14 @@ class Pro extends TLD
     protected $dnsName = 'pro';
 
     protected $periods = null;
-    protected $fee_registry = 10;
-    protected $fee_renew = 10;
-    protected $fee_transfer = 10;
+    protected $fee_registry = 10.99;
+    protected $fee_renew = 10.99;
+    protected $fee_transfer = 10.99;
     protected $fee_domainbox = 2;
     protected $fee_icann = 0.18;
     protected $fee_setup = 0;
     protected $fee_application = 0;
-    protected $fee_total = 12.18;
+    protected $fee_total = 13.17;
     protected $fee_restore = 65;
     protected $fee_backorder = null;
 
