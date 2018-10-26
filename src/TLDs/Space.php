@@ -18,14 +18,14 @@ class Space extends TLD
     protected $dnsName = 'space';
 
     protected $periods = null;
-    protected $fee_registry = 7;
-    protected $fee_renew = 7;
-    protected $fee_transfer = 7;
+    protected $fee_registry = 15;
+    protected $fee_renew = 15;
+    protected $fee_transfer = 15;
     protected $fee_domainbox = 7;
     protected $fee_icann = 0.18;
     protected $fee_setup = 0;
     protected $fee_application = 0;
-    protected $fee_total = 14.18;
+    protected $fee_total = 22.18;
     protected $fee_restore = 90;
     protected $fee_backorder = null;
 
