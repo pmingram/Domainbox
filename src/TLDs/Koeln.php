@@ -18,14 +18,14 @@ class Koeln extends TLD
     protected $dnsName = 'koeln';
 
     protected $periods = null;
-    protected $fee_registry = 8.5;
-    protected $fee_renew = 8.5;
-    protected $fee_transfer = 8.5;
+    protected $fee_registry = 10.40;
+    protected $fee_renew = 10.40;
+    protected $fee_transfer = 10.40;
     protected $fee_domainbox = 7;
     protected $fee_icann = 0.18;
     protected $fee_setup = 0;
     protected $fee_application = 0;
-    protected $fee_total = 15.68;
+    protected $fee_total = 17.58;
     protected $fee_restore = 90;
     protected $fee_backorder = null;
 
