@@ -18,14 +18,14 @@ class Wien extends TLD
     protected $dnsName = 'wien';
 
     protected $periods = null;
-    protected $fee_registry = 24.46;
-    protected $fee_renew = 24.46;
-    protected $fee_transfer = 24.46;
+    protected $fee_registry = 30.00;
+    protected $fee_renew = 30.00;
+    protected $fee_transfer = 30.00;
     protected $fee_domainbox = 7;
     protected $fee_icann = 0.18;
     protected $fee_setup = 0;
     protected $fee_application = 0;
-    protected $fee_total = 31.64;
+    protected $fee_total = 37.18;
     protected $fee_restore = 73.92;
     protected $fee_backorder = null;
 
