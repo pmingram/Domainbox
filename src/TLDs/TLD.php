@@ -11,7 +11,7 @@ namespace MadeITBelgium\Domainbox\TLDs;
  * @author     Made I.T. <info@madeit.be>
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  */
-class TLD
+class TLD implements \JsonSerializable
 {
     protected $tld;
     protected $idnTLD;
@@ -602,5 +602,10 @@ class TLD
     public function setRegisterText($registerText)
     {
         $this->registerText = $registerText;
+    }
+    
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
     }
 }
