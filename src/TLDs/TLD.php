@@ -603,7 +603,7 @@ class TLD implements \JsonSerializable
     {
         $this->registerText = $registerText;
     }
-    
+
     public function jsonSerialize()
     {
         return get_object_vars($this);
