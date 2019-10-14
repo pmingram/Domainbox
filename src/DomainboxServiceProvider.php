@@ -3,6 +3,7 @@
 namespace MadeITBelgium\Domainbox;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 
 /**
  * Domainbox API.
@@ -70,7 +71,7 @@ class DomainboxServiceProvider extends ServiceProvider
 
     protected function extendValidator($rule)
     {
-        $method = 'validate'.studly_case($rule);
+        $method = 'validate'.Str::studly($rule);
         $translation = $this->app['translator']->get('domainbox::validation');
         $this->app['validator']->extend($rule, 'MadeITBelgium\Domainbox\Validation\ValidatorExtensions@'.$method, $translation[$rule]);
     }
