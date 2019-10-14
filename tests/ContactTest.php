@@ -1,7 +1,6 @@
 <?php
 
 use MadeITBelgium\Domainbox\Domainbox;
-use MadeITBelgium\Domainbox\Object\Contact;
 
 class ContactTest extends \PHPUnit_Framework_TestCase
 {
