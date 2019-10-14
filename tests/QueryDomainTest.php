@@ -1,7 +1,6 @@
 <?php
 
 use MadeITBelgium\Domainbox\Domainbox;
-use MadeITBelgium\Domainbox\Object\Domain;
 
 class QueryDomainTest extends \PHPUnit_Framework_TestCase
 {
