@@ -1,6 +1,6 @@
 {
   "name": "madeitbelgium/domainbox",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "PHP Laravel Domainbox SDK",
   "keywords": ["hosting", "domainbox", "domainname"],
   "homepage": "http://www.madeit.be",
@@ -14,14 +14,14 @@
     }
   ],
   "require": {
-    "illuminate/support": "5.*|^6.0",
+    "illuminate/support": "5.*|^6.0|^7.0",
     "php": ">=5.6"
   },
   "require-dev": {
       "phpunit/phpunit": "5.7.*|6.2.*",
       "mockery/mockery": "0.9",
-      "illuminate/container": "5.*|^6.0",
-      "illuminate/validation": "5.*|^6.0"
+      "illuminate/container": "5.*|^6.0|^7.0",
+      "illuminate/validation": "5.*|^6.0|^7.0"
   },
   "autoload": {
     "classmap": [
