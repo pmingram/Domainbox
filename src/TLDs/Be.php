@@ -33,8 +33,8 @@ class Be extends TLD
 
     protected $additionalData = [
         'EUBEAdditionalData' => [
-                'Language'  => ['type' => 'select', 'values' => ['nl' => 'nl (Dutch)', 'fr' => 'fr (French)', 'en'  => 'en (English)'], 'required' => false],
-                'VATNumber' => ['type' => 'VAT', 'required' => false],
+            'Language'  => ['type' => 'select', 'values' => ['nl' => 'nl (Dutch)', 'fr' => 'fr (French)', 'en'  => 'en (English)'], 'required' => false],
+            'VATNumber' => ['type' => 'VAT', 'required' => false],
             ],
     ];
 
