@@ -1,5 +1,7 @@
 <?php
+
 namespace MadeITBelgium\Domainbox\TLDs;
+
 /**
  * Domainbox API.
  *
@@ -37,6 +39,7 @@ class Dm extends TLD
     protected $refundPeriodTransfer = 30;
     protected $refundPeriodRenew = 0;
     protected $refundLimit = 0;
+
     public function __construct()
     {
         parent::__construct();

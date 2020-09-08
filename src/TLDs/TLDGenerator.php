@@ -611,7 +611,7 @@ class ".$className." extends TLD
     }
 }';
     //write to file
-    $myfile = fopen($fileName, 'w') or die('Unable to open file!');
+    $myfile = fopen($fileName, 'w') or exit('Unable to open file!');
     fwrite($myfile, $result);
     fclose($myfile);
 }
@@ -901,7 +901,7 @@ $gTLDs = [
     '.courses',
     '.rent',
     '.miami',
- ];
+];
 
 $phpFiles = scandir(__DIR__);
 foreach ($phpFiles as $fileName) {
