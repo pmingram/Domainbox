@@ -3,10 +3,10 @@ php:
   - 7.2
   - 7.3
   - 7.4
-  - nightly
+#  - nightly
 
 before_install:
-- composer require phpunit/phpunit:5.* satooshi/php-coveralls:1.*
+- composer require phpunit/phpunit:8.* php-coveralls/php-coveralls:2.*
 - composer install --dev
  
 script:
