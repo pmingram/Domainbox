@@ -1,10 +1,11 @@
 <?php
 
 use MadeITBelgium\Domainbox\TLDs\TLD;
+use PHPUnit\Framework\TestCase;
 
-class TLDTest extends \PHPUnit_Framework_TestCase
+class TLDTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
     }
