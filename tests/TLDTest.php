@@ -540,14 +540,14 @@ class TLDTest extends TestCase
     {
         return [
             [
-                '.ac.nz',
-                'MadeITBelgium\Domainbox\TLDs\Acnz',
-                ['tld' => '.ac.nz', 'idnTLD' => 'ac.nz', 'dnsName' => 'ac.nz', 'periods' => null, 'fee_registry' => 16, 'fee_renew' => 16, 'fee_transfer' => 16, 'fee_domainbox' => 9, 'fee_icann' => 0, 'fee_setup' => 0, 'fee_application' => 0, 'fee_total' => 25, 'fee_restore' => null, 'fee_backorder' => null, 'type' => 'ccTLD', 'applyLock' => false, 'applyPrivacy' => false, 'numberOfNameServers' => 10, 'dnssec' => false, 'ipv6' => true, 'ipv4' => true, 'refund' => false, 'refundPeriodAdd' => 5, 'refundPeriodTransfer' => 0, 'refundPeriodRenew' => 5, 'refundLimit' => 0],
+                '.ac',
+                'MadeITBelgium\Domainbox\TLDs\Ac',
+                ['tld' => '.ac', 'idnTLD' => 'ac', 'dnsName' => 'ac', 'periods' => null, 'fee_registry' => 16, 'fee_renew' => 16, 'fee_transfer' => 16, 'fee_domainbox' => 9, 'fee_icann' => 0, 'fee_setup' => 0, 'fee_application' => 0, 'fee_total' => 25, 'fee_restore' => null, 'fee_backorder' => null, 'type' => 'ccTLD', 'applyLock' => false, 'applyPrivacy' => false, 'numberOfNameServers' => 10, 'dnssec' => false, 'ipv6' => true, 'ipv4' => true, 'refund' => false, 'refundPeriodAdd' => 5, 'refundPeriodTransfer' => 0, 'refundPeriodRenew' => 5, 'refundLimit' => 0],
             ],
             [
-                '.ac.nz',
-                'MadeITBelgium\Domainbox\TLDs\Acnz',
-                ['tld' => '.ac.nz', 'idnTLD' => 'ac.nz', 'dnsName' => 'ac.nz', 'periods' => null, 'fee_registry' => 16, 'fee_renew' => 16, 'fee_transfer' => 16, 'fee_domainbox' => 9, 'fee_icann' => 0, 'fee_setup' => 0, 'fee_application' => 0, 'fee_total' => 25, 'fee_restore' => null, 'fee_backorder' => null, 'type' => 'ccTLD', 'applyLock' => false, 'applyPrivacy' => false, 'numberOfNameServers' => 10, 'dnssec' => false, 'ipv6' => true, 'ipv4' => true, 'refund' => false, 'refundPeriodAdd' => 5, 'refundPeriodTransfer' => 0, 'refundPeriodRenew' => 5, 'refundLimit' => 0],
+                '.ac',
+                'MadeITBelgium\Domainbox\TLDs\Ac',
+                ['tld' => '.ac', 'idnTLD' => 'ac', 'dnsName' => 'ac', 'periods' => null, 'fee_registry' => 16, 'fee_renew' => 16, 'fee_transfer' => 16, 'fee_domainbox' => 9, 'fee_icann' => 0, 'fee_setup' => 0, 'fee_application' => 0, 'fee_total' => 25, 'fee_restore' => null, 'fee_backorder' => null, 'type' => 'ccTLD', 'applyLock' => false, 'applyPrivacy' => false, 'numberOfNameServers' => 10, 'dnssec' => false, 'ipv6' => true, 'ipv4' => true, 'refund' => false, 'refundPeriodAdd' => 5, 'refundPeriodTransfer' => 0, 'refundPeriodRenew' => 5, 'refundLimit' => 0],
             ],
         ];
     }
