@@ -2,12 +2,13 @@
 
 use MadeITBelgium\Domainbox\Domainbox;
 use MadeITBelgium\Domainbox\Object\Contact;
+use PHPUnit\Framework\TestCase;
 
-class ModifyDomainTest extends \PHPUnit_Framework_TestCase
+class ModifyDomainTest extends TestCase
 {
     private $wsdl = 'tests/domainbox.wsdl';
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
     }
