@@ -13,7 +13,6 @@ class TLDTest extends TestCase
     public function testObjects()
     {
         $this->assertEquals([
-            '.ac.nz'            => new MadeITBelgium\Domainbox\TLDs\Acnz(),
             '.ac'               => new MadeITBelgium\Domainbox\TLDs\Ac(),
             '.academy'          => new MadeITBelgium\Domainbox\TLDs\Academy(),
             '.accountant'       => new MadeITBelgium\Domainbox\TLDs\Accountant(),
