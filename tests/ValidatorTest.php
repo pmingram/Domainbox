@@ -50,6 +50,8 @@ class ValidatorTest extends TestCase
         $translator->shouldReceive('get')->once()->with('validation.domainname')->andReturn('validation.domainname');
         $translator->shouldReceive('get')->once()->with('validation.attributes')->andReturn('validation.attributes');
         $translator->shouldReceive('get')->once()->with('validation.attributes.foo')->andReturn('validation.attributes.foo');
+        $translator->shouldReceive('get')->once()->with('validation.values.foo.madeit.belgium')->andReturn('validation.values.foo.madeit.belgium');
+        
         $factory = new Factory($translator, $container);
         $factory->extend('domainname', 'MadeITBelgium\Domainbox\Validation\ValidatorExtensions@validateDomainname', ':attribute must be a valid Domainname');
         $validator = $factory->make(['foo' => 'madeit.belgium'], ['foo' => 'domainname']);
