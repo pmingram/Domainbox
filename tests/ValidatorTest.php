@@ -2,10 +2,11 @@
 
 use Illuminate\Validation\Factory;
 use MadeITBelgium\Domainbox\Validation\ValidatorExtensions;
+use PHPUnit\Framework\TestCase;
 
-class ValidatorTest extends \PHPUnit_Framework_TestCase
+class ValidatorTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
     }
