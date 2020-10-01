@@ -1,10 +1,11 @@
 <?php
 
 use MadeITBelgium\Domainbox\Domainbox;
+use PHPUnit\Framework\TestCase;
 
-class DomainboxTest extends \PHPUnit_Framework_TestCase
+class DomainboxTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
     }
